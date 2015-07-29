@@ -12,6 +12,7 @@
     <context:component-scan base-package="org.dteam.controller"/>
 
     <mvc:annotation-driven/>
+  
 
     <!-- Allows Spring to spring to map views it returns to files -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
