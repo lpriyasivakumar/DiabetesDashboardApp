@@ -23,7 +23,7 @@ create table Reading(
 	ReadingDate date not null ,
     TimeOfDayID int not null,
     BloodGlucose int not null,
-    InsulinUnits int not null
+    InsulinUnits int not null,
     
     primary key(ReadingID),
     foreign key(UserID) references UserDB(UserID),
