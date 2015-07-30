@@ -1,61 +1,71 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Diabetes Dashboard - Your Place to log and track your diabetic information">
-    <meta name="author" content="DTeam">
-    <meta name="keyword" content="Diabetes, Dashboard, Sugar, Glucose, Graph, Alc, Insulin, Diabetic">
-    <!--<link rel="shortcut icon" href="img/favicon.png">-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Diabetes Dashboard - Your Place to log and track your diabetic information">
+<meta name="author" content="DTeam">
+<meta name="keyword"
+	content="Diabetes, Dashboard, Sugar, Glucose, Graph, Alc, Insulin, Diabetic">
+<!--<link rel="shortcut icon" href="img/favicon.png">-->
 
-    <title>Diabetes Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/style.css" />" />
-   <!-- Bootstrap CSS -->    
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css" />" />
-    <!-- bootstrap theme -->
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap-theme.css" />" />
-    <!-- bootstrap icons -->
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.icon.large.min.css" />" />
-    <!--external css-->
-    <!-- font icon -->
-   <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/elegant-icons-style.css" />" />
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/font-awesome.min.css"/> "/> 
+<title>Diabetes Dashboard</title>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/style.css" />" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/bootstrap.min.css" />" />
+<!-- bootstrap theme -->
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/bootstrap-theme.css" />" />
+<!-- bootstrap icons -->
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/bootstrap.icon.large.min.css" />" />
+<!--external css-->
+<!-- font icon -->
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/elegant-icons-style.css" />" />
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/font-awesome.min.css"/> " />
 
-   
-    
 
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-    <!--[if lt IE 9]>
+
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+<!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
       <script src="js/lte-ie7.js"></script>
       <![endif]-->
-  </head>
+</head>
 
-  <body>
-      <!-- container section start -->
-      <section id="container" class="">
-
-
-          <header class="header">
-            <div class="toggle-nav">
-                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
-            </div>
-
-            <!--logo start-->
-            <a href="#" class="logo">Diabetes <span class="lite">Dashboard</span></a>
-            <!--logo end-->
+<body>
+	<!-- container section start -->
+	<section id="container" class="">
 
 
+		<header class="header">
+			<div class="toggle-nav">
+				<div class="icon-reorder tooltips"
+					data-original-title="Toggle Navigation" data-placement="bottom"></div>
+			</div>
 
-            <div class="top-nav notification-row">                
-                <!-- notificatoin dropdown start-->
-                <ul class="nav pull-right top-menu">
+			<!--logo start-->
+			<a href="#" class="logo">Diabetes <span class="lite">Dashboard</span></a>
+			<!--logo end-->
 
-                    <!-- task notificatoin start 
+
+
+			<div class="top-nav notification-row">
+				<!-- notificatoin dropdown start-->
+				<ul class="nav pull-right top-menu">
+
+					<!-- task notificatoin start 
                     <li id="task_notificatoin_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="icon-task-l"></i>
@@ -140,7 +150,7 @@
                             </ul>
                         </li>
                         task notificatoin end -->
-                        <!-- inbox notificatoin start
+					<!-- inbox notificatoin start
                         <li id="mail_notificatoin_bar" class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <i class="icon-envelope-l"></i>
@@ -205,7 +215,7 @@
                         </ul>
                     </li>
                     inbox notificatoin end -->
-                    <!-- alert notification start
+					<!-- alert notification start
                     <li id="alert_notificatoin_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
@@ -251,389 +261,285 @@
                         </ul>
                     </li>
                     alert notification end-->
-                    <!-- user login dropdown start-->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
-                            </span>
-                            <span class="username">Jenifer Smith</span>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu extended logout">
-                            <div class="log-arrow-up"></div>
-                            <li class="eborder-top">
-                                <a href="#"><i class="icon_profile"></i> My Profile</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-                            </li>
-                            <li>
-                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
-                            </li>
-                            <li>
-                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                            </li>
-                            <li>
-                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- user login dropdown end -->
-                </ul>
-                <!-- notificatoin dropdown end-->
-            </div>
-        </header>      
-        <!--header end-->
+					<!-- user login dropdown start-->
+					<li class="dropdown"><a data-toggle="dropdown"
+						class="dropdown-toggle" href="#"> <span class="profile-ava">
+						<img src="<c:url value="/resources/img/avatar1_small.jpg" />" alt="" />
+						
+						</span> <span class="username">Jenifer Smith</span> <b class="caret"></b>
+					</a>
+						<ul class="dropdown-menu extended logout">
+							<div class="log-arrow-up"></div>
+							<li class="eborder-top"><a href="#"><i
+									class="icon_profile"></i> My Profile</a></li>
+							<li><a href="#"><i class="icon_mail_alt"></i> My Inbox</a></li>
+							<li><a href="#"><i class="icon_clock_alt"></i> Timeline</a>
+							</li>
+							<li><a href="#"><i class="icon_chat_alt"></i> Chats</a></li>
+							<li><a href="login.html"><i class="icon_key_alt"></i>
+									Log Out</a></li>
+							<li><a href="documentation.html"><i class="icon_key_alt"></i>
+									Documentation</a></li>
+							<li><a href="documentation.html"><i class="icon_key_alt"></i>
+									Documentation</a></li>
+						</ul></li>
+					<!-- user login dropdown end -->
+				</ul>
+				<!-- notificatoin dropdown end-->
+			</div>
+		</header>
+		<!--header end-->
 
-        <!--sidebar start-->
-        <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <div class="nav-header"><p>dashboard menu</p></div>
-              <ul class="sidebar-menu">                
-                  <li class="active">
-                      <a class="" href="index.html">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_calculator_alt"></i>
-                          <span>A1c Calculator</span>
-                          <!--  <span class="menu-arrow arrow_carrot-right"></span> -->
-                      </a>
-                     <!-- <ul class="sub">
-                          <li><a class="" href="form_component.html">Form Elements</a></li>                          
-                          <li><a class="" href="form_validation.html">Form Validation</a></li>
-                      </ul>
-                  </li>       
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>UI Fitures</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="general.html">Elements</a></li>
-                          <li><a class="" href="buttons.html">Buttons</a></li>
-                          <li><a class="" href="grids.html">Grids</a></li>
-                      </ul>
-                  </li>
-                  <li>
-                      <a class="" href="widgets.html">
-                          <i class="icon_genius"></i>
-                          <span>Widgets</span>
-                      </a>
-                  </li>
-                  <li>                     
-                      <a class="" href="chart-chartjs.html">
-                          <i class="icon_piechart"></i>
-                          <span>Charts</span>
-                          
-                      </a>
+		<!--sidebar start-->
+		<aside>
+			<div id="sidebar" class="nav-collapse ">
+				<!-- sidebar menu start-->
+				<div class="nav-header">
+					<p>dashboard menu</p>
+				</div>
+				<ul class="sidebar-menu">
+					<li class="active"><a class="" href="index.html"> <i
+							class="icon_house_alt"></i> <span>Dashboard</span>
+					</a></li>
+					<li class="sub-menu"><a href="javascript:;" class=""> <i
+							class="icon_calculator_alt"></i> <span>A1c Calculator</span> <!--  <span class="menu-arrow arrow_carrot-right"></span> -->
+					</a></li>
+				</ul>
+				<!--sidebar menu end -->
+			</div>
+		</aside>
+		<!--sidebar end-->
 
-                  </li>
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="main-content-container">
+					<!--overview start-->
+					<div class="row">
+						<div class="col-lg-12">
+							<h3 class="page-header">
+								<i class="fa fa-laptop"></i> Dashboard
+							</h3>
+							<ol class="breadcrumb">
+								<li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+								<li><i class="fa fa-laptop"></i>Dashboard</li>
+							</ol>
+						</div>
+					</div>
 
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_table"></i>
-                          <span>Tables</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="basic_table.html">Basic Table</a></li>
-                      </ul>
-                  </li>
-                  
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
-                          <span>Pages</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">                          
-                          <li><a class="" href="profile.html">Profile</a></li>
-                          <li><a class="" href="login.html"><span>Login Page</span></a></li>
-                          <li><a class="" href="blank.html">Blank Page</a></li>
-                          <li><a class="" href="404.html">404 Error</a></li>s
-                      </ul>
-                      sidebar menu end-->
-                  </div>
-              </aside>
-              <!--sidebar end-->
+					<div class="row">
+						<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+							<section class="glucose-form">
+								<div class="panel panel-default">
+									<div class="panel-heading">Blood Glucose Reading (mg/dl)</div>
+									<div class="panel-body">
+										<form method="post" action="" role="login"
+											id="glucoseEntryForm">
 
-              <!--main content start-->
-              <section id="main-content">
-                  <section class="wrapper">
-                    <div class="main-content-container">            
-                      <!--overview start-->
-                      <div class="row">
-                        <div class="col-lg-12">
-                         <h3 class="page-header"><i class="fa fa-laptop"></i> Dashboard</h3>
-                         <ol class="breadcrumb">
-                          <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-                          <li><i class="fa fa-laptop"></i>Dashboard</li>						  	
-                      </ol>
-                  </div>
-              </div>
+											<div class="form-group">
+												<label for="datepicker">Select Date</label> <input
+													class="form-control" name="date" type="date">
+											</div>
+											<div class="row">
 
-              <div class="row">
-                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
-                    <section class="glucose-form">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Blood Glucose Reading (mg/dl)</div>
-                            <div class="panel-body">
-                                <form method="post" action="" role="login" id="glucoseEntryForm">
+												<div class="form-group pull-left">
+													<input type="hidden" name="action" value="add"> <label
+														for="bgreading">Blood Glucose Reading</label> <input
+														type="text" name="bgreading" id="bgreading"
+														placeholder="Please enter glucose reading" required
+														class="form-control input-lg"
+														value="${bgreading.BloodGlucose}" />
+												</div>
 
-                                    <div class="form-group">
-                                        <label for="datepicker">Select Date</label>
-                                        <input class="form-control" name="date" type="date">    
-                                    </div>
-                                    <div class="row">
-                                    
-                                            <div class="form-group pull-left">
-                                                <input type="hidden" name="action" value="add"> 
-                                                <label for="bgreading">Blood Glucose Reading</label> 
-                                                <input type="text" name="bgreading" id="bgreading" placeholder="Please enter glucose reading" required class="form-control input-lg" value="${bgreading.BloodGlucose}" />
-                                            </div>
-                                        
+												<div class="form-group pull-right">
+													<input type="hidden" name="action" value="add"> <label
+														for="insulinUnits">Insulin Units</label> <input
+														type="text" name="insulinUnits" id="insulinUnits"
+														placeholder="Please enter amount of insulin in units"
+														required class="form-control input-lg"
+														value="${insulinUnits.Units}" />
+												</div>
 
-                                        
-                                            <div class="form-group pull-right">
-                                                <input type="hidden" name="action" value="add"> 
-                                                <label for="insulinUnits">Insulin Units</label> 
-                                                <input type="text" name="insulinUnits" id="insulinUnits" placeholder="Please enter amount of insulin in units" required class="form-control input-lg" value="${insulinUnits.Units}" />
-                                            </div>
-                                        
-                                    </div>
+											</div>
 
-                                    <div class ="row">
-                                        <div class="form-group">
-                                            <label for="timeOfDay">Time of Day</label> 
-                                            <select class="selector form-control" name="timeOfDay">
-                                                <option>Select Time of Day</option>
-                                                <c:forEach var="row" items="${result.rows}">
-                                                <option value=<c:out value="${row.TimeOfDayID}"/>>
-                                                <c:out value="${row.TimeOfDayString}" /></option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
+											<div class="row">
+												<div class="form-group">
+													<label for="timeOfDay">Time of Day</label> <select
+														class="selector form-control" name="timeOfDay">
+														<option>Select Time of Day</option>
+														<c:forEach var="row" items="${result.rows}">
+															<option value=<c:out value="${row.TimeOfDayID}"/>>
+																<c:out value="${row.TimeOfDayString}" /></option>
+														</c:forEach>
+													</select>
+												</div>
 
-                                </div>
+											</div>
 
-                                <c:if test="${message != null}">
-                                <p>
-                                    <i>${message}</i>
-                                </p>
-                            </c:if>
-                            <div class="form-group col-lg-offset-2 col-lg-9">
-                                <button type="submit" name="save_reading" value="save" class="btn btn-lg btn-info btn-block">Save Reading</button>
-                                <button type="reset" class="btn btn-lg btn-info btn-block">Reset Form</button>
-                            </div>
-                        </form>
+											<c:if test="${message != null}">
+												<p>
+													<i>${message}</i>
+												</p>
+											</c:if>
+											<div class="form-group col-lg-offset-2 col-lg-9">
+												<button type="submit" name="save_reading" value="save"
+													class="btn btn-lg btn-info btn-block">Save Reading</button>
+												<button type="reset" class="btn btn-lg btn-info btn-block">Reset
+													Form</button>
+											</div>
+										</form>
 
 
-                    </div>
-                </div>
-            </section>
-        </div><!--/.col-->
-    </div><!--/.row-->
+									</div>
+								</div>
+							</section>
+						</div>
+						<!--/.col-->
+					</div>
+					<!--/.row-->
 
 
 
 
-    <div class="row">
-        <div class="col-lg-9 col-md-12">
-            <section class="glucose-chart">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2><i class="fa fa-icon-tint"></i><strong>Blood Glucose Chart</strong></h2>
-                    </div>
-                    
-                    <div class="canvas-holder">
-                       <canvas id="chart" width="450" height="200" ></canvas>
-                   </div>
-                   <div id="chartjs-tooltip"></div>
+					<div class="row">
+						<div class="col-lg-9 col-md-12">
+							<section class="glucose-chart">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h2>
+											<i class="fa fa-icon-tint"></i><strong>Blood Glucose
+												Chart</strong>
+										</h2>
+									</div>
 
-               </div>
-           </section>
-       </div>
-   </div>
+									<div class="canvas-holder">
+										<canvas id="chart" width="450" height="200"></canvas>
+									</div>
+									<div id="chartjs-tooltip"></div>
 
+								</div>
+							</section>
+						</div>
+					</div>
+			</section>
+		</section>
+		<!--main content end-->
+	</section>
+	<!-- container section start -->
 
+	<!-- javascripts 
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/jquery.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/jquery-1.10.4.min.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/jquery-1.8.3.min.js" />"></script> -->
 
-</section>
-</section><!--main content end-->
-</section>
-<!-- container section start -->
-
-<!-- javascripts -->
-<script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/jquery-1.10.4.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/jquery-1.8.3.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/jquery-ui-1.9.2.custom.min.js" />"></script>
-<!-- bootstrap -->
-<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-<!-- nice scroll -->
-<script type="text/javascript" src="<c:url value="/resources/js/scrollTo.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/nicescroll.js" />"></script>
-<!-- charts scripts -->
-
-<!--<script src="../assets/jquery-knob/js/jquery.knob.js"></script>-->
-<script src="../js/jquery.sparkline.js" type="text/javascript"></script>
-<script src="../assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-<script src="../js/owl.carousel.js" ></script>
-<!-- jQuery full calendar 
-<script src="js/fullcalendar.min.js"></script> Full Google Calendar - Calendar
-<script src="assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
-cript for this page only
-<script src="js/calendar-custom.js"></script>
-<script src="js/jquery.rateit.min.js"></script>
-custom select -->
-<script type="text/javascript" src="<c:url value="/resources/js/customSelect.min.js" />"></script>
-<!--<script src="../assets/chart-master/Chart.js"></script>-->
-
-<!--custom script for all page-->
-<script type="text/javascript" src="<c:url value="/resources/js/scripts.js" />"></script>
-<!-- custom script for this page -->
-<script type="text/javascript" src="<c:url value="/resources/js/sparkline-chart.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/easy-pie-chart.js" />"></script>
-<!-- <script src="../js/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="../js/jquery-jvectormap-world-mill-en.js"></script> -->
-<script type="text/javascript" src="<c:url value="/resources/js/xcharts.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/autosize.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/jquery.placeholder.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/gdp-data.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/morris.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/sparklines.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/Chart.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/slimscroll.min.js" />"></script>
+	<!-- bootstrap -->
 
 
-<script>
-
-      //knob
-      $(function() {
-        $(".knob").knob({
-          'draw' : function () { 
-            $(this.i).val(this.cv + '%')
-        }
-    })
-    });
-
-      //carousel
-      $(document).ready(function() {
-          $("#owl-slider").owlCarousel({
-              navigation : true,
-              slideSpeed : 300,
-              paginationSpeed : 400,
-              singleItem : true
-
-          });
-      });
-
-      //custom select box
-
-      $(function(){
-          $('select.styled').customSelect();
-      });
-
-      /* ---------- Map ---------- */
-      $(function(){
-       $('#map').vectorMap({
-         map: 'world_mill_en',
-         series: {
-           regions: [{
-             values: gdpData,
-             scale: ['#000', '#000'],
-             normalizeFunction: 'polynomial'
-         }]
-     },
-     backgroundColor: '#eef3f7',
-     onLabelShow: function(e, el, code){
-       el.html(el.html()+' (GDP - '+gdpData[code]+')');
-   }
-});
-
-       Chart.defaults.global.pointHitDetectionRadius = 1;
-       Chart.defaults.global.customTooltips = function(tooltip) {
-
-        var tooltipEl = $('#chartjs-tooltip');
-
-        if (!tooltip) {
-            tooltipEl.css({
-                opacity: 0
-            });
-            return;
-        }
-
-        tooltipEl.removeClass('above below');
-        tooltipEl.addClass(tooltip.yAlign);
-
-        var innerHtml = '';
-        for (var i = tooltip.labels.length - 1; i >= 0; i--) {
-            innerHtml += [
-            '<div class="chartjs-tooltip-section">',
-            '   <span class="chartjs-tooltip-key" style="background-color:' + tooltip.legendColors[i].fill + '"></span>',
-            '   <span class="chartjs-tooltip-value">' + tooltip.labels[i] + '</span>',
-            '</div>'
-            ].join('');
-        }
-        tooltipEl.html(innerHtml);
-
-        tooltipEl.css({
-            opacity: 1,
-            left: tooltip.chart.canvas.offsetLeft + tooltip.x + 'px',
-            top: tooltip.chart.canvas.offsetTop + tooltip.y + 'px',
-            fontFamily: tooltip.fontFamily,
-            fontSize: tooltip.fontSize,
-            fontStyle: tooltip.fontStyle,
-        });
-    };
-    var randomScalingFactor = function() {
-        return Math.round(Math.random() * 100);
-    };
-    var lineChartData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [{
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-        }, {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-        }]
-    };
-
-
-    var ctx2 = document.getElementById("chart").getContext("2d");
-    window.myLine = new Chart(ctx2).Line(lineChartData, {
-        responsive: true
-    });
-});
+	<script
+		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/jquery-ui-1.10.4.min.js" />"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script type="text/javascript"
+		src="<c:url value="/resources/js/jquery.nicescroll.js" />"></script>
+	<!--custom script for all page-->
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/scripts.js" />"></script>
+	<!-- custom script for this page -->
 
 
 
-</script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/Chart.js" />"></script>
 
+
+
+	<script>
+			Chart.defaults.global.pointHitDetectionRadius = 1;
+			Chart.defaults.global.customTooltips = function(tooltip) {
+
+				var tooltipEl = $('#chartjs-tooltip');
+
+				if (!tooltip) {
+					tooltipEl.css({
+						opacity : 0
+					});
+					return;
+				}
+
+				tooltipEl.removeClass('above below');
+				tooltipEl.addClass(tooltip.yAlign);
+
+				var innerHtml = '';
+				for (var i = tooltip.labels.length - 1; i >= 0; i--) {
+					innerHtml += [
+							'<div class="chartjs-tooltip-section">',
+							'   <span class="chartjs-tooltip-key" style="background-color:' + tooltip.legendColors[i].fill + '"></span>',
+							'   <span class="chartjs-tooltip-value">'
+									+ tooltip.labels[i] + '</span>', '</div>' ]
+							.join('');
+				}
+				tooltipEl.html(innerHtml);
+
+				tooltipEl.css({
+					opacity : 1,
+					left : tooltip.chart.canvas.offsetLeft + tooltip.x + 'px',
+					top : tooltip.chart.canvas.offsetTop + tooltip.y + 'px',
+					fontFamily : tooltip.fontFamily,
+					fontSize : tooltip.fontSize,
+					fontStyle : tooltip.fontStyle,
+				});
+			};
+			var randomScalingFactor = function() {
+				return Math.round(Math.random() * 100);
+			};
+			var lineChartData = {
+				labels : [ "January", "February", "March", "April", "May",
+						"June", "July" ],
+				datasets : [
+						{
+							label : "My First dataset",
+							fillColor : "rgba(220,220,220,0.2)",
+							strokeColor : "rgba(220,220,220,1)",
+							pointColor : "rgba(220,220,220,1)",
+							pointStrokeColor : "#fff",
+							pointHighlightFill : "#fff",
+							pointHighlightStroke : "rgba(220,220,220,1)",
+							data : [ randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor() ]
+						},
+						{
+							label : "My Second dataset",
+							fillColor : "rgba(151,187,205,0.2)",
+							strokeColor : "rgba(151,187,205,1)",
+							pointColor : "rgba(151,187,205,1)",
+							pointStrokeColor : "#fff",
+							pointHighlightFill : "#fff",
+							pointHighlightStroke : "rgba(151,187,205,1)",
+							data : [ randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor(),
+									randomScalingFactor() ]
+						} ]
+			};
+
+			var ctx2 = document.getElementById("chart").getContext("2d");
+			window.myLine = new Chart(ctx2).Line(lineChartData, {
+				responsive : true
+			});
+		
+	</script>
 </body>
 </html>
