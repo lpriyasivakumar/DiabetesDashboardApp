@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -264,8 +265,9 @@
 					<!-- user login dropdown start-->
 					<li class="dropdown"><a data-toggle="dropdown"
 						class="dropdown-toggle" href="#"> <span class="profile-ava">
-						<img src="<c:url value="/resources/img/avatar1_small.jpg" />" alt="" />
-						
+								<img src="<c:url value="/resources/img/avatar1_small.jpg" />"
+								alt="" />
+
 						</span> <span class="username">Jenifer Smith</span> <b class="caret"></b>
 					</a>
 						<ul class="dropdown-menu extended logout">
@@ -309,7 +311,12 @@
 			</div>
 		</aside>
 		<!--sidebar end-->
-
+		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
+			url="jdbc:mysql://localhost:3306/diabetic_dashboard_data" user="root"
+			password="password" />
+		<sql:query dataSource="${ds}" var="result">
+			SELECT * FROM timeofday;
+		</sql:query>
 		<!--main content start-->
 		<section id="main-content">
 			<section class="wrapper">
@@ -403,6 +410,17 @@
 
 					<div class="row">
 						<div class="col-lg-9 col-md-12">
+							<form action="" method="post" role="select"
+											id="TrendEntryForm">
+								<div class="form-group">
+									<label for="timeOfDay" style="color:#a5a5a5;font: 15px/1.6em Lato, serif;">Glucose Trend</label> <select
+										class="selector form-control" name="timeOfDay">
+										<option>Select Trend</option>
+										<option value="weekly">Weekly</option>
+										<option value="monthly">Monthly</option>
+									</select>
+								</div>
+							</form>
 							<section class="glucose-chart">
 								<div class="panel panel-default">
 									<div class="panel-heading">
@@ -444,7 +462,7 @@
 		src="<c:url value="/resources/js/jquery-ui-1.10.4.min.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-<script type="text/javascript"
+	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery.nicescroll.js" />"></script>
 	<!--custom script for all page-->
 	<script type="text/javascript"
@@ -459,87 +477,80 @@
 
 
 	<script>
-			Chart.defaults.global.pointHitDetectionRadius = 1;
-			Chart.defaults.global.customTooltips = function(tooltip) {
+		Chart.defaults.global.pointHitDetectionRadius = 1;
+		Chart.defaults.global.customTooltips = function(tooltip) {
 
-				var tooltipEl = $('#chartjs-tooltip');
+			var tooltipEl = $('#chartjs-tooltip');
 
-				if (!tooltip) {
-					tooltipEl.css({
-						opacity : 0
-					});
-					return;
-				}
-
-				tooltipEl.removeClass('above below');
-				tooltipEl.addClass(tooltip.yAlign);
-
-				var innerHtml = '';
-				for (var i = tooltip.labels.length - 1; i >= 0; i--) {
-					innerHtml += [
-							'<div class="chartjs-tooltip-section">',
-							'   <span class="chartjs-tooltip-key" style="background-color:' + tooltip.legendColors[i].fill + '"></span>',
-							'   <span class="chartjs-tooltip-value">'
-									+ tooltip.labels[i] + '</span>', '</div>' ]
-							.join('');
-				}
-				tooltipEl.html(innerHtml);
-
+			if (!tooltip) {
 				tooltipEl.css({
-					opacity : 1,
-					left : tooltip.chart.canvas.offsetLeft + tooltip.x + 'px',
-					top : tooltip.chart.canvas.offsetTop + tooltip.y + 'px',
-					fontFamily : tooltip.fontFamily,
-					fontSize : tooltip.fontSize,
-					fontStyle : tooltip.fontStyle,
+					opacity : 0
 				});
-			};
-			var randomScalingFactor = function() {
-				return Math.round(Math.random() * 100);
-			};
-			var lineChartData = {
-				labels : [ "January", "February", "March", "April", "May",
-						"June", "July" ],
-				datasets : [
-						{
-							label : "My First dataset",
-							fillColor : "rgba(220,220,220,0.2)",
-							strokeColor : "rgba(220,220,220,1)",
-							pointColor : "rgba(220,220,220,1)",
-							pointStrokeColor : "#fff",
-							pointHighlightFill : "#fff",
-							pointHighlightStroke : "rgba(220,220,220,1)",
-							data : [ randomScalingFactor(),
-									randomScalingFactor(),
-									randomScalingFactor(),
-									randomScalingFactor(),
-									randomScalingFactor(),
-									randomScalingFactor(),
-									randomScalingFactor() ]
-						},
-						{
-							label : "My Second dataset",
-							fillColor : "rgba(151,187,205,0.2)",
-							strokeColor : "rgba(151,187,205,1)",
-							pointColor : "rgba(151,187,205,1)",
-							pointStrokeColor : "#fff",
-							pointHighlightFill : "#fff",
-							pointHighlightStroke : "rgba(151,187,205,1)",
-							data : [ randomScalingFactor(),
-									randomScalingFactor(),
-									randomScalingFactor(),
-									randomScalingFactor(),
-									randomScalingFactor(),
-									randomScalingFactor(),
-									randomScalingFactor() ]
-						} ]
-			};
+				return;
+			}
 
-			var ctx2 = document.getElementById("chart").getContext("2d");
-			window.myLine = new Chart(ctx2).Line(lineChartData, {
-				responsive : true
+			tooltipEl.removeClass('above below');
+			tooltipEl.addClass(tooltip.yAlign);
+
+			var innerHtml = '';
+			for (var i = tooltip.labels.length - 1; i >= 0; i--) {
+				innerHtml += [
+						'<div class="chartjs-tooltip-section">',
+						'   <span class="chartjs-tooltip-key" style="background-color:' + tooltip.legendColors[i].fill + '"></span>',
+						'   <span class="chartjs-tooltip-value">'
+								+ tooltip.labels[i] + '</span>', '</div>' ]
+						.join('');
+			}
+			tooltipEl.html(innerHtml);
+
+			tooltipEl.css({
+				opacity : 1,
+				left : tooltip.chart.canvas.offsetLeft + tooltip.x + 'px',
+				top : tooltip.chart.canvas.offsetTop + tooltip.y + 'px',
+				fontFamily : tooltip.fontFamily,
+				fontSize : tooltip.fontSize,
+				fontStyle : tooltip.fontStyle,
 			});
-		
+		};
+		var randomScalingFactor = function() {
+			return Math.round(Math.random() * 100);
+		};
+		var lineChartData = {
+			labels : [ "January", "February", "March", "April", "May", "June",
+					"July" ],
+			datasets : [
+					{
+						label : "My First dataset",
+						fillColor : "rgba(220,220,220,0.2)",
+						strokeColor : "rgba(220,220,220,1)",
+						pointColor : "rgba(220,220,220,1)",
+						pointStrokeColor : "#fff",
+						pointHighlightFill : "#fff",
+						pointHighlightStroke : "rgba(220,220,220,1)",
+						data : [ randomScalingFactor(), randomScalingFactor(),
+								randomScalingFactor(), randomScalingFactor(),
+								randomScalingFactor(), randomScalingFactor(),
+								randomScalingFactor() ]
+					},
+					{
+						label : "My Second dataset",
+						fillColor : "rgba(151,187,205,0.2)",
+						strokeColor : "rgba(151,187,205,1)",
+						pointColor : "rgba(151,187,205,1)",
+						pointStrokeColor : "#fff",
+						pointHighlightFill : "#fff",
+						pointHighlightStroke : "rgba(151,187,205,1)",
+						data : [ randomScalingFactor(), randomScalingFactor(),
+								randomScalingFactor(), randomScalingFactor(),
+								randomScalingFactor(), randomScalingFactor(),
+								randomScalingFactor() ]
+					} ]
+		};
+
+		var ctx2 = document.getElementById("chart").getContext("2d");
+		window.myLine = new Chart(ctx2).Line(lineChartData, {
+			responsive : true
+		});
 	</script>
 </body>
 </html>
