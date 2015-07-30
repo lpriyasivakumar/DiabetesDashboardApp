@@ -7,6 +7,6 @@ import org.dteam.model.Reading;
 
 public interface ReadingDAO {
 	public int addReading(Reading reading);
-	public ArrayList<Reading> getReadings(Date startDt, Date endDt );
+	public ArrayList<Reading> getReadings();
 	
 }
