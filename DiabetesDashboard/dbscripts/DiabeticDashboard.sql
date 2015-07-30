@@ -18,31 +18,37 @@ create table timeofday(
 );
 
 create table BgReading(
+	BgReadingID int not null auto_increment,
 	UserID varchar(50) not null,
 	ReadingDate date not null ,
     TimeOfDayID int not null,
     BloodGlucose int not null,
     
+    primary key(BgReadingID),
     foreign key(UserID) references UserDB(UserID),
     foreign key(TimeOfDayID) references timeofday(TimeOfDayID)
 );
 
 create table InsulinReading(
+	InsulinReadingID int not null auto_increment,
 	UserID varchar(50) not null,
 	ReadingDate date not null ,
     TimeOfDayID int not null,
     InsulinType varchar(15) not null,
     Units int not null,
     
+    primary key(InsulinReadingID),
     foreign key(UserID) references UserDB(UserID),
     foreign key(TimeOfDayID) references timeofday(TimeOfDayID)
 );
 create table A1c(
+	A1cReadingID int not null auto_increment,
 	UserID varchar(50) not null,
 	CalculationDate date not null ,
     LabValue decimal,
     CurrentValue int not null,
     
+    primary key(A1cReadingID),
     foreign key(UserID) references UserDB(UserID)
 );
 
