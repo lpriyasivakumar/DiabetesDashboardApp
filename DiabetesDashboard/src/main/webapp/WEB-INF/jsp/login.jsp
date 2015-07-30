@@ -39,22 +39,11 @@
     <div class="container">
 
         <!-- Login Form Servlet will collect data and send to dashboard page -->
-      <form class="login-form" action="servlet">        
+      <form class="login-form" action="login" method="POST">        
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
             <p>Diabetes Dashboard</p>
-           <!-- <div class="input-group">
-              <span class="input-group-addon"><i class="icon_profile"></i></span>
-              <input type="text" class="form-control" placeholder="Username" autofocus>
-            </div> -->
-            <!--<div class="input-group">
-                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <input type="password" class="form-control" placeholder="Password">
-            </div> -->
-            <!-- <label class="checkbox">
-                <input type="checkbox" value="remember-me"> Remember me
-                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
-            </label>  -->
+           
             <button class="btn btn-primary btn-lg btn-block g-signin2 " type="submit" data-onsuccess="onSignIn">Google Login</button>
             <!-- <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button> -->
         </div>
@@ -79,6 +68,7 @@
         var getname = profile.getName();
         var getimageurl = profile.getImageUrl; 
         var getid = profile.getId();
+        
         setCookie("user",getname,7);
         setCookie("image",getimageurl, 7);
         setCookie("id", getid, 7);
