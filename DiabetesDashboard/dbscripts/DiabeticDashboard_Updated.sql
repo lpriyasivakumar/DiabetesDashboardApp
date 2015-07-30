@@ -23,9 +23,9 @@ create table Reading(
 	ReadingDate date not null ,
     TimeOfDayID int not null,
     BloodGlucose int not null,
-    InsulinUnits int not null
+    InsulinUnits int not null,
     
-    primary key(BgReadingID),
+    primary key(ReadingID),
     foreign key(UserID) references UserDB(UserID),
     foreign key(TimeOfDayID) references timeofday(TimeOfDayID)
 );
