@@ -1,5 +1,7 @@
 package org.dteam.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.dteam.dao.UserDAO;
 import org.dteam.dao.DAOFactory;
 import org.dteam.model.CookieUtil;
@@ -24,17 +27,21 @@ public class LoginController {
 
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String doLogin(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView doLogin(HttpServletRequest request, HttpServletResponse response) {
 		Cookie[] cookies = request.getCookies();
 		String id =CookieUtil.getCookieValue(cookies, "id");
+		String name =CookieUtil.getCookieValue(cookies, "user");
 		UserDAO userDAO = getDAO();
-		if(userDAO.findUser(id)){
+		if(!userDAO.findUser(id)){
 			User user = new User();
 			user.setUserID(id);			
-			user.setName(java.net.URLDecoder.decode(CookieUtil.getCookieValue(cookies, "name")));
+			user.setName(java.net.URLDecoder.decode(name));
 			userDAO.addUser(user);
-		}		
-		return "dashboard";
+		}
+		 ModelAndView modelAndView = new ModelAndView("redirect:dashboard");                 
+		    Map<String, Object> model = modelAndView.getModel(); 
+		    model.put("error", "this.is.my.error.code"); 
+		    return new ModelAndView("redirect:/dashboard"); 
 	}
 	
 	public UserDAO getDAO(){

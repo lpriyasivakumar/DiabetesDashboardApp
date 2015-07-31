@@ -39,7 +39,7 @@
     <div class="container">
 
         <!-- Login Form Servlet will collect data and send to dashboard page -->
-      <form class="login-form" action="servlet">        
+      <form class="login-form" action="login" method="post">        
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
             <p>Diabetes Dashboard</p>

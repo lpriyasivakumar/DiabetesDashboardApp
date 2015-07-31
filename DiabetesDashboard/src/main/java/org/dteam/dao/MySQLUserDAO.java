@@ -11,7 +11,7 @@ public class MySQLUserDAO  implements UserDAO {
 		connectToDB();
 		try {
 			
-			String sql = "Insert into userdb values('" + user.getUserID() + "','" + user.getName() + "');";
+			String sql = "Insert into userdb(UserID,UserName) values('" + user.getUserID() + "','" + user.getName() + "');";
 			return statement.executeUpdate(sql);
 
 		} catch (SQLException e) {

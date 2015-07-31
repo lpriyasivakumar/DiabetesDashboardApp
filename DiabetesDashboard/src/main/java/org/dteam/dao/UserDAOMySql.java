@@ -11,7 +11,7 @@ public class UserDAOMySql extends MySqlDBConnection implements UserDAO {
 		connectToDB();
 		try {
 			statement = conn.createStatement();
-			 String sql = "Insert into userdb values('"+user.getUserID()+"','"+user.getName()+"');";
+			 String sql = "Insert into userdb(UserID, UserName) values('"+user.getUserID()+"','"+user.getName()+"');";
 			 return statement.executeUpdate(sql);
 	        
 		} catch (SQLException e) {
