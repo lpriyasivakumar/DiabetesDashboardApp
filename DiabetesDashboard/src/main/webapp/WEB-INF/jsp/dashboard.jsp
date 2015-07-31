@@ -142,7 +142,6 @@
                                                 <span class="sr-only">50% Complete</span>
                                             </div>
                                         </div>
-
                                     </a>
                                 </li>
                                 <li class="external">
@@ -219,7 +218,6 @@
 					<!-- alert notification start
                     <li id="alert_notificatoin_bar" class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-
                             <i class="icon-bell-l"></i>
                             <span class="badge bg-important">7</span>
                         </a>
@@ -313,7 +311,7 @@
 		<!--sidebar end-->
 		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
 			url="jdbc:mysql://localhost:3306/diabetic_dashboard_data" user="root"
-			password="password" />
+			password="Lpriya46_" />
 		<sql:query dataSource="${ds}" var="result">
 			SELECT * FROM timeofday;
 		</sql:query>
@@ -479,19 +477,15 @@
 	<script>
 		Chart.defaults.global.pointHitDetectionRadius = 1;
 		Chart.defaults.global.customTooltips = function(tooltip) {
-
 			var tooltipEl = $('#chartjs-tooltip');
-
 			if (!tooltip) {
 				tooltipEl.css({
 					opacity : 0
 				});
 				return;
 			}
-
 			tooltipEl.removeClass('above below');
 			tooltipEl.addClass(tooltip.yAlign);
-
 			var innerHtml = '';
 			for (var i = tooltip.labels.length - 1; i >= 0; i--) {
 				innerHtml += [
@@ -502,7 +496,6 @@
 						.join('');
 			}
 			tooltipEl.html(innerHtml);
-
 			tooltipEl.css({
 				opacity : 1,
 				left : tooltip.chart.canvas.offsetLeft + tooltip.x + 'px',
@@ -546,7 +539,6 @@
 								randomScalingFactor() ]
 					} ]
 		};
-
 		var ctx2 = document.getElementById("chart").getContext("2d");
 		window.myLine = new Chart(ctx2).Line(lineChartData, {
 			responsive : true

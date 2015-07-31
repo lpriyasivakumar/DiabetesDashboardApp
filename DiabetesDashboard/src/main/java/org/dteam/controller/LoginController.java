@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.dteam.dao.UserDAO;
 import org.dteam.dao.DAOFactory;
-import org.dteam.model.CookieUtil;
+import org.dteam.utilities.CookieUtil;
 import org.dteam.model.User;
 
 
