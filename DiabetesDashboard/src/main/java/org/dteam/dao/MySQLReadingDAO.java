@@ -1,22 +1,22 @@
 package org.dteam.dao;
 
 import java.sql.Date;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.*;
 
+import java.util.ArrayList;
 import org.dteam.model.Reading;
 import static org.dteam.dao.MySQLDAOFactory.*;
 
-public class MySQLReadingDAO implements ReadingDAO {			
-		
+public class MySQLReadingDAO implements ReadingDAO {
+
 	@Override
 	public int addReading(Reading reading) {
 		connectToDB();
 		try {
-			statement = conn.createStatement();
-			//String sql = "Insert into bgreading values ('"+bgReading.getBloodGlucose()+"');";
-			//return statement.executeUpdate(sql);
-			
+			String sql = "Insert into reading values ('" + reading.getInsulin() + "','" + reading.getTimeOfDay() + "','"
+					+ reading.getDate() + "');";
+			return statement.executeUpdate(sql);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -25,14 +25,25 @@ public class MySQLReadingDAO implements ReadingDAO {
 	}
 
 	@Override
-	public ArrayList<Reading> getReadings(Date startDt, Date endDt) {
+	public ArrayList<Reading> getReadings() {
 		connectToDB();
-//		ArrayList<int>
-//		try {
-//			statement = conn.createStatement();
-//			String sql = "Select * from bgreading ="+
-//		}
+		ArrayList<Reading> ReadingList = new ArrayList<Reading>();
+		try {
+			String sql = "SELECT * FROM Reading WHERE ReadingDate BETWEEN DATE_SUB(CURDATE(), INTERVAL 30 DAY) and CURDATE();";
+			ResultSet rs = statement.executeQuery(sql);
+			while (rs.next()) {
+				Reading reading = new Reading();
+				reading.setDate(rs.getDate("ReadingDate"));
+				reading.setInsulin(rs.getInt("InsulinUnits"));
+				reading.setBloodGlucose(rs.getInt("BloodGlucose"));
+				reading.setTimeOfDay(rs.getString("TimeOfDayID"));
+				ReadingList.add(reading);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		closeDB();
-		return null;
+
+		return ReadingList;
 	}
 }
