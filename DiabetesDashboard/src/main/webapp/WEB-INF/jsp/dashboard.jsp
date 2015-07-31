@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib prefix="spring"  uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -269,7 +272,7 @@
 						</span> <span class="username">Jenifer Smith</span> <b class="caret"></b>
 					</a>
 						<ul class="dropdown-menu extended logout">
-							<div class="log-arrow-up"></div>
+							<!--  <div class="log-arrow-up"></div> -->
 							<li class="eborder-top"><a href="#"><i
 									class="icon_profile"></i> My Profile</a></li>
 							<li><a href="#"><i class="icon_mail_alt"></i> My Inbox</a></li>
@@ -311,7 +314,7 @@
 		<!--sidebar end-->
 		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
 			url="jdbc:mysql://localhost:3306/diabetic_dashboard_data" user="root"
-			password="Lpriya46_" />
+			password="password" />
 		<sql:query dataSource="${ds}" var="result">
 			SELECT * FROM timeofday;
 		</sql:query>
@@ -338,45 +341,44 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">Blood Glucose Reading (mg/dl)</div>
 									<div class="panel-body">
-										<form method="post" action="" role="login"
-											id="glucoseEntryForm">
+										<form:form method="post" action="dashboard" role="login"
+											id="glucoseEntryForm" commandName="readingForm">
 
 											<div class="form-group">
-												<label for="datepicker">Select Date</label> <input
-													class="form-control" name="date" type="date">
+											<form:input type="hidden" path=""/> 
+												<label for="datepicker">Select Date</label> <form:input path="date"
+													class="form-control" name="date" type="date" value="2015-07-31"/>
 											</div>
 											<div class="row">
 
-												<div class="form-group pull-left">
-													<input type="hidden" name="action" value="add"> <label
-														for="bgreading">Blood Glucose Reading</label> <input
+												<div class="form-group pull-left">											
+													<label for="bgreading">Blood Glucose Reading</label> 
+													<form:input path="bloodGlucose"
 														type="text" name="bgreading" id="bgreading"
-														placeholder="Please enter glucose reading" required
-														class="form-control input-lg"
-														value="${bgreading.BloodGlucose}" />
+														placeholder="Please enter glucose reading"
+														class="form-control input-lg"/>
 												</div>
 
 												<div class="form-group pull-right">
-													<input type="hidden" name="action" value="add"> <label
-														for="insulinUnits">Insulin Units</label> <input
+												<!--  	<input type="hidden" name="action" value="add"> --><label
+														for="insulinUnits">Insulin Units</label> <form:input path="insulin"
 														type="text" name="insulinUnits" id="insulinUnits"
 														placeholder="Please enter amount of insulin in units"
-														required class="form-control input-lg"
-														value="${insulinUnits.Units}" />
+														class="form-control input-lg"/>
 												</div>
 
 											</div>
 
 											<div class="row">
 												<div class="form-group">
-													<label for="timeOfDay">Time of Day</label> <select
+													<label for="timeOfDay">Time of Day</label> <form:select path="timeOfDay"
 														class="selector form-control" name="timeOfDay">
 														<option>Select Time of Day</option>
 														<c:forEach var="row" items="${result.rows}">
 															<option value=<c:out value="${row.TimeOfDayID}"/>>
 																<c:out value="${row.TimeOfDayString}" /></option>
 														</c:forEach>
-													</select>
+													</form:select>
 												</div>
 
 											</div>
@@ -392,7 +394,7 @@
 												<button type="reset" class="btn btn-lg btn-info btn-block">Reset
 													Form</button>
 											</div>
-										</form>
+										</form:form>
 
 
 									</div>

@@ -9,7 +9,7 @@ public class MySQLDAOFactory extends DAOFactory {
 
 	static final String host = "jdbc:mysql://localhost:3306/diabetic_dashboard_data";
 	static final String userName = "root";
-	static final String password = "Lpriya46_";
+	static final String password = "password";
 	public static Connection conn;
 	static Statement statement=null;
 

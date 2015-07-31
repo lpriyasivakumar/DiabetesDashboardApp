@@ -1,20 +1,20 @@
 package org.dteam.dao;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.*;
 
 import java.util.ArrayList;
 import org.dteam.model.Reading;
 import static org.dteam.dao.MySQLDAOFactory.*;
 
-public class MySQLReadingDAO implements ReadingDAO {
+public  class MySQLReadingDAO implements ReadingDAO {
 
 	@Override
-	public int addReading(Reading reading) {
+	public int addReading(Reading reading,String userID) {
 		connectToDB();
 		try {
-			String sql = "Insert into reading values ('" + reading.getInsulin() + "','" + reading.getTimeOfDay() + "','"
-					+ reading.getDate() + "');";
+			String sql = "Insert into reading(UserID, ReadingDate, TimeOfDayID, BloodGlucose,InsulinUnits) values ('"+userID+ "','" +reading.getDate()+"','"+reading.getTimeOfDay()+"','"
+					+ reading.getBloodGlucose()+"','"+reading.getInsulin()+"');";
 			return statement.executeUpdate(sql);
 
 		} catch (SQLException e) {
@@ -46,4 +46,6 @@ public class MySQLReadingDAO implements ReadingDAO {
 
 		return ReadingList;
 	}
+
+	
 }
