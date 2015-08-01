@@ -38,9 +38,7 @@ public class LoginController {
 			user.setName(java.net.URLDecoder.decode(name));
 			userDAO.addUser(user);
 		}
-		 ModelAndView modelAndView = new ModelAndView("redirect:dashboard");                 
-		    Map<String, Object> model = modelAndView.getModel(); 
-		    model.put("error", "this.is.my.error.code"); 
+
 		    return new ModelAndView("redirect:/dashboard"); 
 	}
 	

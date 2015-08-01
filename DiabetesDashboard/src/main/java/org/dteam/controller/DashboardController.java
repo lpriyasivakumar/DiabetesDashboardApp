@@ -4,13 +4,14 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Cookie;
 import org.dteam.dao.DAOFactory;
 import org.dteam.dao.ReadingDAO;
 import org.dteam.model.Reading;
 import org.dteam.utilities.CookieUtil;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 //import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,14 +31,18 @@ public class DashboardController {
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
     public String doDashboard(@ModelAttribute("readingForm") Reading reading,BindingResult result,
-    		Map<String, Object> model,HttpServletRequest request) 
+    		ModelMap model,HttpServletRequest request,HttpServletResponse response) 
 		
 		        throws ClassNotFoundException, SQLException {
-		    ReadingDAO readingDAO = getDAO();
-		    Cookie[] cookies = request.getCookies();
-		    String userID = CookieUtil.getCookieValue(cookies, "id");
-		    int result1 = readingDAO.addReading(reading,userID);
-		    
+		 	if (result.hasErrors()) {
+		 		 model.addAttribute("errorMsg", "Your form submission contains errors.");	 
+	        } else {
+	        	ReadingDAO readingDAO = getDAO();
+			    Cookie[] cookies = request.getCookies();
+			    String userID = CookieUtil.getCookieValue(cookies, "id");
+			    int result1 = readingDAO.addReading(reading,userID);
+			    model.addAttribute("successMsg", result1 +" reading added.");
+	        }		   
 		    return "dashboard";		
 	}
 	
