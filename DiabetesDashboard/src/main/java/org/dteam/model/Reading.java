@@ -8,17 +8,17 @@ public class Reading implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Date date;
+	private String date;
 	private String timeOfDay;
 	private int bloodGlucose;
 	private int insulin;
 		
 	public Reading() {}
 		
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getTimeOfDay() {
