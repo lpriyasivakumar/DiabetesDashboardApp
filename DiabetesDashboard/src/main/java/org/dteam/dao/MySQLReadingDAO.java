@@ -1,6 +1,5 @@
 package org.dteam.dao;
 
-//import java.sql.Date;
 import java.sql.*;
 
 import java.util.ArrayList;
@@ -26,11 +25,11 @@ public  class MySQLReadingDAO implements ReadingDAO {
 	}
 
 	@Override
-	public ArrayList<Reading> getReadings(String dateRange) {
+	public ArrayList<Reading> getReadings(String dateRange,String userID) {
 		connectToDB();
 		ArrayList<Reading> ReadingList = new ArrayList<Reading>();
 		try {
-			String sql = "SELECT * FROM Reading WHERE ReadingDate BETWEEN DATE_SUB(CURDATE(), INTERVAL " +getDateRange(dateRange) + " DAY) and CURDATE();";
+			String sql = "SELECT * FROM Reading WHERE ReadingDate BETWEEN DATE_SUB(CURDATE(), INTERVAL " +getDateRange(dateRange) + " DAY) and CURDATE(); AND UserID='"+userID+"'";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				Reading reading = new Reading();
