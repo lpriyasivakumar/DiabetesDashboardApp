@@ -477,7 +477,7 @@ ul.sidebar-menu li.active a i {
     padding:2%;
     position:relative;
     margin:0 auto;
-    width:80%;
+    
 }
 .main-content-container::after{
     content:''; /*because there is nothing between the ' ' the content of the pseudo element will be blank*/

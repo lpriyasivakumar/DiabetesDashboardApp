@@ -13,10 +13,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 
 
-public class DashboardControllerTest {
+public class LoginControllerTest {
 
 	@InjectMocks
-	private DashboardController dashboardcontroller = new DashboardController();	
+	private LoginController logincontroller = new LoginController();	
 	
 	private MockMvc mockMvc;
 	
@@ -26,33 +26,32 @@ public class DashboardControllerTest {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/jsp/");
         viewResolver.setSuffix(".jsp");
-		this.mockMvc = MockMvcBuilders.standaloneSetup(dashboardcontroller).setViewResolvers(viewResolver).build();		
+		this.mockMvc = MockMvcBuilders.standaloneSetup(logincontroller).setViewResolvers(viewResolver).build();		
 	}
-	//Test should return 404 error as the requestmapping is for /dashboard
+	//Test should return 404 error as the requestmapping is for /login
 	@Test
 	public void testGetMethodWithWrongRequest() throws Exception{
 		this.mockMvc.perform(get("/test"))
 		.andDo(print())
-		.andExpect(status().isNotFound());
+		.andExpect(status().isNotFound());        
 	}
-	//Test should return Http 200 as the requestmapping is for /dashboard	
-	//redirects to login page as user is not logged in
+	//Test should return Http 200 as the requestmapping is for /login		
 	@Test
-	public void testGetMethodWithCorrectRequestButNoUserLogin() throws Exception {	 
-	    	    this.mockMvc.perform(get("/dashboard")) 
+	public void testGetMethodWithCorrectRequest() throws Exception {
+	 
+	    	    this.mockMvc.perform(get("/login")) 
 	    	    .andDo(print())
-	            .andExpect(status().isOk())         
+	            .andExpect(status().isOk())           
 	            .andExpect(view().name("login")); 	 
 	}
-	
+	//Test checks whether page gets redirected to "dashboard.jsp"
 	@Test
 	public void testPostMethodWithCorrectRequest() throws Exception {
 	 
-	    	    this.mockMvc.perform(post("/dashboard")) 
+	    	    this.mockMvc.perform(post("/login")) 
 	    	    .andDo(print())
-	            .andExpect(status().isOk())           
-	            .andExpect(model().attributeExists("Msg"))
-	            .andExpect(view().name("dashboard")); 	 
+	            .andExpect(status().is3xxRedirection())          
+	            .andExpect(view().name("redirect:/dashboard")); 	 
 	}
 	
 

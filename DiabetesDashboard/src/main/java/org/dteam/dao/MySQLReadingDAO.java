@@ -29,7 +29,7 @@ public  class MySQLReadingDAO implements ReadingDAO {
 		connectToDB();
 		ArrayList<Reading> ReadingList = new ArrayList<Reading>();
 		try {
-			String sql = "SELECT * FROM Reading WHERE ReadingDate BETWEEN DATE_SUB(CURDATE(), INTERVAL " +getDateRange(dateRange) + " DAY) and CURDATE(); AND UserID='"+userID+"'";
+			String sql = "SELECT * FROM Reading WHERE ReadingDate BETWEEN DATE_SUB(CURDATE(), INTERVAL " +getDateRange(dateRange) + " DAY) and CURDATE() AND UserID="+"'"+userID+"'";
 			ResultSet rs = statement.executeQuery(sql);
 			while (rs.next()) {
 				Reading reading = new Reading();

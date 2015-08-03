@@ -266,10 +266,9 @@
 					<!-- user login dropdown start-->
 					<li class="dropdown"><a data-toggle="dropdown"
 						class="dropdown-toggle" href="#"> <span class="profile-ava">
-								<img src="<c:url value="/resources/img/avatar1_small.jpg" />"
-								alt="" />
+								<img src="${url}" 	alt="" />
 
-						</span> <span class="username" id="userName"></span> <b class="caret"></b>
+						</span> <span class="username" id="userName">${userName}</span> <b class="caret"></b>
 					</a>
 						<ul class="dropdown-menu extended logout">
 							<div class="log-arrow-up"></div>
@@ -336,7 +335,7 @@
 					</div>
 
 					<div class="row">
-						<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+						<div class="col-lg-4 col-md-6 col-sm-10 col-xs-10">
 							<section class="glucose-form">
 								<div class="panel panel-default">
 									<div class="panel-heading">Blood Glucose Reading (mg/dl)</div>
@@ -386,9 +385,9 @@
 
 											</div>
 
-											<c:if test="${sucessMsg != null}">
+											<c:if test="${Msg != null}">
 												<p>
-													<i>${successMsg} </i>
+													<i>${Msg} </i>
 												</p>
 											</c:if>
 											<div class="form-group col-lg-offset-2 col-lg-9">
