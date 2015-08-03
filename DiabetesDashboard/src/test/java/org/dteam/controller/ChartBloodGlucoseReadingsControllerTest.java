@@ -28,13 +28,13 @@ public class ChartBloodGlucoseReadingsControllerTest {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(chartcontroller).setViewResolvers(viewResolver).build();
 	}
 
-	// Test should return 404 error as the requestmapping is for /dashboard
+	// Test should return 404 error as the requestmapping is for /chart
 	@Test
 	public void testGetMethodWithWrongRequest() throws Exception {
 		this.mockMvc.perform(get("/test")).andDo(print()).andExpect(status().isNotFound());
 	}
 
-	// Test should return Http 200 as the requestmapping is for /dashboard
+	// Test should return Http 200 as the requestmapping is for /chart
 	@Test
 	public void testGetMethodWithCorrectRequest() throws Exception {
 

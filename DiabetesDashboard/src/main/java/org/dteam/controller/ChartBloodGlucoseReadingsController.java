@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static org.dteam.utilities.GetUserID.*;
+import static org.dteam.utilities.GetUser.*;
 import org.dteam.dao.DAOFactory;
 import org.dteam.dao.ReadingDAO;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class ChartBloodGlucoseReadingsController {
 	
 	@RequestMapping(value = "/chart", method = RequestMethod.GET)
     public String viewChart(HttpServletRequest request){  
-		if(getUserID(request)==null || getUserID(request).isEmpty())
+		if(getUserInfo(request,"id")==null || getUserInfo(request,"id").isEmpty())
 			return "login";
 		return "dashboard";	
     }
@@ -27,7 +27,7 @@ public class ChartBloodGlucoseReadingsController {
 	public @ResponseBody
     String doChart(HttpServletRequest request) 		
 		        throws ClassNotFoundException, SQLException {		 	   
-			    String userID = getUserID(request);
+			    String userID = getUserInfo(request,"id");
 				ReadingDAO readingDAO = getDAO();
 				String dateRange = request.getParameter("range");
 				readingDAO.getReadings(dateRange, userID);				
