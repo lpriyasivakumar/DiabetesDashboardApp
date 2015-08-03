@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%@ taglib prefix="spring"  uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -266,25 +266,24 @@
 					<!-- user login dropdown start-->
 					<li class="dropdown"><a data-toggle="dropdown"
 						class="dropdown-toggle" href="#"> <span class="profile-ava">
-								<img src="<c:url value="/resources/img/avatar1_small.jpg" />"
-								alt="" />
+								<img src="${url}" 	alt="" />
 
-						</span> <span class="username">Jenifer Smith</span> <b class="caret"></b>
+						</span> <span class="username" id="userName">${userName}</span> <b class="caret"></b>
 					</a>
 						<ul class="dropdown-menu extended logout">
-							<!--  <div class="log-arrow-up"></div> -->
-							<li class="eborder-top"><a href="#"><i
+							<div class="log-arrow-up"></div>
+							<!-- <li class="eborder-top"><a href="#"><i
 									class="icon_profile"></i> My Profile</a></li>
 							<li><a href="#"><i class="icon_mail_alt"></i> My Inbox</a></li>
 							<li><a href="#"><i class="icon_clock_alt"></i> Timeline</a>
 							</li>
-							<li><a href="#"><i class="icon_chat_alt"></i> Chats</a></li>
-							<li><a href="login.html"><i class="icon_key_alt"></i>
-									Log Out</a></li>
-							<li><a href="documentation.html"><i class="icon_key_alt"></i>
+							<li><a href="#"><i class="icon_chat_alt"></i> Chats</a></li>-->
+							<li><a href="#" onclick="return signOut()"><i
+									class="icon_key_alt"></i> Log Out</a></li>
+							<!--<li><a href="documentation.html"><i class="icon_key_alt"></i>
 									Documentation</a></li>
 							<li><a href="documentation.html"><i class="icon_key_alt"></i>
-									Documentation</a></li>
+									Documentation</a></li>-->
 						</ul></li>
 					<!-- user login dropdown end -->
 				</ul>
@@ -336,7 +335,7 @@
 					</div>
 
 					<div class="row">
-						<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+						<div class="col-lg-4 col-md-6 col-sm-10 col-xs-10">
 							<section class="glucose-form">
 								<div class="panel panel-default">
 									<div class="panel-heading">Blood Glucose Reading (mg/dl)</div>
@@ -345,34 +344,37 @@
 											id="glucoseEntryForm" commandName="readingForm">
 
 											<div class="form-group">
-											<form:input type="hidden" path=""/> 
-												<label for="datepicker">Select Date</label> <form:input path="date"
-													class="form-control" name="date" type="date" value="2015-07-31"/>
+												<form:input type="hidden" path="" />
+												<label for="datepicker">Select Date</label>
+												<form:input path="date" class="form-control" name="date"
+													type="date" value="2015-07-31" />
 											</div>
 											<div class="row">
 
-												<div class="form-group pull-left">											
-													<label for="bgreading">Blood Glucose Reading</label> 
-													<form:input path="bloodGlucose"
-														type="text" name="bgreading" id="bgreading"
+												<div class="form-group pull-left">
+													<label for="bgreading">Blood Glucose Reading</label>
+													<form:input path="bloodGlucose" type="text"
+														name="bgreading" id="bgreading"
 														placeholder="Please enter glucose reading"
-														class="form-control input-lg"/>
+														class="form-control input-lg" />
 												</div>
 
 												<div class="form-group pull-right">
-												<!--  	<input type="hidden" name="action" value="add"> --><label
-														for="insulinUnits">Insulin Units</label> <form:input path="insulin"
-														type="text" name="insulinUnits" id="insulinUnits"
+													<!--  	<input type="hidden" name="action" value="add"> -->
+													<label for="insulinUnits">Insulin Units</label>
+													<form:input path="insulin" type="text" name="insulinUnits"
+														id="insulinUnits"
 														placeholder="Please enter amount of insulin in units"
-														class="form-control input-lg"/>
+														class="form-control input-lg" />
 												</div>
 
 											</div>
 
 											<div class="row">
 												<div class="form-group">
-													<label for="timeOfDay">Time of Day</label> <form:select path="timeOfDay"
-														class="selector form-control" name="timeOfDay">
+													<label for="timeOfDay">Time of Day</label>
+													<form:select path="timeOfDay" class="selector form-control"
+														name="timeOfDay">
 														<option>Select Time of Day</option>
 														<c:forEach var="row" items="${result.rows}">
 															<option value=<c:out value="${row.TimeOfDayID}"/>>
@@ -383,9 +385,9 @@
 
 											</div>
 
-											<c:if test="${message != null}">
+											<c:if test="${Msg != null}">
 												<p>
-													<i>${message}</i>
+													<i>${Msg} </i>
 												</p>
 											</c:if>
 											<div class="form-group col-lg-offset-2 col-lg-9">
@@ -410,11 +412,11 @@
 
 					<div class="row">
 						<div class="col-lg-9 col-md-12">
-							<form action="" method="post" role="select"
-											id="TrendEntryForm">
+							<form action="" method="post" role="select" id="TrendEntryForm">
 								<div class="form-group">
-									<label for="timeOfDay" style="color:#a5a5a5;font: 15px/1.6em Lato, serif;">Glucose Trend</label> <select
-										class="selector form-control" name="timeOfDay">
+									<label for="timeOfDay"
+										style="color: #a5a5a5; font: 15px/1.6em Lato, serif;">Glucose
+										Trend</label> <select class="selector form-control" name="timeOfDay">
 										<option>Select Trend</option>
 										<option value="weekly">Weekly</option>
 										<option value="monthly">Monthly</option>
@@ -464,6 +466,10 @@
 		src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery.nicescroll.js" />"></script>
+
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/jquery.customSelect.min.js" />"></script>
+
 	<!--custom script for all page-->
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/scripts.js" />"></script>
@@ -546,5 +552,14 @@
 			responsive : true
 		});
 	</script>
+	<script>
+		function signOut() {
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function() {
+				console.log('User signed out.');
+			});
+		}
+	</script>
+
 </body>
 </html>
