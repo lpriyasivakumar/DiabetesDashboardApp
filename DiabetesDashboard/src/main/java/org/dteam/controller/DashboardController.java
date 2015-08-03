@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class DashboardController {
+	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String viewDashboard(Map<String, Object> model,HttpServletRequest request) {
 		if(getUserInfo(request,"id")==null || getUserInfo(request,"id").isEmpty()){
@@ -29,7 +30,7 @@ public class DashboardController {
 		else{			
 			Reading readingForm = new Reading();
 			model.put("readingForm", readingForm);
-			model.put("userName", getUserInfo(request, "user"));
+			model.put("userName", java.net.URLDecoder.decode(getUserInfo(request, "user")));
 			model.put("url", getUserInfo(request, "image"));
 			return "dashboard";
 		}
