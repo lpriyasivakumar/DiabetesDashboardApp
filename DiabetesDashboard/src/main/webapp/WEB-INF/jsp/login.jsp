@@ -104,6 +104,7 @@
 			setCookie("image", getimageurl, 7,{path:'/'});
 			setCookie("id", getid, 7,{path:'/'});
 			console.log("ID Token: " + id_token); // The ID token you need to pass to your backend:
+
 			console.log("ID: " + profile.getId()); // Don't send this directly to your server!
 			console.log("Name: " + profile.getName());
 			console.log("Image URL: " + profile.getImageUrl());

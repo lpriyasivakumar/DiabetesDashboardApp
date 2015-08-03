@@ -5032,3 +5032,43 @@ form[role=login] button {
     width:10px;
     height:10px;
 }
+
+
+
+#customBtn {
+      
+      margin:0 0 0 15%;
+      background: url('../img/google_btn.png') no-repeat top left;
+      width:220px;
+      height:65px;
+      
+      border:none;
+      text-indent:-9999px;
+     
+    }
+    #customBtn:hover {
+      cursor: pointer;
+      
+    }
+    span.label {
+      font-weight: bold;
+    }
+    span.icon {
+      background: url('../img/g-normal.png') transparent 5px 40% no-repeat;
+      display: inline-block;
+      vertical-align: middle;
+      width: 42px;
+      height: 42px;
+      border-right: #2265d4 1px solid;
+     
+    }
+    span.buttonText {
+      display: inline-block;
+      vertical-align: middle;
+      padding-left: 42px;
+      padding-right: 42px;
+      font-size: 14px;
+      font-weight: bold;
+      /* Use the Roboto font that is loaded in the <head> */
+      font-family: 'Roboto', sans-serif;
+    }
