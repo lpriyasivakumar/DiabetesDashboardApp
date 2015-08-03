@@ -1,6 +1,6 @@
 package org.dteam.controller;
 
-import java.util.Map;
+
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +38,6 @@ public class LoginController {
 			user.setName(java.net.URLDecoder.decode(name));
 			userDAO.addUser(user);
 		}
-
 		    return new ModelAndView("redirect:/dashboard"); 
 	}
 	
