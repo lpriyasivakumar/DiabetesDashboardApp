@@ -114,16 +114,15 @@
 			xhr.onload = function() {
 			  console.log('Signed in as: ' + xhr.responseText);
 			};
-			//xhr.onreadystatechange=function(){
-				//if(xhr.readyState==4 && xhr.status==200){
-					
-				//}
-			//}
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					post("http://localhost:8080/DiabetesDashboard/login","post");
+				}
+			}
 			xhr.open('POST', 'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='+id_token);
 			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 			xhr.send();	
-			post("http://localhost:8080/DiabetesDashboard1.0/login","post");
-			
+
 		};
 		function post(path, method) {
 		    method = method || "post"; // Set method to post by default if not specified.
@@ -140,4 +139,6 @@
 		
 	
 </body>
+
 </html>
+

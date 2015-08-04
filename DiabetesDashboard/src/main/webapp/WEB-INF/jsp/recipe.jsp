@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,13 +14,15 @@
 
     <title>Off Canvas Template for Bootstrap</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	
-
+    <!-- Bootstrap CSS
+<link rel="stylesheet" type="text/css"
+	href="<c:url value="/resources/css/bootstrap.min.css" />" />  -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css"
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/offcanvas.css" />" />
-  
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -52,6 +54,7 @@
     </nav><!-- /.navbar -->
 
     <div class="container">
+    
 
       <div class="row row-offcanvas row-offcanvas-right">
 
@@ -116,26 +119,60 @@
       <hr>
 
       <footer>
-        <p>DiabetesDashboard 2015</p>
+        <p>&copy; Company 2014</p>
       </footer>
 
     </div><!--/.container-->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript-->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    
     <script type="text/javascript"
 		src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-		
+
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
-   <script type="text/javascript"
+    <script type="text/javascript"
 		src="<c:url value="/resources/js/offcanvas.js" />"></script>
+		
+	<script type="text/javascript">
+	
+	<!-- var xhr = new XMLHttpRequest();
+	xhr.open("GET", "https://api.edamam.com/search?q=chicken&app_id=$2c83fd2e&app_key=$3a57699b3ae8620a12b8f41048d3e9b2", true);
+	xhr.send();
+
+	console.log(xhr.status);
+	console.log(xhr.statusText);
+	
+		
+		
+	
+	</script>	
+	
+	
+	<!--  
+	<script>
+	(function() {
+	  var edamamAPI = "https://api.edamam.com/search?q=chicken&app_id=$&app_key=$3a57699b3ae8620a12b8f41048d3e9b2";
+	  $.getJSON( edamamAPI, {
+	    tags: "chicken",
+	    app_id:2c83fd2e
+	    app_key:3a57699b3ae8620a12b8f41048d3e9b2
+	    tagmode: "any",
+	    format: "json"
+	  })
+	    .done(function( data ) {
+	      $.each( data.items, function( i, item ) {
+	        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+	        if ( i === 3 ) {
+	          return false;
+	        }
+	      });
+	})();
+	</script>	
+	-->
   </body>
 </html>
 
-    
