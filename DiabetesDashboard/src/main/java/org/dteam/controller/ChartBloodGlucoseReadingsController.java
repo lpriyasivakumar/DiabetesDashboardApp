@@ -1,17 +1,19 @@
 package org.dteam.controller;
 
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
 import static org.dteam.utilities.GetUser.*;
 import org.dteam.dao.DAOFactory;
 import org.dteam.dao.ReadingDAO;
+import org.dteam.model.Reading;
+import org.dteam.utilities.JsonArrayMaker;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ChartBloodGlucoseReadingsController {	
@@ -23,17 +25,28 @@ public class ChartBloodGlucoseReadingsController {
 		return "dashboard";	
     }
 
-	@RequestMapping(value = "/chart", method = RequestMethod.POST)
-	public @ResponseBody
-    String doChart(HttpServletRequest request) 		
-		        throws ClassNotFoundException, SQLException {		 	   
+	@RequestMapping(value = "/chart", method = RequestMethod.POST)	
+    String doChart(ModelMap model, HttpServletRequest request) 		
+		        throws ClassNotFoundException, SQLException {
+				ArrayList<String> dateArray = new ArrayList<String>();
+				ArrayList<Integer> bgArray = new ArrayList<Integer>();
+				ArrayList<Integer> insulinArray = new ArrayList<Integer>();
 			    String userID = getUserInfo(request,"id");
 				ReadingDAO readingDAO = getDAO();
-				String dateRange = request.getParameter("range");
-				readingDAO.getReadings(dateRange, userID);		
-				
-				return "dashboard";		        		   
-		    	
+				String dateRange = request.getParameter("dateRange");
+				ArrayList<Reading> readings = readingDAO.getReadings(dateRange, userID);		
+				for(Reading reading:readings){
+					dateArray.add(reading.getDate());
+					bgArray.add(reading.getBloodGlucose());
+					insulinArray.add(reading.getInsulin());
+				}
+				String dates = JsonArrayMaker.makeJsonArray(dateArray);
+				String bloodGlucose = JsonArrayMaker.makeJsonArray(bgArray);
+				String insulin = JsonArrayMaker.makeJsonArray(insulinArray);
+				model.put("dates", dates);
+				model.put("bloodGlucose", bloodGlucose);
+				model.put("insulin", insulin);				
+				return "dashboard";		        		   		    	
 	}	
 	
 	public ReadingDAO getDAO(){
