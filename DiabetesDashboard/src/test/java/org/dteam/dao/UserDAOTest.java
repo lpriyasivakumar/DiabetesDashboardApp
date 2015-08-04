@@ -22,8 +22,7 @@ public class UserDAOTest {
 		user.setName("Jane Doe");
 		
 		 
-		Mockito.when(userDao.addUser(null)).thenThrow(RuntimeException.class);
-		
+		Mockito.when(userDao.addUser(null)).thenThrow(RuntimeException.class);		
 		Mockito.when(userDao.findUser("1")).thenReturn(true);
 		Mockito.when(userDao.findUser("One")).thenReturn(false);
 	}
