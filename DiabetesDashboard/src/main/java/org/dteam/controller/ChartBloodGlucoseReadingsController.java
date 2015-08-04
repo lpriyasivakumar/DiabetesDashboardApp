@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ChartBloodGlucoseReadingsController {	
 	
 	@RequestMapping(value = "/chart", method = RequestMethod.GET)
-    public String viewChart(HttpServletRequest request){  
+    public String getChart(HttpServletRequest request){  
 		if(getUserInfo(request,"id")==null || getUserInfo(request,"id").isEmpty())
 			return "login";
 		return "dashboard";	
     }
 
 	@RequestMapping(value = "/chart", method = RequestMethod.POST)	
-    String doChart(ModelMap model, HttpServletRequest request) 		
+    public String viewChart(ModelMap model, HttpServletRequest request) 		
 		        throws ClassNotFoundException, SQLException {
 				ArrayList<String> dateArray = new ArrayList<String>();
 				ArrayList<Integer> bgArray = new ArrayList<Integer>();
