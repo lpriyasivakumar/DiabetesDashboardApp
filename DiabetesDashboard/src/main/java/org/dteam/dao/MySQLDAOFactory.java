@@ -11,7 +11,7 @@ public class MySQLDAOFactory extends DAOFactory {
 	static final String userName = "root";
 	static final String password = "password";
 	public static Connection conn;
-	static Statement statement=null;
+	public static Statement statement=null;
 
 	public static void connectToDB() {
 		try {
@@ -32,8 +32,6 @@ public class MySQLDAOFactory extends DAOFactory {
 			 se.printStackTrace();
 			 }		
 	}	
-
-	
 
 	@Override
 	public UserDAO getUserDAO() {
