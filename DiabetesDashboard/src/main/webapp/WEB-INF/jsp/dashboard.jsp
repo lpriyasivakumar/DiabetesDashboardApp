@@ -15,6 +15,7 @@
 <meta name="author" content="DTeam">
 <meta name="keyword"
 	content="Diabetes, Dashboard, Sugar, Glucose, Graph, Alc, Insulin, Diabetic">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <!--<link rel="shortcut icon" href="img/favicon.png">-->
 
 <title>Diabetes Dashboard</title>
@@ -278,7 +279,7 @@
 							<li><a href="#"><i class="icon_clock_alt"></i> Timeline</a>
 							</li>
 							<li><a href="#"><i class="icon_chat_alt"></i> Chats</a></li>-->
-							<li><a href="#" onclick="return signOut()"><i
+							<li><a href="#" onclick="signOut()"><i
 									class="icon_key_alt"></i> Log Out</a></li>
 							<!--<li><a href="documentation.html"><i class="icon_key_alt"></i>
 									Documentation</a></li>
@@ -312,7 +313,7 @@
 		</aside>
 		<!--sidebar end-->
 		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
-			url="jdbc:mysql://localhost:8889/diabetic_dashboard_data" user="root"
+			url="jdbc:mysql://localhost:3306/diabetic_dashboard_data" user="root"
 			password="password" />
 		<sql:query dataSource="${ds}" var="result">
 			SELECT * FROM timeofday;
@@ -335,7 +336,7 @@
 					</div>
 
 					<div class="row">
-						<div class="col-lg-4 col-md-6 col-sm-10 col-xs-10">
+						<div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
 							<section class="glucose-form">
 								<div class="panel panel-default">
 									<div class="panel-heading">Blood Glucose Reading (mg/dl)</div>
@@ -402,8 +403,10 @@
 									</div>
 								</div>
 							</section>
+							
 						</div>
 						<!--/.col-->
+						
 					</div>
 					<!--/.row-->
 
@@ -554,11 +557,12 @@
 	</script>
 	<script>
 		function signOut() {
-			var auth2 = gapi.auth2.getAuthInstance();
-			auth2.signOut().then(function() {
-				console.log('User signed out.');
-			});
-		}
+			document.cookie = "id" +'=; Path=/DiabetesDashboard1.0; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			document.cookie = "user" +'=; Path=/DiabetesDashboard1.0; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			document.cookie = "image" +'=; Path=/DiabetesDashboard1.0; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';			
+			document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/DiabetesDashboard1.0/login";
+			};
+		
 	</script>
 
 </body>

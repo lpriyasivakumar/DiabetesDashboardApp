@@ -30,7 +30,8 @@ public class ChartBloodGlucoseReadingsController {
 			    String userID = getUserInfo(request,"id");
 				ReadingDAO readingDAO = getDAO();
 				String dateRange = request.getParameter("range");
-				readingDAO.getReadings(dateRange, userID);				
+				readingDAO.getReadings(dateRange, userID);		
+				
 				return "dashboard";		        		   
 		    	
 	}	
