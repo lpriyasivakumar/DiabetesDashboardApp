@@ -1,9 +1,4 @@
-/*
-Template Name: Creative Bootstrap 3 Responsive Admin Template
-Template Version: 1.0
-Author: GeeksLabs
-Website: http://geekslabs.com/
-*/
+
 
 /* Import fonts */
 @import url(http://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
@@ -5044,6 +5039,10 @@ table {
     border-collapse: collapse;
     text-align: center;
     margin-top:50px;
+    color:#fff;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.63);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.63);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.63);
 }
 
 td {
