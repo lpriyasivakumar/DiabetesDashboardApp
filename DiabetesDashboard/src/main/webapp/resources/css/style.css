@@ -478,7 +478,7 @@ ul.sidebar-menu li.active a i {
     padding:2%;
     position:relative;
     margin:0 auto;
-    width:80%;
+    
 }
 .main-content-container::after{
     content:''; /*because there is nothing between the ' ' the content of the pseudo element will be blank*/
@@ -4951,8 +4951,9 @@ span.customSelect.changed {
 
 
 .glucose-form {
-    margin: 100px auto;
+    margin: 50px 0px 20px 20px;
     font: 15px/1.6em Lato, serif;
+    max-width:400px;
 }
 
 .glucose-form .panel {
@@ -4994,7 +4995,7 @@ form[role=login] input, form[role=login] button {
 }
 
 form[role=login] input {
-    margin: .5em 0;
+    
 }
 
 form[role=login] button {
@@ -5033,42 +5034,68 @@ form[role=login] button {
     height:10px;
 }
 
+.row-centered{
+	margin:0 50%;
+}
 
 
-#customBtn {
-      
-      margin:0 0 0 15%;
-      background: url('../img/google_btn.png') no-repeat top left;
-      width:220px;
-      height:65px;
-      
-      border:none;
-      text-indent:-9999px;
-     
-    }
-    #customBtn:hover {
-      cursor: pointer;
-      
-    }
-    span.label {
-      font-weight: bold;
-    }
-    span.icon {
-      background: url('../img/g-normal.png') transparent 5px 40% no-repeat;
-      display: inline-block;
-      vertical-align: middle;
-      width: 42px;
-      height: 42px;
-      border-right: #2265d4 1px solid;
-     
-    }
-    span.buttonText {
-      display: inline-block;
-      vertical-align: middle;
-      padding-left: 42px;
-      padding-right: 42px;
-      font-size: 14px;
-      font-weight: bold;
-      /* Use the Roboto font that is loaded in the <head> */
-      font-family: 'Roboto', sans-serif;
-    }
+/*A1c Conversion Chart Styles*/
+table {
+    border-collapse: collapse;
+    text-align: center;
+    margin-top:50px;
+}
+
+td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+th{
+	padding:.5em;
+}
+
+th span{
+	display: block;
+	text-align: center;
+}
+
+.darkGreen{
+	background: #047416;
+}
+
+.lightGreen{
+	background: #2dd129;
+}
+
+.oliveGreen{
+	background: #cfcd01;
+}
+
+.lightOrange{
+	background: #f6a20c; 
+}
+.burntOrange{
+	background: #f46f08;
+}
+.lightRed{
+	background: #f23811;
+}
+.darkRed{
+	background: #dc3702;
+}
+.bloodRed{
+	background: #c90101;
+}
+.chart_heading{
+	color: #fff;
+    background: #6e91af;
+    font: 15px/1.6em Lato, serif;
+}
+
+.chart_label{
+	color: #fff;
+    background: #6e91af;
+    font: 15px/1.6em Lato, serif;
+}
+

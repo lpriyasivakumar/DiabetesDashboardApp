@@ -21,7 +21,8 @@ import org.dteam.model.User;
 public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String viewLogin() {		
+	public String viewLogin() {	
+		
 		return "login";
 	}
 

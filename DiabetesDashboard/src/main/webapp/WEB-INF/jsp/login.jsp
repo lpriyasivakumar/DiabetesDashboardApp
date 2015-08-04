@@ -104,7 +104,6 @@
 			setCookie("image", getimageurl, 7,{path:'/'});
 			setCookie("id", getid, 7,{path:'/'});
 			console.log("ID Token: " + id_token); // The ID token you need to pass to your backend:
-
 			console.log("ID: " + profile.getId()); // Don't send this directly to your server!
 			console.log("Name: " + profile.getName());
 			console.log("Image URL: " + profile.getImageUrl());
@@ -115,16 +114,15 @@
 			xhr.onload = function() {
 			  console.log('Signed in as: ' + xhr.responseText);
 			};
-			//xhr.onreadystatechange=function(){
-				//if(xhr.readyState==4 && xhr.status==200){
-					
-				//}
-			//}
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					post("http://localhost:8080/DiabetesDashboard/login","post");
+				}
+			}
 			xhr.open('POST', 'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='+id_token);
 			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 			xhr.send();	
-			post("http://localhost:8080/DiabetesDashboard1.0/login","post");
-			
+
 		};
 		function post(path, method) {
 		    method = method || "post"; // Set method to post by default if not specified.
@@ -141,4 +139,6 @@
 		
 	
 </body>
+
 </html>
+
