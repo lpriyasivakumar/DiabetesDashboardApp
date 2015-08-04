@@ -408,52 +408,6 @@
 						</div>
 						<!--/.col-->
 
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-							<section class="a1c-form">
-								<div class="panel panel-default">
-									<div class="panel-heading">A1c Calculator</div>
-									<div class="panel-body">
-										<form method="post" action="dashboard" role="login" id="a1cEntryform" commandName="readingForm">
-
-
-											<div class="row">
-
-												<div class="form-group">
-													<label for="labA1c">Lab A1c Value</label>
-													<form:input path="bloodGlucose" type="text"
-														name="bgreading" id="bgreading" placeholder=""
-														class="form-control input" />
-													<button type="submit" name="save_reading" value="save"
-														class="btn btn-info btn-block">Save Lab
-														Value</button>
-												</div>
-
-												<div class="form-group">
-													<!--  	<input type="hidden" name="action" value="add"> -->
-													<label for="estimatedA1c">Estimated A1c Value<span>*</span></label>
-													<form:input path="estimatedA1c" type="text"
-														name="estimatedA1c" id="estimatedA1c" placeholder=""
-														class="form-control input" />
-													<div class="form-group col-lg-offset-2 col-lg-9">
-														<button type="submit"
-															class="btn btn-info btn-block">Reset Form</button>
-													</div>
-												</div>
-											</div>
-											<c:if test="${Msg != null}">
-												<p>
-													<i>${Msg} </i>
-												</p>
-											</c:if>
-										</form>
-
-
-									</div>
-								</div>
-							</section>
-
-						</div>
-
 						<div class="table-responsive">
 							<table class="col-lg-6 table-bordered">
 								<thead>
@@ -687,7 +641,7 @@
 								<div class="form-group">
 									<label for="dateRange"
 										style="color: #a5a5a5; font: 15px/1.6em Lato, serif;">Glucose
-										Trend</label> <select class="selector form-control" name="dateRange">
+										Trend</label> <select class="selector form-control" name="dateRange" onchange="this.form.submit()">
 										<option>Select Trend</option>
 										<option value="weekly">Weekly</option>
 										<option value="monthly">Monthly</option>
