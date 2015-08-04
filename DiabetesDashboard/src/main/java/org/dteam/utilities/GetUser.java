@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 public class GetUser {
 	public static String getUserInfo(HttpServletRequest request,String cookieName) {
 		Cookie[] cookies = request.getCookies();
-		String userID = CookieUtil.getCookieValue(cookies, cookieName);
-		return userID;
+		String userInfo = CookieUtil.getCookieValue(cookies, cookieName);
+		return userInfo;
 	}
 }
