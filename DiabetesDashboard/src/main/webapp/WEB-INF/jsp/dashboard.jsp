@@ -705,8 +705,6 @@
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/Chart.js" />"></script>
 
-
-
 	<script>
 		Chart.defaults.global.pointHitDetectionRadius = 1;
 		Chart.defaults.global.customTooltips = function(tooltip) {
@@ -738,9 +736,11 @@
 				fontStyle : tooltip.fontStyle,
 			});
 		};
-
+			var dates= ${dates};
+			var bg = ${bloodGlucose};
+			var insulin = ${insulin};
 		var lineChartData = {
-			labels : jQuery.parseJSON('${dates}'),
+			labels : dates ,
 			datasets : [ {
 				label : "My First dataset",
 				fillColor : "rgba(220,220,220,0.2)",
@@ -749,7 +749,7 @@
 				pointStrokeColor : "#fff",
 				pointHighlightFill : "#fff",
 				pointHighlightStroke : "rgba(220,220,220,1)",
-				data :jQuery.parseJSON('${bloodGlucose}')
+				data : bg
 			}, {
 				label : "My Second dataset",
 				fillColor : "rgba(151,187,205,0.2)",
@@ -758,7 +758,7 @@
 				pointStrokeColor : "#fff",
 				pointHighlightFill : "#fff",
 				pointHighlightStroke : "rgba(151,187,205,1)",
-				data : jQuery.parseJSON('${insulin}')
+				data :insulin
 			} ]
 		};
 		var ctx2 = document.getElementById("chart").getContext("2d");
