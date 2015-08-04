@@ -122,7 +122,7 @@
 			xhr.open('POST', 'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='+id_token);
 			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 			xhr.send();	
-			post("http://localhost:8080/DiabetesDashboard1.0/login","post");
+			post("http://localhost:8080/DiabetesDashboard/login","post");
 			
 		};
 		function post(path, method) {

@@ -478,7 +478,7 @@ ul.sidebar-menu li.active a i {
     padding:2%;
     position:relative;
     margin:0 auto;
-    width:80%;
+    
 }
 .main-content-container::after{
     content:''; /*because there is nothing between the ' ' the content of the pseudo element will be blank*/
@@ -4951,8 +4951,9 @@ span.customSelect.changed {
 
 
 .glucose-form {
-    margin: 100px auto;
+    margin: 50px 0px 20px 20px;
     font: 15px/1.6em Lato, serif;
+    max-width:400px;
 }
 
 .glucose-form .panel {
@@ -4994,7 +4995,7 @@ form[role=login] input, form[role=login] button {
 }
 
 form[role=login] input {
-    margin: .5em 0;
+    
 }
 
 form[role=login] button {
@@ -5032,3 +5033,69 @@ form[role=login] button {
     width:10px;
     height:10px;
 }
+
+.row-centered{
+	margin:0 50%;
+}
+
+
+/*A1c Conversion Chart Styles*/
+table {
+    border-collapse: collapse;
+    text-align: center;
+    margin-top:50px;
+}
+
+td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+th{
+	padding:.5em;
+}
+
+th span{
+	display: block;
+	text-align: center;
+}
+
+.darkGreen{
+	background: #047416;
+}
+
+.lightGreen{
+	background: #2dd129;
+}
+
+.oliveGreen{
+	background: #cfcd01;
+}
+
+.lightOrange{
+	background: #f6a20c; 
+}
+.burntOrange{
+	background: #f46f08;
+}
+.lightRed{
+	background: #f23811;
+}
+.darkRed{
+	background: #dc3702;
+}
+.bloodRed{
+	background: #c90101;
+}
+.chart_heading{
+	color: #fff;
+    background: #6e91af;
+    font: 15px/1.6em Lato, serif;
+}
+
+.chart_label{
+	color: #fff;
+    background: #6e91af;
+    font: 15px/1.6em Lato, serif;
+}
+

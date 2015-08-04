@@ -406,14 +406,298 @@
 							
 						</div>
 						<!--/.col-->
-						
+						<div class="table-responsive">
+			<table class="col-md-4 table-bordered">
+				<thead>
+					<tr>
+						<th colspan="11" class="chart_heading"><span>A1c to Blood Sugar Conversion Table</span><span>(1n mg/dl and mmol/l)</span></th>			
+					</tr>
+				</thead>
+				<tr>
+					<td colspan="11"></td>
+
+				</tr>
+				<tr>
+					<td class="chart_label">Hb-A1c</td>
+					<td class="darkGreen">4.0</td>
+					<td class="darkGreen">4.1</td>
+					<td class="darkGreen">4.2</td>
+					<td class="darkGreen">4.3</td>
+					<td class="darkGreen">4.4</td>
+					<td class="darkGreen">4.5</td>
+					<td class="darkGreen">4.6</td>
+					<td class="lightGreen">4.7</td>
+					<td class="lightGreen">4.8</td>
+					<td class="lightGreen">4.9</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mg/dl</td>
+					<td class="darkGreen">65</td>
+					<td class="darkGreen">69</td>
+					<td class="darkGreen">72</td>
+					<td class="darkGreen">76</td>
+					<td class="darkGreen">79</td>
+					<td class="darkGreen">83</td>
+					<td class="darkGreen">86</td>
+					<td class="lightGreen">90</td>
+					<td class="lightGreen">93</td>
+					<td class="lightGreen">97</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mmol/l</td>
+					<td class="darkGreen">3.6</td>
+					<td class="darkGreen">3.8</td>
+					<td class="darkGreen">4.0</td>
+					<td class="darkGreen">4.2</td>
+					<td class="darkGreen">4.4</td>
+					<td class="darkGreen">4.6</td>
+					<td class="darkGreen">4.8</td>
+					<td class="lightGreen">5.0</td>
+					<td class="lightGreen">5.2</td>
+					<td class="lightGreen">5.4</td>
+				</tr>
+				<tr>
+					<td colspan="11"></td>
+
+				</tr>
+				<tr>
+					<td class="chart_label">Hb-A1c</td>
+					<td class="lightGreen">5.0</td>
+					<td class="lightGreen">5.1</td>
+					<td class="oliveGreen">5.2</td>
+					<td class="oliveGreen">5.3</td>
+					<td class="oliveGreen">5.4</td>
+					<td class="oliveGreen">5.5</td>
+					<td class="oliveGreen">5.6</td>
+					<td class="lightOrange">5.7</td>
+					<td class="lightOrange">5.8</td>
+					<td class="lightOrange">5.9</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mg/dl</td>
+					<td class="lightGreen">101</td>
+					<td class="lightGreen">104</td>
+					<td class="oliveGreen">108</td>
+					<td class="oliveGreen">111</td>
+					<td class="oliveGreen">115</td>
+					<td class="oliveGreen">118</td>
+					<td class="oliveGreen">122</td>
+					<td class="lightOrange">126</td>
+					<td class="lightOrange">129</td>
+					<td class="lightOrange">133</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mmol/l</td>
+					<td class="lightGreen">5.6</td>
+					<td class="lightGreen">5.8</td>
+					<td class="oliveGreen">6.0</td>
+					<td class="oliveGreen">6.2</td>
+					<td class="oliveGreen">6.4</td>
+					<td class="oliveGreen">6.6</td>
+					<td class="oliveGreen">6.8</td>
+					<td class="lightOrange">7.0</td>
+					<td class="lightOrange">7.2</td>
+					<td class="lightOrange">7.4</td>
+				</tr>
+				<tr>
+					<td colspan="11"></td>
+
+				</tr>
+				<tr>
+					<td class="chart_label">Hb-A1c</td>
+					<td class="lightOrange">6.0</td>
+					<td class="lightOrange">6.1</td>
+					<td class="lightOrange">6.2</td>
+					<td class="lightOrange">6.3</td>
+					<td class="lightOrange">6.4</td>
+					<td class="burntOrange">6.5</td>
+					<td class="burntOrange">6.6</td>
+					<td class="burntOrange">6.7</td>
+					<td class="burntOrange">6.8</td>
+					<td class="burntOrange">6.9</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mg/dl</td>
+					<td class="lightOrange">136</td>
+					<td class="lightOrange">140</td>
+					<td class="lightOrange">143</td>
+					<td class="lightOrange">147</td>
+					<td class="lightOrange">151</td>
+					<td class="burntOrange">154</td>
+					<td class="burntOrange">158</td>
+					<td class="burntOrange">161</td>
+					<td class="burntOrange">165</td>
+					<td class="burntOrange">168</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mmol/l</td>
+					<td class="lightOrange">7.6</td>
+					<td class="lightOrange">7.8</td>
+					<td class="lightOrange">8.0</td>
+					<td class="lightOrange">8.2</td>
+					<td class="lightOrange">8.4</td>
+					<td class="burntOrange">8.6</td>
+					<td class="burntOrange">8.8</td>
+					<td class="burntOrange">9.0</td>
+					<td class="burntOrange">9.2</td>
+					<td class="burntOrange">9.4</td>
+				</tr>
+				<tr>
+					<td colspan="11"></td>
+
+				</tr>
+				<tr>
+					<td class="chart_label">Hb-A1c</td>
+					<td class="burntOrange">7.0</td>
+					<td class="lightRed">7.1</td>
+					<td class="lightRed">7.2</td>
+					<td class="lightRed">7.3</td>
+					<td class="lightRed">7.4</td>
+					<td class="lightRed">7.5</td>
+					<td class="lightRed">7.6</td>
+					<td class="lightRed">7.7</td>
+					<td class="lightRed">7.8</td>
+					<td class="lightRed">7.9</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mg/dl</td>
+					<td class="burntOrange">172</td>
+					<td class="lightRed">176</td>
+					<td class="lightRed">180</td>
+					<td class="lightRed">183</td>
+					<td class="lightRed">186</td>
+					<td class="lightRed">190</td>
+					<td class="lightRed">193</td>
+					<td class="lightRed">197</td>
+					<td class="lightRed">200</td>
+					<td class="lightRed">204</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mmol/l</td>
+					<td class="burntOrange">9.6</td>
+					<td class="lightRed">9.8</td>
+					<td class="lightRed">10.0</td>
+					<td class="lightRed">10.2</td>
+					<td class="lightRed">10.4</td>
+					<td class="lightRed">10.6</td>
+					<td class="lightRed">10.8</td>
+					<td class="lightRed">11.0</td>
+					<td class="lightRed">11.2</td>
+					<td class="lightRed">11.4</td>
+				</tr>
+				<tr>
+					<td colspan="11"></td>
+
+				</tr>
+				<tr>
+					<td class="chart_label">Hb-A1c</td>
+					<td class="lightRed">8.0</td>
+					<td class="bloodRed">8.1</td>
+					<td class="bloodRed">8.2</td>
+					<td class="bloodRed">8.3</td>
+					<td class="bloodRed">8.4</td>
+					<td class="bloodRed">8.5</td>
+					<td class="bloodRed">8.6</td>
+					<td class="bloodRed">8.7</td>
+					<td class="bloodRed">8.8</td>
+					<td class="bloodRed">8.9</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mg/dl</td>
+					<td class="lightRed">207</td>
+					<td class="bloodRed">211</td>
+					<td class="bloodRed">215</td>
+					<td class="bloodRed">218</td>
+					<td class="bloodRed">222</td>
+					<td class="bloodRed">225</td>
+					<td class="bloodRed">229</td>
+					<td class="bloodRed">232</td>
+					<td class="bloodRed">236</td>
+					<td class="bloodRed">240</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mmol/l</td>
+					<td class="lightRed">11.6</td>
+					<td class="bloodRed">11.8</td>
+					<td class="bloodRed">12</td>
+					<td class="bloodRed">12.2</td>
+					<td class="bloodRed">12.4</td>
+					<td class="bloodRed">12.6</td>
+					<td class="bloodRed">12.8</td>
+					<td class="bloodRed">13</td>
+					<td class="bloodRed">13.2</td>
+					<td class="bloodRed">13.4</td>
+				</tr>
+				<tr>
+					<td colspan="11"></td>
+
+				</tr>
+				<tr>
+					<td class="chart_label">Hb-A1c</td>
+					<td class="bloodRed">9.0</td>
+					<td class="bloodRed">9.5</td>
+					<td class="bloodRed">10.0</td>
+					<td class="bloodRed">10.5</td>
+					<td class="bloodRed">11.0</td>
+					<td class="bloodRed">11.5</td>
+					<td class="bloodRed">12.0</td>
+					<td class="bloodRed">12.5</td>
+					<td class="bloodRed">13.0</td>
+					<td class="bloodRed">13.5</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mg/dl</td>
+					<td class="bloodRed">243</td>
+					<td class="bloodRed">261</td>
+					<td class="bloodRed">279</td>
+					<td class="bloodRed">297</td>
+					<td class="bloodRed">314</td>
+					<td class="bloodRed">332</td>
+					<td class="bloodRed">350</td>
+					<td class="bloodRed">368</td>
+					<td class="bloodRed">386</td>
+					<td class="bloodRed">403</td>
+				</tr>
+				<tr>
+					<td class="chart_label">mmol/l</td>
+					<td class="bloodRed">13.6</td>
+					<td class="bloodRed">14.6</td>
+					<td class="bloodRed">15.6</td>
+					<td class="bloodRed">16.6</td>
+					<td class="bloodRed">17.5</td>
+					<td class="bloodRed">18.5</td>
+					<td class="bloodRed">19.5</td>
+					<td class="bloodRed">20.4</td>
+					<td class="bloodRed">21.4</td>
+					<td class="bloodRed">22.4</td>
+				</tr>
+				<tr>
+					<td colspan="11"></td>
+
+				</tr>
+				<tr>
+					<td colspan="4" class="darkGreen">Optimal</td>
+					<td colspan="4" class="lightGreen">Sub-optimal</td>
+					<td colspan="3" class="oliveGreen">Normal</td>
+				</tr>
+				<tr>
+					<td colspan="4" class="lightOrange">Pre-diabetes</td>
+					<td colspan="4" class="burntOrange">Diabetes</td>
+					<td colspan="3" class="lightRed">Harmful</td>
+				</tr>
+				<tr>	
+					<td colspan="11" class="bloodRed">Dangerous</td>
+
+				</tr>
+			</table>
+		</div>
 					</div>
 					<!--/.row-->
 
 
 
 
-					<div class="row">
+					<div class="row row-centered">
 						<div class="col-lg-9 col-md-12">
 							<form action="" method="post" role="select" id="TrendEntryForm">
 								<div class="form-group">
@@ -557,10 +841,10 @@
 	</script>
 	<script>
 		function signOut() {
-			document.cookie = "id" +'=; Path=/DiabetesDashboard1.0; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			document.cookie = "user" +'=; Path=/DiabetesDashboard1.0; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			document.cookie = "image" +'=; Path=/DiabetesDashboard1.0; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';			
-			document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/DiabetesDashboard1.0/login";
+			document.cookie = "id" +'=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			document.cookie = "user" +'=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			document.cookie = "image" +'=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';			
+			document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/DiabetesDashboard/login";
 			};
 		
 	</script>
