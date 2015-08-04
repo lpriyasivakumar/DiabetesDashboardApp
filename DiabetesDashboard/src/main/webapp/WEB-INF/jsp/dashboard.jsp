@@ -636,12 +636,11 @@
 
 					<div class="row row-centered">
 						<div class="col-lg-9 col-md-12">
-							<form action="/chart" method="post" role="select"
+							<form action="chart" method="post" role="select"
 								id="TrendEntryForm">
 								<div class="form-group">
-									<label for="dateRange"
-										style="color: #a5a5a5; font: 15px/1.6em Lato, serif;">Glucose
-										Trend</label> <select class="selector form-control" name="dateRange" onchange="this.form.submit()">
+									<label for="dateRange" style="color: #a5a5a5; font: 15px/1.6em Lato, serif;">Glucose Trend</label> 
+									<select class="selector form-control" name="dateRange" onchange="this.form.submit()">
 										<option>Select Trend</option>
 										<option value="weekly">Weekly</option>
 										<option value="monthly">Monthly</option>
@@ -741,7 +740,7 @@
 		};
 
 		var lineChartData = {
-			labels : '${dates}',
+			labels : jQuery.parseJSON('${dates}'),
 			datasets : [ {
 				label : "My First dataset",
 				fillColor : "rgba(220,220,220,0.2)",
@@ -750,7 +749,7 @@
 				pointStrokeColor : "#fff",
 				pointHighlightFill : "#fff",
 				pointHighlightStroke : "rgba(220,220,220,1)",
-				data : '${bloodGlucose}'
+				data :jQuery.parseJSON('${bloodGlucose}')
 			}, {
 				label : "My Second dataset",
 				fillColor : "rgba(151,187,205,0.2)",
@@ -759,7 +758,7 @@
 				pointStrokeColor : "#fff",
 				pointHighlightFill : "#fff",
 				pointHighlightStroke : "rgba(151,187,205,1)",
-				data : '${insulin}'
+				data : jQuery.parseJSON('${insulin}')
 			} ]
 		};
 		var ctx2 = document.getElementById("chart").getContext("2d");
