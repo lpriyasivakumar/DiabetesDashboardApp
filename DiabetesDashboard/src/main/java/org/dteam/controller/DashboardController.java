@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static org.dteam.utilities.CookieUtil.*;
+
+import org.dteam.dao.A1cDAO;
 import org.dteam.dao.DAOFactory;
 import org.dteam.dao.ReadingDAO;
 import org.dteam.model.Reading;
@@ -29,16 +31,20 @@ public class DashboardController {
 	JsonArray dates;
 	JsonArray bloodGlucose;
 	JsonArray insulin;
+	DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String viewDashboard(Map<String, Object> model, HttpServletRequest request)
 			throws UnsupportedEncodingException {
 
-		if (getUserInfo(request, "id") == null || getUserInfo(request, "id").isEmpty()) {
+		String userID = getUserInfo(request, "id");
+		if (userID == null || userID.isEmpty()) {
 			return "login";
 		} else {
 			String dateRange = request.getParameter("dateRange");
 			Reading readingForm = new Reading();
+			A1cDAO a1cdao = mysqlFactory.getA1cDAO();
+			double labA1c = a1cdao.getLabValue(userID);
 			if (dateRange == null || dateRange.isEmpty()) {
 				dateRange = "all";
 			}
@@ -50,7 +56,9 @@ public class DashboardController {
 			model.put("userName", URLDecoder.decode(getUserInfo(request, "user"),
 					java.nio.charset.StandardCharsets.UTF_8.toString()));
 			model.put("url", getUserInfo(request, "image"));
+			model.put("labA1c", labA1c);
 			return "dashboard";
+
 		}
 
 	}
@@ -58,7 +66,7 @@ public class DashboardController {
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
 	public String doDashboard(@ModelAttribute("readingForm") Reading reading, BindingResult result, ModelMap model,
 			HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException {
-		ReadingDAO readingDAO = getDAO();
+		ReadingDAO readingDAO = mysqlFactory.getReadingDAO();
 		String userID = getUserInfo(request, "id");
 		int result1 = readingDAO.addReading(reading, userID);
 		if (result1 > 0)
@@ -73,7 +81,7 @@ public class DashboardController {
 		ArrayList<Integer> bgArray = new ArrayList<Integer>();
 		ArrayList<Integer> insulinArray = new ArrayList<Integer>();
 		String userID = getUserInfo(request, "id");
-		ReadingDAO readingDAO = getDAO();
+		ReadingDAO readingDAO = mysqlFactory.getReadingDAO();
 		ArrayList<Reading> readings = readingDAO.getReadings(dateRange, userID);
 		for (Reading reading : readings) {
 			dateArray.add(reading.getDate());
@@ -83,13 +91,6 @@ public class DashboardController {
 		dates = JsonArrayMaker.makeJsonArray(dateArray);
 		bloodGlucose = JsonArrayMaker.makeJsonArray(bgArray);
 		insulin = JsonArrayMaker.makeJsonArray(insulinArray);
-	}
-
-	public ReadingDAO getDAO() {
-		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
-		ReadingDAO readingDAO = mysqlFactory.getReadingDAO();
-		return readingDAO;
-
 	}
 
 }
