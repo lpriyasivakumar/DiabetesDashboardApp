@@ -636,7 +636,7 @@
 
 					<div class="row row-centered">
 						<div class="col-lg-9 col-md-12">
-							<form action="chart" method="post" role="select"
+							<form action="dashboard" method="get" role="select"
 								id="TrendEntryForm">
 								<div class="form-group">
 									<label for="dateRange" style="color: #a5a5a5; font: 15px/1.6em Lato, serif;">Glucose Trend</label> 

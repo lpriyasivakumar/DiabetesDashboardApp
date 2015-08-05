@@ -11,7 +11,6 @@ import static org.dteam.utilities.GetUser.*;
 import org.dteam.dao.DAOFactory;
 import org.dteam.dao.ReadingDAO;
 import org.dteam.model.Reading;
-import org.dteam.utilities.CookieUtil;
 import org.dteam.utilities.JsonArrayMaker;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,29 +24,24 @@ import com.google.gson.JsonArray;
 
 @Controller
 public class DashboardController {
+	JsonArray dates;
+	JsonArray bloodGlucose;
+	JsonArray insulin;	
+	
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String viewDashboard(Map<String, Object> model,HttpServletRequest request) {
+		
 		if(getUserInfo(request,"id")==null || getUserInfo(request,"id").isEmpty()){
 			return "login";
 		}			
-		else{			
-			Reading readingForm = new Reading();
-			ArrayList<String> dateArray = new ArrayList<String>();
-			ArrayList<Integer> bgArray = new ArrayList<Integer>();
-			ArrayList<Integer> insulinArray = new ArrayList<Integer>();
-		    String userID = getUserInfo(request,"id");
-			ReadingDAO readingDAO = getDAO();
-			
-			ArrayList<Reading> readings = readingDAO.getReadings("monthly", userID);		
-			for(Reading reading:readings){
-				dateArray.add(reading.getDate());
-				bgArray.add(reading.getBloodGlucose());
-				insulinArray.add(reading.getInsulin());
+		else{ 
+			String dateRange = request.getParameter("dateRange");
+			Reading readingForm = new Reading();			
+			if(dateRange==null || dateRange.isEmpty()){
+				dateRange = "all";
 			}
-			JsonArray dates = JsonArrayMaker.makeJsonArray(dateArray);
-			JsonArray bloodGlucose = JsonArrayMaker.makeJsonArray(bgArray);
-			JsonArray insulin = JsonArrayMaker.makeJsonArray(insulinArray);
+			getChartData(request, dateRange);
 			model.put("dates",dates);
 			model.put("bloodGlucose", bloodGlucose);
 			model.put("insulin", insulin);
@@ -58,7 +52,7 @@ public class DashboardController {
 		}
 		
 	}
-
+	
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
 	public String doDashboard(@ModelAttribute("readingForm") Reading reading, BindingResult result, ModelMap model,
 			HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException {
@@ -71,6 +65,24 @@ public class DashboardController {
 			model.addAttribute("Msg", "Invalid entries. Cannot save reading");
 		return "dashboard";
 	}
+
+	private void getChartData(HttpServletRequest request, String dateRange) {
+		ArrayList<String> dateArray = new ArrayList<String>();
+		ArrayList<Integer> bgArray = new ArrayList<Integer>();
+		ArrayList<Integer> insulinArray = new ArrayList<Integer>();
+		String userID = getUserInfo(request,"id");
+		ReadingDAO readingDAO = getDAO();
+		ArrayList<Reading> readings = readingDAO.getReadings(dateRange, userID);		
+		for(Reading reading:readings){
+			dateArray.add(reading.getDate());
+			bgArray.add(reading.getBloodGlucose());
+			insulinArray.add(reading.getInsulin());
+		}
+		 dates = JsonArrayMaker.makeJsonArray(dateArray);
+		 bloodGlucose = JsonArrayMaker.makeJsonArray(bgArray);
+		 insulin = JsonArrayMaker.makeJsonArray(insulinArray);
+	}
+	
 
 	public ReadingDAO getDAO() {
 		DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
