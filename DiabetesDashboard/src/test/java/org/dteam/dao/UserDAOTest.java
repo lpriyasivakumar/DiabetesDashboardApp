@@ -2,6 +2,8 @@ package org.dteam.dao;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+
 import org.dteam.model.User;
 import org.junit.After;
 import org.junit.Test;
@@ -34,8 +36,10 @@ public class UserDAOTest {
 	}
 	
 	@After
-    public void tearDown() {
-        
+    public void tearDown() throws SQLException {
+        MySQLDAOFactory.connectToDB();
+        MySQLDAOFactory.statement.executeUpdate("Delete from userdb Where UserID = '20'");
+        MySQLDAOFactory.closeDB();
     }
 
 	

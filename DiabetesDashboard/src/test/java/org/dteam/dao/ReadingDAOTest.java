@@ -2,9 +2,11 @@ package org.dteam.dao;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.dteam.model.Reading;
+import org.junit.After;
 import org.junit.Test;
 
 public class ReadingDAOTest {
@@ -19,7 +21,7 @@ public class ReadingDAOTest {
 		reading.setBloodGlucose(175);
 		reading.setInsulin(25);
 		reading.setTimeOfDay("1");
-		assertEquals(1,readingDAO.addReading(reading, "20"));
+		assertEquals(1,readingDAO.addReading(reading, "1"));
 	}
 	
 	@Test
@@ -37,7 +39,14 @@ public class ReadingDAOTest {
 	
 	@Test
 	public void testgetReadingsWithValidUserIDShouldReturnTwoELements() {		
-		assertEquals(2,(readingDAO.getReadings("weekly", "106025413030436687338")).size());
+		assertEquals(5,(readingDAO.getReadings("weekly", "106025413030436687338")).size());
 	}
+	
+	@After
+    public void tearDown() throws SQLException {
+        MySQLDAOFactory.connectToDB();
+        MySQLDAOFactory.statement.executeUpdate("Delete from reading Where ReadingDate = '2015-04-15' And UserID = '1'");
+        MySQLDAOFactory.closeDB();
+    }
 
 }
