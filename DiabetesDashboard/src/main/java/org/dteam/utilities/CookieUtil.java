@@ -1,6 +1,7 @@
 package org.dteam.utilities;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 public class CookieUtil {
 	public static String getCookieValue(Cookie[] cookies, String cookieName){
@@ -14,6 +15,11 @@ public class CookieUtil {
 		}
 		return cookieValue;
 		
+	}
+	public static String getUserInfo(HttpServletRequest request,String cookieName) {
+		Cookie[] cookies = request.getCookies();
+		String userInfo = CookieUtil.getCookieValue(cookies, cookieName);
+		return userInfo;
 	}
 
 }
