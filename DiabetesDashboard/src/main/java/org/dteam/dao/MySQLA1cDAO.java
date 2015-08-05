@@ -24,7 +24,7 @@ public class MySQLA1cDAO implements A1cDAO {
 	@Override
 	public double getLabValue(String userID) {
 		connectToDB();
-		
+
 		try {
 			String sql = "SELECT LabValue FROM A1c WHERE userID = " + "'" + userID + "';";
 			ResultSet rs = statement.executeQuery(sql);
