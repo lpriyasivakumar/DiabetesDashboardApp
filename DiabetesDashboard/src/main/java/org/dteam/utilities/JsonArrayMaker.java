@@ -8,11 +8,11 @@ import com.google.gson.JsonArray;
 
 public class JsonArrayMaker {
 
-	public static <T> String makeJsonArray(Collection<T> list) {
+	public static <T> JsonArray makeJsonArray(Collection<T> list) {
 		Gson gson = new GsonBuilder().create();
 		JsonArray jsonArray = gson.toJsonTree(list).getAsJsonArray();
 
-		return jsonArray.toString();
+		return jsonArray;
 	}
 
 }

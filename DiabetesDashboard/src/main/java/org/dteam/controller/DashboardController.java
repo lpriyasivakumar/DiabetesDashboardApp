@@ -1,6 +1,7 @@
 package org.dteam.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,12 +12,15 @@ import org.dteam.dao.DAOFactory;
 import org.dteam.dao.ReadingDAO;
 import org.dteam.model.Reading;
 import org.dteam.utilities.CookieUtil;
+import org.dteam.utilities.JsonArrayMaker;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.google.gson.JsonArray;
 
 
 @Controller
@@ -29,6 +33,24 @@ public class DashboardController {
 		}			
 		else{			
 			Reading readingForm = new Reading();
+			ArrayList<String> dateArray = new ArrayList<String>();
+			ArrayList<Integer> bgArray = new ArrayList<Integer>();
+			ArrayList<Integer> insulinArray = new ArrayList<Integer>();
+		    String userID = getUserInfo(request,"id");
+			ReadingDAO readingDAO = getDAO();
+			
+			ArrayList<Reading> readings = readingDAO.getReadings("monthly", userID);		
+			for(Reading reading:readings){
+				dateArray.add(reading.getDate());
+				bgArray.add(reading.getBloodGlucose());
+				insulinArray.add(reading.getInsulin());
+			}
+			JsonArray dates = JsonArrayMaker.makeJsonArray(dateArray);
+			JsonArray bloodGlucose = JsonArrayMaker.makeJsonArray(bgArray);
+			JsonArray insulin = JsonArrayMaker.makeJsonArray(insulinArray);
+			model.put("dates",dates);
+			model.put("bloodGlucose", bloodGlucose);
+			model.put("insulin", insulin);
 			model.put("readingForm", readingForm);
 			model.put("userName", java.net.URLDecoder.decode(getUserInfo(request, "user")));
 			model.put("url", getUserInfo(request, "image"));

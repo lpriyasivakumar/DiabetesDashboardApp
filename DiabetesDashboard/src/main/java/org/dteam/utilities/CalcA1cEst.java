@@ -1,6 +1,6 @@
 package org.dteam.utilities;
 
-import static org.dteam.dao.MySQLA1cDAO.*;
+import static org.dteam.dao.MySQLReadingDAO.*;
 
 public class CalcA1cEst {
 
@@ -10,12 +10,7 @@ public class CalcA1cEst {
 	final double CONSTANT_1 = 46.7;
 	final double CONSTANT_2 = 28.7;
 
-	public CalcA1cEst() {
-	}
-
-	public CalcA1cEst(String userID) {
-	}
-
+	
 	public double getCalcA1cEstimate(String userID) {
 
 		int AvgBG = getAvgBG(userID);

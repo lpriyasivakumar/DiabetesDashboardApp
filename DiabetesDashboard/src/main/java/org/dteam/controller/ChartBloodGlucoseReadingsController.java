@@ -15,6 +15,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.google.gson.JsonArray;
+
 @Controller
 public class ChartBloodGlucoseReadingsController {	
 	
@@ -40,10 +42,10 @@ public class ChartBloodGlucoseReadingsController {
 					bgArray.add(reading.getBloodGlucose());
 					insulinArray.add(reading.getInsulin());
 				}
-				String dates = JsonArrayMaker.makeJsonArray(dateArray);
-				String bloodGlucose = JsonArrayMaker.makeJsonArray(bgArray);
-				String insulin = JsonArrayMaker.makeJsonArray(insulinArray);
-				model.put("dates", dates);
+				JsonArray dates = JsonArrayMaker.makeJsonArray(dateArray);
+				JsonArray bloodGlucose = JsonArrayMaker.makeJsonArray(bgArray);
+				JsonArray insulin = JsonArrayMaker.makeJsonArray(insulinArray);
+				model.put("dates",dates);
 				model.put("bloodGlucose", bloodGlucose);
 				model.put("insulin", insulin);				
 				return "dashboard";		        		   		    	
