@@ -1,5 +1,7 @@
 package org.dteam.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -28,9 +30,9 @@ public class DashboardController {
 	JsonArray bloodGlucose;
 	JsonArray insulin;
 
-	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public String viewDashboard(Map<String, Object> model, HttpServletRequest request) {
+	public String viewDashboard(Map<String, Object> model, HttpServletRequest request)
+			throws UnsupportedEncodingException {
 
 		if (getUserInfo(request, "id") == null || getUserInfo(request, "id").isEmpty()) {
 			return "login";
@@ -45,7 +47,8 @@ public class DashboardController {
 			model.put("bloodGlucose", bloodGlucose);
 			model.put("insulin", insulin);
 			model.put("readingForm", readingForm);
-			model.put("userName", java.net.URLDecoder.decode(getUserInfo(request, "user")));
+			model.put("userName", URLDecoder.decode(getUserInfo(request, "user"),
+					java.nio.charset.StandardCharsets.UTF_8.toString()));
 			model.put("url", getUserInfo(request, "image"));
 			return "dashboard";
 		}
