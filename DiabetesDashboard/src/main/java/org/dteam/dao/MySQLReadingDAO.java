@@ -47,4 +47,18 @@ public  class MySQLReadingDAO implements ReadingDAO {
 		return ReadingList;
 	}
 	
+	public static int getAvgBG(String userID) {
+		connectToDB();
+		try{
+			String sql = "SELECT AVG(BloodGlucose) AS BG_AVG FROM Reading WHERE ReadingDate BETWEEN DATE_SUB(CURDATE(), INTERVAL 90 DAY) and CURDATE() AND GROUP BY ReadingDate AND userID = "+"'"+userID+"';";
+			ResultSet rs =  statement.executeQuery(sql);
+			if(rs.next()) {
+				return rs.getInt("BG_AVG");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			}
+			closeDB();
+			return 0;
+	}	
 }
