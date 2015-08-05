@@ -8,11 +8,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import static org.dteam.utilities.CookieUtil.*;
 import org.dteam.dao.DAOFactory;
 import org.dteam.dao.ReadingDAO;
 import org.dteam.model.Reading;
+import org.dteam.utilities.CookieUtil;
 import org.dteam.utilities.JsonArrayMaker;
 
 import org.springframework.stereotype.Controller;
@@ -29,12 +31,13 @@ public class DashboardController {
 	JsonArray dates;
 	JsonArray bloodGlucose;
 	JsonArray insulin;
-
+	
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String viewDashboard(Map<String, Object> model, HttpServletRequest request)
 			throws UnsupportedEncodingException {
-
-		if (getUserInfo(request, "id") == null || getUserInfo(request, "id").isEmpty()) {
+		HttpSession session = request.getSession();
+		String userID = session.getAttribute("userID").toString();
+		if ( userID== null || userID.isEmpty()) {
 			return "login";
 		} else {
 			String dateRange = request.getParameter("dateRange");
@@ -47,9 +50,8 @@ public class DashboardController {
 			model.put("bloodGlucose", bloodGlucose);
 			model.put("insulin", insulin);
 			model.put("readingForm", readingForm);
-			model.put("userName", URLDecoder.decode(getUserInfo(request, "user"),
-					java.nio.charset.StandardCharsets.UTF_8.toString()));
-			model.put("url", getUserInfo(request, "image"));
+			model.put("userName",session.getAttribute("userName").toString());
+			model.put("url", session.getAttribute("image").toString());
 			return "dashboard";
 		}
 
@@ -58,9 +60,9 @@ public class DashboardController {
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
 	public String doDashboard(@ModelAttribute("readingForm") Reading reading, BindingResult result, ModelMap model,
 			HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException {
-		ReadingDAO readingDAO = getDAO();
-		String userID = getUserInfo(request, "id");
-		int result1 = readingDAO.addReading(reading, userID);
+		ReadingDAO readingDAO = getDAO();		
+		HttpSession session = request.getSession();
+		int result1 = readingDAO.addReading(reading, session.getAttribute("userID").toString());
 		if (result1 > 0)
 			model.addAttribute("Msg", result1 + " reading added.");
 		else
@@ -69,12 +71,12 @@ public class DashboardController {
 	}
 
 	private void getChartData(HttpServletRequest request, String dateRange) {
+		HttpSession session = request.getSession();
 		ArrayList<String> dateArray = new ArrayList<String>();
 		ArrayList<Integer> bgArray = new ArrayList<Integer>();
-		ArrayList<Integer> insulinArray = new ArrayList<Integer>();
-		String userID = getUserInfo(request, "id");
+		ArrayList<Integer> insulinArray = new ArrayList<Integer>();		
 		ReadingDAO readingDAO = getDAO();
-		ArrayList<Reading> readings = readingDAO.getReadings(dateRange, userID);
+		ArrayList<Reading> readings = readingDAO.getReadings(dateRange, session.getAttribute("userID").toString());
 		for (Reading reading : readings) {
 			dateArray.add(reading.getDate());
 			bgArray.add(reading.getBloodGlucose());
