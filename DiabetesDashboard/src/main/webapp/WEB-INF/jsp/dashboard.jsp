@@ -314,7 +314,7 @@
 		</aside>
 		<!--sidebar end-->
 		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
-			url="jdbc:mysql://localhost:8889/diabetic_dashboard_data" user="root"
+			url="jdbc:mysql://localhost:3306/diabetic_dashboard_data" user="root"
 			password="password" />
 		<sql:query dataSource="${ds}" var="result">
 			SELECT * FROM timeofday;
@@ -768,7 +768,6 @@
 	</script>
 	<script>
 		function signOut() {
-
 			document.cookie = "id"
 					+ '=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 			document.cookie = "user"
