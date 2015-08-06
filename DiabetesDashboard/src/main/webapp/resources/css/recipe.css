@@ -57,3 +57,13 @@ footer {
     width: 50%; /* 6 columns */
   }
 }
+
+
+.jumbotron{
+	 background: url('../img/hero-image.jpg') no-repeat; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	height:250px;
+}
