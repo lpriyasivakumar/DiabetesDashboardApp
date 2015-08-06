@@ -16,26 +16,28 @@ public class MySQLA1cDAO implements A1cDAO {
 			return statement.executeUpdate(sql1);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeDB();
 		}
-		closeDB();
 		return 0;
 	}
 
 	@Override
 	public double getLabValue(String userID) {
 		connectToDB();
-
+		double LabValue = 0;
 		try {
 			String sql = "SELECT LabValue FROM A1c WHERE userID = " + "'" + userID + "';";
 			ResultSet rs = statement.executeQuery(sql);
 			if (rs.next()) {
-				return rs.getDouble("LabValue");
+				LabValue = rs.getDouble("LabValue");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeDB();
 		}
-		closeDB();
+		return LabValue;
 
-		return 0;
 	}
 }

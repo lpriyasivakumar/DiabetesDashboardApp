@@ -27,7 +27,7 @@ public class A1cController {
 		double calcA1c=0;
 		double labA1c = Double.parseDouble(request.getParameter("labA1c"));
 		if (action.equals("saveLabValue")) {
-			a1cdao.addLabValue(labA1c, userID);
+			a1cdao.addLabValue(labA1c, userID);			
 		} else if (action.equals("CalcA1c")) {
 			calcA1c = CalcA1cEst.getCalcA1cEstimate(userID);
 		}		

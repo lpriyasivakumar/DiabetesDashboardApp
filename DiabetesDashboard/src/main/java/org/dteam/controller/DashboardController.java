@@ -86,7 +86,6 @@ public class DashboardController {
 		HttpSession session = request.getSession();
 		ArrayList<String> dateArray = new ArrayList<String>();
 		ArrayList<Integer> bgArray = new ArrayList<Integer>();
-
 		ArrayList<Integer> insulinArray = new ArrayList<Integer>();
 		ReadingDAO readingDAO = mysqlFactory.getReadingDAO();
 		ArrayList<Reading> readings = readingDAO.getReadings(dateRange, session.getAttribute("userID").toString());
