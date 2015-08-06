@@ -17,6 +17,8 @@
 	content="Diabetes, Dashboard, Sugar, Glucose, Graph, Alc, Insulin, Diabetic">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <!--<link rel="shortcut icon" href="img/favicon.png">-->
+<link rel="icon" type="image/png"
+	href="<c:url value="/resources/img/favicon.ico" />" />
 
 <title>Diabetes Dashboard</title>
 <link rel="stylesheet" type="text/css"
@@ -105,7 +107,7 @@
 		<sql:query dataSource="${ds}" var="result">
 			SELECT * FROM timeofday;
 		</sql:query>
-		
+
 		<section id="main-content">
 			<section class="wrapper">
 				<div class="main-content-container">
@@ -122,16 +124,18 @@
 						<div class="col-md-4">
 							<section class="glucose-form">
 								<div class="panel panel-default">
-									<div class="panel-heading">
-										Blood Glucose Reading (mg/dl)
-									</div><!-- END .panel-heading -->
+									<div class="panel-heading">Blood Glucose Reading (mg/dl)
+									</div>
+									<!-- END .panel-heading -->
 									<div class="panel-body">
-										<form:form method="post" action="dashboard" role="login" id="glucoseEntryForm" commandName="readingForm">
-										<div class="form-group">
+										<form:form method="post" action="dashboard" role="login"
+											id="glucoseEntryForm" commandName="readingForm">
+											<div class="form-group">
 												<form:input type="hidden" path="" />
 												<label for="datepicker">Select Date</label>
-												<form:input path="date" class="form-control" name="date" type="date"/>
-										</div>
+												<form:input path="date" class="form-control" name="date"
+													type="date" />
+											</div>
 											<div class="row">
 												<div class="form-group pull-left">
 													<label for="bgreading">Blood Glucose Reading</label>
@@ -148,7 +152,8 @@
 														placeholder="Please enter amount of insulin in units"
 														class="form-control input-lg" />
 												</div>
-											</div><!-- END .row for glucose reading and insulin units text input -->
+											</div>
+											<!-- END .row for glucose reading and insulin units text input -->
 											<div class="row">
 												<div class="form-group">
 													<label for="timeOfDay">Time of Day</label>
@@ -161,25 +166,33 @@
 														</c:forEach>
 													</form:select>
 												</div>
-											</div><!-- END .rowfor select time of day -->
+											</div>
+											<!-- END .rowfor select time of day -->
 											<c:if test="${Msg != null}">
 												<p>
 													<i>${Msg} </i>
 												</p>
 											</c:if>
-											<button type="submit" name="save_reading" value="save" class="btn btn-lg btn-info btn-block">Save Reading</button>
-											<button type="reset" class="btn btn-lg btn-info btn-block">Reset Form</button>
+											<button type="submit" name="save_reading" value="save"
+												class="btn btn-lg btn-info btn-block">Save Reading</button>
+											<button type="reset" class="btn btn-lg btn-info btn-block">Reset
+												Form</button>
 										</form:form>
-									</div><!--  END .panel-body -->
+									</div>
+									<!--  END .panel-body -->
 								</div>
-							</section><!-- END Section .glucose-form -->
-						</div><!-- END col for glucose form -->
+							</section>
+							<!-- END Section .glucose-form -->
+						</div>
+						<!-- END col for glucose form -->
 						<div class="col-md-7">
 							<form action="dashboard" method="get" role="select"
 								id="TrendEntryForm">
 								<div class="form-group">
-									<label for="dateRange" style="color: #a5a5a5; font: 15px/1.6em Lato, serif;">Glucose Trend</label> 
-									<select class="selector form-control" name="dateRange" onchange="this.form.submit()">
+									<label for="dateRange"
+										style="color: #a5a5a5; font: 15px/1.6em Lato, serif;">Glucose
+										Trend</label> <select class="selector form-control" name="dateRange"
+										onchange="this.form.submit()">
 										<option>Select Trend</option>
 										<option value="weekly">Weekly</option>
 										<option value="monthly">Monthly</option>
@@ -202,12 +215,277 @@
 
 								</div>
 							</section>
-						</div>						
-					</div><!-- END .row -->
-				</div><!-- END .main-content-container -->
-			</section><!-- END .wrapper -->
-		</section><!-- END #main-content -->
-	</section><!-- END #container -->
+						</div>
+					</div>
+					<!-- END .row for glucose and insulin form and glucose and insulin chart -->
+
+					<div class="row">
+						<div class="col-md-4">
+							<section class="a1c-form">
+								<div class="panel panel-default">
+									<div class="panel-heading">A1c Calculator</div>
+									<div class="panel-body">
+										<form method="post" action="A1c" role="entry"
+											id="a1cEntryform">
+											<div class="form-group">
+												<label for="labA1c">Lab A1c Value</label> <input type="text"
+													name="labA1c" id="labA1c" class="form-control input"
+													maxlength="4" value="${labA1c}" />
+												<div class="form-group col-lg-offset-2 col-lg-9">
+													<button type="submit" class="btn btn-info btn-block"
+														name="action" value="saveLabValue">Save Lab A1c</button>
+												</div>
+											</div>
+											<div class="form-group">
+												<!--  	<input type="hidden" name="action" value="add"> -->
+												<label for="estimatedA1c">Estimated A1c Value<span>*</span></label>
+												<input type="text" name="estimatedA1c" id="estimatedA1c"
+													class="form-control input" maxlength="4" value="${CalcA1c}"/>
+												<div class="form-group col-lg-offset-2 col-lg-9">
+													<button type="submit" class="btn btn-info btn-block"
+														name="action" value="CalcA1c">Calculate Estimated
+														A1c</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</section><!-- END section for A1c Calculator -->
+						</div>
+													<section>
+								<div class="table-responsive">
+							<table class="col-md-6 table-bordered">
+								<thead>
+									<tr>
+										<th colspan="11" class="chart_heading"><span>A1c
+												to Blood Sugar Conversion Table</span><span>(1n mg/dl and
+												mmol/l)</span></th>
+									</tr>
+								</thead>
+								<tr>
+									<td colspan="11"></td>
+
+								</tr>
+								<tr>
+									<td class="chart_label">Hb-A1c</td>
+									<td class="darkGreen">4.0</td>
+									<td class="darkGreen">4.1</td>
+									<td class="darkGreen">4.2</td>
+									<td class="darkGreen">4.3</td>
+									<td class="darkGreen">4.4</td>
+									<td class="darkGreen">4.5</td>
+									<td class="darkGreen">4.6</td>
+									<td class="lightGreen">4.7</td>
+									<td class="lightGreen">4.8</td>
+									<td class="lightGreen">4.9</td>
+								</tr>
+								<tr>
+									<td class="chart_label">mg/dl</td>
+									<td class="darkGreen">65</td>
+									<td class="darkGreen">69</td>
+									<td class="darkGreen">72</td>
+									<td class="darkGreen">76</td>
+									<td class="darkGreen">79</td>
+									<td class="darkGreen">83</td>
+									<td class="darkGreen">86</td>
+									<td class="lightGreen">90</td>
+									<td class="lightGreen">93</td>
+									<td class="lightGreen">97</td>
+								</tr>
+								<tr>
+									<td colspan="11"></td>
+
+								</tr>
+								<tr>
+									<td class="chart_label">Hb-A1c</td>
+									<td class="lightGreen">5.0</td>
+									<td class="lightGreen">5.1</td>
+									<td class="oliveGreen">5.2</td>
+									<td class="oliveGreen">5.3</td>
+									<td class="oliveGreen">5.4</td>
+									<td class="oliveGreen">5.5</td>
+									<td class="oliveGreen">5.6</td>
+									<td class="lightOrange">5.7</td>
+									<td class="lightOrange">5.8</td>
+									<td class="lightOrange">5.9</td>
+								</tr>
+								<tr>
+									<td class="chart_label">mg/dl</td>
+									<td class="lightGreen">101</td>
+									<td class="lightGreen">104</td>
+									<td class="oliveGreen">108</td>
+									<td class="oliveGreen">111</td>
+									<td class="oliveGreen">115</td>
+									<td class="oliveGreen">118</td>
+									<td class="oliveGreen">122</td>
+									<td class="lightOrange">126</td>
+									<td class="lightOrange">129</td>
+									<td class="lightOrange">133</td>
+								</tr>
+								<tr>
+									<td colspan="11"></td>
+
+								</tr>
+								<tr>
+									<td class="chart_label">Hb-A1c</td>
+									<td class="lightOrange">6.0</td>
+									<td class="lightOrange">6.1</td>
+									<td class="lightOrange">6.2</td>
+									<td class="lightOrange">6.3</td>
+									<td class="lightOrange">6.4</td>
+									<td class="burntOrange">6.5</td>
+									<td class="burntOrange">6.6</td>
+									<td class="burntOrange">6.7</td>
+									<td class="burntOrange">6.8</td>
+									<td class="burntOrange">6.9</td>
+								</tr>
+								<tr>
+									<td class="chart_label">mg/dl</td>
+									<td class="lightOrange">136</td>
+									<td class="lightOrange">140</td>
+									<td class="lightOrange">143</td>
+									<td class="lightOrange">147</td>
+									<td class="lightOrange">151</td>
+									<td class="burntOrange">154</td>
+									<td class="burntOrange">158</td>
+									<td class="burntOrange">161</td>
+									<td class="burntOrange">165</td>
+									<td class="burntOrange">168</td>
+								</tr>
+								<tr>
+									<td colspan="11"></td>
+
+								</tr>
+								<tr>
+									<td class="chart_label">Hb-A1c</td>
+									<td class="burntOrange">7.0</td>
+									<td class="lightRed">7.1</td>
+									<td class="lightRed">7.2</td>
+									<td class="lightRed">7.3</td>
+									<td class="lightRed">7.4</td>
+									<td class="lightRed">7.5</td>
+									<td class="lightRed">7.6</td>
+									<td class="lightRed">7.7</td>
+									<td class="lightRed">7.8</td>
+									<td class="lightRed">7.9</td>
+								</tr>
+								<tr>
+									<td class="chart_label">mg/dl</td>
+									<td class="burntOrange">172</td>
+									<td class="lightRed">176</td>
+									<td class="lightRed">180</td>
+									<td class="lightRed">183</td>
+									<td class="lightRed">186</td>
+									<td class="lightRed">190</td>
+									<td class="lightRed">193</td>
+									<td class="lightRed">197</td>
+									<td class="lightRed">200</td>
+									<td class="lightRed">204</td>
+								</tr>
+								<tr>
+									<td class="chart_label">mmol/l</td>
+									<td class="burntOrange">9.6</td>
+									<td class="lightRed">9.8</td>
+									<td class="lightRed">10.0</td>
+									<td class="lightRed">10.2</td>
+									<td class="lightRed">10.4</td>
+									<td class="lightRed">10.6</td>
+									<td class="lightRed">10.8</td>
+									<td class="lightRed">11.0</td>
+									<td class="lightRed">11.2</td>
+									<td class="lightRed">11.4</td>
+								</tr>
+								<tr>
+									<td colspan="11"></td>
+
+								</tr>
+								<tr>
+									<td class="chart_label">Hb-A1c</td>
+									<td class="lightRed">8.0</td>
+									<td class="bloodRed">8.1</td>
+									<td class="bloodRed">8.2</td>
+									<td class="bloodRed">8.3</td>
+									<td class="bloodRed">8.4</td>
+									<td class="bloodRed">8.5</td>
+									<td class="bloodRed">8.6</td>
+									<td class="bloodRed">8.7</td>
+									<td class="bloodRed">8.8</td>
+									<td class="bloodRed">8.9</td>
+								</tr>
+								<tr>
+									<td class="chart_label">mg/dl</td>
+									<td class="lightRed">207</td>
+									<td class="bloodRed">211</td>
+									<td class="bloodRed">215</td>
+									<td class="bloodRed">218</td>
+									<td class="bloodRed">222</td>
+									<td class="bloodRed">225</td>
+									<td class="bloodRed">229</td>
+									<td class="bloodRed">232</td>
+									<td class="bloodRed">236</td>
+									<td class="bloodRed">240</td>
+								</tr>
+								<tr>
+									<td colspan="11"></td>
+
+								</tr>
+								<tr>
+									<td class="chart_label">Hb-A1c</td>
+									<td class="bloodRed">9.0</td>
+									<td class="bloodRed">9.5</td>
+									<td class="bloodRed">10.0</td>
+									<td class="bloodRed">10.5</td>
+									<td class="bloodRed">11.0</td>
+									<td class="bloodRed">11.5</td>
+									<td class="bloodRed">12.0</td>
+									<td class="bloodRed">12.5</td>
+									<td class="bloodRed">13.0</td>
+									<td class="bloodRed">13.5</td>
+								</tr>
+								<tr>
+									<td class="chart_label">mg/dl</td>
+									<td class="bloodRed">243</td>
+									<td class="bloodRed">261</td>
+									<td class="bloodRed">279</td>
+									<td class="bloodRed">297</td>
+									<td class="bloodRed">314</td>
+									<td class="bloodRed">332</td>
+									<td class="bloodRed">350</td>
+									<td class="bloodRed">368</td>
+									<td class="bloodRed">386</td>
+									<td class="bloodRed">403</td>
+								</tr>
+								<tr>
+									<td colspan="11"></td>
+
+								</tr>
+								<tr>
+									<td colspan="4" class="darkGreen">Optimal</td>
+									<td colspan="4" class="lightGreen">Sub-optimal</td>
+									<td colspan="3" class="oliveGreen">Normal</td>
+								</tr>
+								<tr>
+									<td colspan="4" class="lightOrange">Pre-diabetes</td>
+									<td colspan="4" class="burntOrange">Diabetes</td>
+									<td colspan="3" class="lightRed">Harmful</td>
+								</tr>
+								<tr>
+									<td colspan="11" class="bloodRed">Dangerous</td>
+
+								</tr>
+							</table>
+						</div>
+							</section><!-- END section for A1c to Glucose Table  -->
+					</div>
+					<!-- END .row for a1c calculator and a1c table -->
+				</div>
+				<!-- END .main-content-container -->
+			</section>
+			<!-- END .wrapper -->
+		</section>
+		<!-- END #main-content -->
+	</section>
+	<!-- END #container -->
 
 
 	<script

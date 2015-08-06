@@ -28,11 +28,12 @@ public class A1cController {
 		double labA1c = Double.parseDouble(request.getParameter("labA1c"));
 		if (action.equals("saveLabValue")) {
 			a1cdao.addLabValue(labA1c, userID);
+			labA1c = a1cdao.getLabValue(userID);
 		} else if (action.equals("CalcA1c")) {
 			calcA1c = CalcA1cEst.getCalcA1cEstimate(userID);
 		}		
-		model.put("labA1c", labA1c);
-		model.put("CalcA1c", calcA1c);
+		model.addAttribute("labA1c", labA1c);
+		model.addAttribute("CalcA1c", calcA1c);
 		return new ModelAndView("redirect:/dashboard");
 	}
 
