@@ -31,13 +31,9 @@ create table Reading(
 );
 
 create table A1c(
-	A1cReadingID int not null auto_increment,
 	UserID varchar(50) not null,
-	CalculationDate date not null ,
-    LabValue decimal,
-    CurrentValue int not null,
+    LabValue decimal (2,1),
     
-    primary key(A1cReadingID),
     foreign key(UserID) references UserDB(UserID)
 );
 

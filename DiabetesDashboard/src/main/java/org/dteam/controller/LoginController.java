@@ -2,9 +2,12 @@ package org.dteam.controller;
 
 
 
-import javax.servlet.http.Cookie;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 
@@ -26,17 +29,22 @@ public class LoginController {
 		return "login";
 	}
 
-	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView doLogin(HttpServletRequest request, HttpServletResponse response) {
-		Cookie[] cookies = request.getCookies();
-		String id =CookieUtil.getCookieValue(cookies, "id");
-		String name =CookieUtil.getCookieValue(cookies, "user");
+	public ModelAndView doLogin(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		HttpSession session = request.getSession();
+		String id =CookieUtil.getCookieValue(request, "id");
+		String name =URLDecoder.decode(CookieUtil.getCookieValue(request, "user"),
+				java.nio.charset.StandardCharsets.UTF_8.toString());
+		String image = URLDecoder.decode(CookieUtil.getCookieValue(request, "image"),
+				java.nio.charset.StandardCharsets.UTF_8.toString());
+		session.setAttribute("userID", id);
+		session.setAttribute("userName",name );
+		session.setAttribute("image",image );
 		UserDAO userDAO = getDAO();
 		if(!userDAO.findUser(id)){
 			User user = new User();
 			user.setUserID(id);			
-			user.setName(java.net.URLDecoder.decode(name));
+			user.setName(name);
 			userDAO.addUser(user);
 		}
 		    return new ModelAndView("redirect:/dashboard"); 

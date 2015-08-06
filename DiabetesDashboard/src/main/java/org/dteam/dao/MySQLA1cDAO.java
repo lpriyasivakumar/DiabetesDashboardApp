@@ -2,8 +2,6 @@ package org.dteam.dao;
 
 import java.sql.*;
 
-import org.dteam.model.A1cReading;
-
 import static org.dteam.dao.MySQLDAOFactory.*;
 
 public class MySQLA1cDAO implements A1cDAO {
@@ -24,20 +22,20 @@ public class MySQLA1cDAO implements A1cDAO {
 	}
 
 	@Override
-	public A1cReading getLabValue(String userID) {
+	public double getLabValue(String userID) {
 		connectToDB();
-		A1cReading a1cReading = new A1cReading();
+
 		try {
 			String sql = "SELECT LabValue FROM A1c WHERE userID = " + "'" + userID + "';";
 			ResultSet rs = statement.executeQuery(sql);
 			if (rs.next()) {
-				a1cReading.setLabA1c(rs.getDouble("LabValue"));
+				return rs.getDouble("LabValue");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		closeDB();
 
-		return a1cReading;
+		return 0;
 	}
 }
