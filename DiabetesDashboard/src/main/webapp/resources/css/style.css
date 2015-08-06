@@ -4946,7 +4946,7 @@ span.customSelect.changed {
 
 
 .glucose-form {
-    margin: 50px 0px 20px 20px;
+    margin: 80px 0px 20px 20px;
     font: 15px/1.6em Lato, serif;
     max-width:400px;
 }
@@ -5043,6 +5043,7 @@ table {
     -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.63);
     -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.63);
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.63);
+    position:relative;
 }
 
 td {
@@ -5052,6 +5053,8 @@ td {
 
 th{
 	padding:.5em;
+	color: #fff;
+    background: #6e91af;
 }
 
 th span{
@@ -5097,4 +5100,53 @@ th span{
     background: #6e91af;
     font: 15px/1.6em Lato, serif;
 }
+
+.a1c-form {
+    margin: 50px 0px 20px 20px;
+    font: 15px/1.6em Lato, serif;
+    max-width:400px;
+}
+
+.a1c-form .panel {
+    border: none;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.63);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.63);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.63);
+}
+
+.a1c-form .panel .panel-heading {
+    color: #fff;
+    background: #6e91af;
+    line-height: 2.4em;
+    font-weight: bold;
+    padding-left: 26px;
+}
+
+.a1c-form .panel .panel-body {
+    background: #f2f2f2;
+    padding: 20px 26px;
+}
+
+form[role=entry] {
+    color: #a5a5a5;
+}
+
+
+form[role=entry] label {
+    font-weight: normal;
+}
+
+form[role=entry] input, form[role=entry] button {
+    font-size: 14px;
+}
+
+form[role=entry] input {
+    
+}
+
+form[role=entry] button {
+    margin-top: 2em;
+    font-weight: bold;
+}
+
 
