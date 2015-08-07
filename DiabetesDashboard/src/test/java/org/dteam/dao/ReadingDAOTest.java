@@ -10,43 +10,43 @@ import org.junit.After;
 import org.junit.Test;
 
 public class ReadingDAOTest {
-	
+
 	DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 	ReadingDAO readingDAO = mysqlFactory.getReadingDAO();
 
 	@Test
-	public void testAddValidReadingShouldreturn1() {
+	public void testAddValidReadingShouldreturn1() throws SQLException {
 		Reading reading = new Reading();
 		reading.setDate("2015-04-15");
 		reading.setBloodGlucose(175);
 		reading.setInsulin(25);
 		reading.setTimeOfDay("1");
-		assertEquals(1,readingDAO.addReading(reading, "1"));
+		assertEquals(1, readingDAO.addReading(reading, "1"));
 	}
-	
+
 	@Test
-	public void testAddUserWithInvalidUserShouldreturn0() {
-		Reading reading = new Reading();		
-		assertEquals(0,readingDAO.addReading(reading,"2"));
+	public void testAddUserWithInvalidUserShouldreturn0() throws SQLException {
+		Reading reading = new Reading();
+		assertEquals(0, readingDAO.addReading(reading, "2"));
 	}
-	
+
 	@Test
-	public void testgetReadingsWithInValidUserIDShouldreturnEmptyList() {
+	public void testgetReadingsWithInValidUserIDShouldreturnEmptyList() throws SQLException {
 		ArrayList<Reading> readings = new ArrayList<Reading>();
-		assertEquals(readings,readingDAO.getReadings("weekly", "One"));
+		assertEquals(readings, readingDAO.getReadings("weekly", "One"));
 	}
-	
-	
+
 	@Test
-	public void testgetReadingsWithValidUserIDShouldReturnTwoELements() {		
-		assertEquals(5,(readingDAO.getReadings("weekly", "106025413030436687338")).size());
+	public void testgetReadingsWithValidUserIDShouldReturnTwoELements() throws SQLException {
+		assertEquals(5, (readingDAO.getReadings("weekly", "106025413030436687338")).size());
 	}
-	
+
 	@After
-    public void tearDown() throws SQLException {
-        MySQLDAOFactory.connectToDB();
-        MySQLDAOFactory.statement.executeUpdate("Delete from reading Where ReadingDate = '2015-04-15' And UserID = '1'");
-        MySQLDAOFactory.closeDB();
-    }
+	public void tearDown() throws SQLException {
+		MySQLDAOFactory.connectToDB();
+		MySQLDAOFactory.statement
+				.executeUpdate("Delete from reading Where ReadingDate = '2015-04-15' And UserID = '1'");
+		MySQLDAOFactory.closeDB();
+	}
 
 }

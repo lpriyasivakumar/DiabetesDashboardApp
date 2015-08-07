@@ -2,6 +2,7 @@ package org.dteam.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +40,7 @@ public class LoginController {
 		session.setAttribute("userID", id);
 		session.setAttribute("userName", name);
 		session.setAttribute("image", image);
-		session.setAttribute("calcA1c","0");
+		session.setAttribute("calcA1c", "0");
 		UserDAO userDAO = getUserDAO();
 		if (!userDAO.findUser(id)) {
 			User user = new User();
@@ -47,12 +48,15 @@ public class LoginController {
 			user.setName(name);
 			userDAO.addUser(user);
 			A1cDAO a1cDAO = getA1cDAO();
-			a1cDAO.addLabValue(0, id);
+			try {
+				a1cDAO.addLabValue(0, id);
+			} catch (SQLException e) {
+				System.out.println("Sql Error: Cannot add to the database.");
+			}
 
 		}
 		return new ModelAndView("redirect:/dashboard");
-		
-		
+
 	}
 
 	public UserDAO getUserDAO() {

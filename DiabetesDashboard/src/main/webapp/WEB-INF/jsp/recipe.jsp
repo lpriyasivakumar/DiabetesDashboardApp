@@ -8,11 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <meta name="description" content="Recipes designed to encourage healthy eating habbits to help fight type 2 diabetes">
+    <meta name="author" content="DTeam">
+    <link rel="icon" type="image/ico"
+	href="<c:url value="/resources/img/favicon.ico" />" />
 
-    <title>Off Canvas Template for Bootstrap</title>
+    <title>Choose your favorite recipe</title>
 
     <!-- Bootstrap CSS
 <link rel="stylesheet" type="text/css"
@@ -33,26 +34,37 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
+		<header class="header">
+			<div class="toggle-nav">
+				<div class="icon-reorder tooltips"
+					data-original-title="Toggle Navigation" data-placement="bottom"></div>
+			</div>
+
+			<!--logo start-->
+			<a href="dashboard" class="logo">Recipes <span class="lite">Dashboard</span></a>
+			<!--logo end-->
+			<div class="top-nav notification-row">
+				<!-- notificatoin dropdown start-->
+				<ul class="nav pull-right top-menu">
+					<!-- user login dropdown start-->
+					<li class="dropdown"><a data-toggle="dropdown"
+						class="dropdown-toggle" href="#"> <span class="profile-ava">
+								<img src="<c:url value="resources/img/user-icon.png" />" alt="Default User Image"/>
+
+						</span> <span class="username" id="userName">${userName}</span> <b
+							class="caret"></b>
+					</a>
+						<ul class="dropdown-menu extended logout">
+							<div class="log-arrow-up"></div>
+
+							<li><a href="#" onclick="signOut()"><i
+									class="icon_key_alt"></i> Log Out</a></li>
+						</ul></li>
+					<!-- user login dropdown end -->
+				</ul>
+				<!-- notificatoin dropdown end-->
+			</div>
+		</header>
 
     <div class="container">
     

@@ -1,13 +1,21 @@
+
 /*
  * Style tweaks
  * --------------------------------------------------
  */
+@import url('style.css');
 html,
 body {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 body {
   padding-top: 70px;
+   background: url('../img/food-bg.jpg') no-repeat; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  
 }
 footer {
   padding: 30px 0;
@@ -66,4 +74,8 @@ footer {
   	-o-background-size: cover;
   	background-size: cover;
   	height:250px;
+}
+
+.container{
+	margin-top:90px;
 }
