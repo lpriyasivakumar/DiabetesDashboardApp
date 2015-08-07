@@ -22,7 +22,8 @@
     <!-- Custom styles for this template -->
     <!-- Bootstrap CSS -->
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/offcanvas.css" />" />
+	href="<c:url value="/resources/css/recipe.css" />" />
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -63,8 +64,7 @@
             <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
           </p>
           <div class="jumbotron">
-            <h1>Hello, world!</h1>
-            <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
+          
           </div>
           <div class="row">
             <div class="col-xs-6 col-lg-4">
