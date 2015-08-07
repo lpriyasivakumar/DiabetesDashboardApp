@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.dteam.dao.A1cDAO;
@@ -19,7 +18,6 @@ import org.dteam.utilities.JsonArrayMaker;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,39 +26,31 @@ import com.google.gson.JsonArray;
 
 @Controller
 public class DashboardController {
-	JsonArray dates;
-	JsonArray bloodGlucose;
-	JsonArray insulin;
-
-	DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String viewDashboard(Map<String, Object> model, HttpServletRequest request)
 			throws UnsupportedEncodingException {
 
-		HttpSession session = request.getSession();
-		String userID = session.getAttribute("userID").toString();
-		if (userID == null || userID.isEmpty()) {
-
+		HttpSession session = request.getSession();		
+		if (session.getAttribute("userID") == null){
 			return "login";
 		} else {
+			String userID = session.getAttribute("userID").toString();
 			String dateRange = request.getParameter("dateRange");
 			Reading readingForm = new Reading();
-			A1cDAO a1cdao = mysqlFactory.getA1cDAO();
-			double labA1c = a1cdao.getLabValue(userID);
 			if (dateRange == null || dateRange.isEmpty()) {
 				dateRange = "all";
 			}
-			getChartData(request, dateRange);
-			model.put("dates", dates);
-			model.put("bloodGlucose", bloodGlucose);
-			model.put("insulin", insulin);
+			A1cDAO a1cdao = getA1cDAO();
+			double labA1c = a1cdao.getLabValue(userID);			
+			ModelMap map = getChartData(request, dateRange);
+			model.put("dates", map.get("dates"));
+			model.put("bloodGlucose", map.get("bloodGlucose"));
+			model.put("insulin", map.get("insulin"));
 			model.put("readingForm", readingForm);
-
-			model.put("userName", session.getAttribute("userName").toString());
-			model.put("url", session.getAttribute("image").toString());
 			model.put("labA1c", labA1c);
-
+			model.put("userName", session.getAttribute("userName").toString());
+			model.put("url", session.getAttribute("image").toString());			
 			return "dashboard";
 
 		}
@@ -68,26 +58,30 @@ public class DashboardController {
 	}
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
-	public String doDashboard(@ModelAttribute("readingForm") Reading reading, BindingResult result, ModelMap model,
-			HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException {
+	public String doDashboard(@ModelAttribute("readingForm") Reading reading,  ModelMap model,
+			 String calcA1c,HttpServletRequest request) throws ClassNotFoundException, SQLException {
 
-		ReadingDAO readingDAO = mysqlFactory.getReadingDAO();
+		ReadingDAO readingDAO = getReadingDAO();
 		HttpSession session = request.getSession();
 		int result1 = readingDAO.addReading(reading, session.getAttribute("userID").toString());
 
 		if (result1 > 0)
+		{
 			model.addAttribute("Msg", result1 + " reading added.");
-		else
+		}
+		else{
 			model.addAttribute("Msg", "Invalid entries. Cannot save reading");
+		}
+		model.addAttribute("calcA1c", calcA1c);
 		return "dashboard";
 	}
 
-	private void getChartData(HttpServletRequest request, String dateRange) {
+	private ModelMap getChartData(HttpServletRequest request, String dateRange) {
 		HttpSession session = request.getSession();
 		ArrayList<String> dateArray = new ArrayList<String>();
 		ArrayList<Integer> bgArray = new ArrayList<Integer>();
 		ArrayList<Integer> insulinArray = new ArrayList<Integer>();
-		ReadingDAO readingDAO = mysqlFactory.getReadingDAO();
+		ReadingDAO readingDAO = getReadingDAO();
 		ArrayList<Reading> readings = readingDAO.getReadings(dateRange, session.getAttribute("userID").toString());
 
 		for (Reading reading : readings) {
@@ -95,9 +89,25 @@ public class DashboardController {
 			bgArray.add(reading.getBloodGlucose());
 			insulinArray.add(reading.getInsulin());
 		}
-		dates = JsonArrayMaker.makeJsonArray(dateArray);
-		bloodGlucose = JsonArrayMaker.makeJsonArray(bgArray);
-		insulin = JsonArrayMaker.makeJsonArray(insulinArray);
+		ModelMap map = new ModelMap();
+		JsonArray dates = JsonArrayMaker.makeJsonArray(dateArray);
+		JsonArray bloodGlucose = JsonArrayMaker.makeJsonArray(bgArray);
+		JsonArray insulin = JsonArrayMaker.makeJsonArray(insulinArray);
+		map.addAttribute("dates", dates);
+		map.addAttribute("bloodGlucose", bloodGlucose);
+		map.addAttribute("insulin", insulin);
+
+		return map;
+	}
+
+	public ReadingDAO getReadingDAO() {
+		return DAOFactory.getDAOFactory(DAOFactory.MYSQL).getReadingDAO();
+
+	}
+
+	public A1cDAO getA1cDAO() {
+		return DAOFactory.getDAOFactory(DAOFactory.MYSQL).getA1cDAO();
+
 	}
 
 }
