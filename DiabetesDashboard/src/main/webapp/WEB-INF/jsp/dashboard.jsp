@@ -227,24 +227,24 @@
 									<div class="panel-body">
 										<form method="post" action="A1c" role="entry"
 											id="a1cEntryform">
+											<input type="hidden" name="action" value="saveLabValue">
 											<div class="form-group">
-												<label for="labA1c">Lab A1c Value</label> <input type="text"
-													name="labA1c" id="labA1c" class="form-control input"
-													maxlength="4" value="${labA1c}" />
+												<label for="labA1c">Lab A1c Value: ${labA1c} </label> 
+												<input type="text" name="labA1c" id="labA1c" class="form-control input"
+													maxlength="4" value="" />
 												<div class="form-group col-lg-offset-2 col-lg-9">
-													<button type="submit" class="btn btn-info btn-block"
-														name="action" value="saveLabValue">Save Lab A1c</button>
+													<button  type="submit" class="btn btn-info btn-block">Save Lab Value</button>
 												</div>
 											</div>
-											<div class="form-group">
-												<!--  	<input type="hidden" name="action" value="add"> -->
+											</form>
+											<form method="get" action="A1c" role="entry"
+											id="a1cEntryform">
+											<input type="hidden" name="action" value="CalcA1c">
+											<div class="form-group">												
 												<label for="estimatedA1c">Estimated A1c Value<span>*</span></label>
-												<input type="text" name="estimatedA1c" id="estimatedA1c"
-													class="form-control input" maxlength="4" value="${CalcA1c}"/>
+												<label>${calcA1c}</label>
 												<div class="form-group col-lg-offset-2 col-lg-9">
-													<button type="submit" class="btn btn-info btn-block"
-														name="action" value="CalcA1c">Calculate Estimated
-														A1c</button>
+													<button  type="submit" class="btn btn-info btn-block">Calculate Estimated A1c</button>												
 												</div>
 											</div>
 										</form>
