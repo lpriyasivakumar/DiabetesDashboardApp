@@ -28,7 +28,7 @@ public class MySQLDAOFactory extends DAOFactory {
 	public static void closeDB() {
 		try {
 
-			if (statement != null){
+			if (statement != null) {
 				conn.close();
 			}
 		} catch (SQLException se) {

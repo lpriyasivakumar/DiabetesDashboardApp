@@ -4,20 +4,20 @@ import org.dteam.model.User;
 import java.sql.*;
 import static org.dteam.dao.MySQLDAOFactory.*;
 
-public class MySQLUserDAO  implements UserDAO {	
+public class MySQLUserDAO implements UserDAO {
 
 	@Override
-	public  int addUser(User user) {
+	public int addUser(User user) {
 		connectToDB();
 		try {
-			
-			String sql = "Insert into userdb(UserID,UserName) values('" + user.getUserID() + "','" + user.getName() + "');";
+
+			String sql = "Insert into userdb(UserID,UserName) values('" + user.getUserID() + "','" + user.getName()
+					+ "');";
 			return statement.executeUpdate(sql);
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 		return 0;
 	}
 
@@ -33,7 +33,7 @@ public class MySQLUserDAO  implements UserDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 		return false;
 	}
 
