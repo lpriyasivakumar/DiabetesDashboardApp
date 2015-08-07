@@ -16,8 +16,8 @@
 <meta name="keyword"
 	content="Diabetes, Dashboard, Sugar, Glucose, Graph, Alc, Insulin, Diabetic">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<!--<link rel="shortcut icon" href="img/favicon.png">-->
-<link rel="icon" type="image/png"
+
+<link rel="icon" type="image/ico"
 	href="<c:url value="/resources/img/favicon.ico" />" />
 
 <title>Diabetes Dashboard</title>
@@ -65,7 +65,7 @@
 					<!-- user login dropdown start-->
 					<li class="dropdown"><a data-toggle="dropdown"
 						class="dropdown-toggle" href="#"> <span class="profile-ava">
-								<img src="${url}" alt="" />
+								<img src="<c:url value="resources/img/user-icon.png" />" alt="Default User Image"/>
 
 						</span> <span class="username" id="userName">${userName}</span> <b
 							class="caret"></b>
