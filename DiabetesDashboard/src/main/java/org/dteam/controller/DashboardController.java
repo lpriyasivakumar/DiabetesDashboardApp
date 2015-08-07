@@ -13,7 +13,7 @@ import org.dteam.dao.A1cDAO;
 import org.dteam.dao.DAOFactory;
 import org.dteam.dao.ReadingDAO;
 import org.dteam.model.Reading;
-
+import org.dteam.utilities.CookieUtil;
 import org.dteam.utilities.JsonArrayMaker;
 
 import org.springframework.stereotype.Controller;
@@ -30,12 +30,11 @@ public class DashboardController {
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String viewDashboard(Map<String, Object> model, HttpServletRequest request)
 			throws UnsupportedEncodingException {
-
-		HttpSession session = request.getSession();		
-		if (session.getAttribute("userID") == null){
+		HttpSession session = request.getSession();
+		String userID = CookieUtil.getCookieValue(request, "id");
+		if (userID.equals(null) || userID.isEmpty()){
 			return "login";
-		} else {
-			String userID = session.getAttribute("userID").toString();
+		} else {			
 			String dateRange = request.getParameter("dateRange");
 			Reading readingForm = new Reading();
 			if (dateRange == null || dateRange.isEmpty()) {

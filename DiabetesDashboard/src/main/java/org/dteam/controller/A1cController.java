@@ -13,22 +13,23 @@ import org.springframework.web.servlet.ModelAndView;
 import org.dteam.dao.A1cDAO;
 import org.dteam.dao.DAOFactory;
 import org.dteam.utilities.CalcA1cEst;
+import org.dteam.utilities.CookieUtil;
 
 @Controller
 public class A1cController {
 
 	@RequestMapping(value = "/A1c", method = RequestMethod.GET)
 	public ModelAndView viewA1c(HttpServletRequest request) throws IOException {
-		HttpSession session = request.getSession();		
-		if (session.getAttribute("userID") == null) {
+		String userID = CookieUtil.getCookieValue(request, "id");
+		HttpSession session = request.getSession();
+		if (userID.equals(null) || userID.isEmpty()){					
 			return new ModelAndView("redirect:/login");
 		} else {
-			String action = request.getParameter("action");
-			String userID = session.getAttribute("userID").toString();
+			String action = request.getParameter("action");			
 			String calcA1c = "";
-			if (action.equals("CalcA1c")) {
+			if (action.equals("CalcA1c")) {				
 				DecimalFormat df = new DecimalFormat("#.00");
-				calcA1c = df.format(CalcA1cEst.getCalcA1cEstimate(userID));
+				calcA1c = df.format(CalcA1cEst.getCalcA1cEstimate(userID));				
 				session.setAttribute("calcA1c",calcA1c);
 			}			
 			return new ModelAndView("redirect:/dashboard");
