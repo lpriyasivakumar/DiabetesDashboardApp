@@ -241,8 +241,7 @@
 											id="a1cEntryform">
 											<input type="hidden" name="action" value="CalcA1c">
 											<div class="form-group">												
-												<label for="estimatedA1c">Estimated A1c Value<span>*</span></label>
-												<label>${calcA1c}</label>
+												<label for="estimatedA1c">Estimated A1c Value<span>*: ${calcA1c}</span></label>												
 												<div class="form-group col-lg-offset-2 col-lg-9">
 													<button  type="submit" class="btn btn-info btn-block">Calculate Estimated A1c</button>												
 												</div>
