@@ -55,9 +55,7 @@ public class A1cController {
 					System.out.println("Sql Error: Cannot add to database.");
 				}
 			}
-
 			return new ModelAndView("redirect:/dashboard");
-
 		}
 	}
 

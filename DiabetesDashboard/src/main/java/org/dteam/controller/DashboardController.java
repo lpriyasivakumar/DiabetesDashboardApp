@@ -56,9 +56,7 @@ public class DashboardController {
 			model.put("userName", session.getAttribute("userName").toString());
 			model.put("url", session.getAttribute("image").toString());
 			return "dashboard";
-
 		}
-
 	}
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
