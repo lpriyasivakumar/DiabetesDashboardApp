@@ -12,7 +12,7 @@
 	content="Diabetes, Dashboard, Login, Glucose, Insulin">
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id"
-	content="1008285497817-qjhgv7deojafc7ibfm4pb9psncmh29m0.apps.googleusercontent.com">
+	content="402953970493-pdl3hmkuo2sm43413vgkc5be5oea7fuj.apps.googleusercontent.com">
 
 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
