@@ -7,16 +7,18 @@ import java.sql.Statement;
 
 public class MySQLDAOFactory extends DAOFactory {
 
-	static final String host = "jdbc:mysql://localhost:3306/diabetic_dashboard_data";
-	static final String userName = "root";
-	static final String password = "password";
+	static final String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+	static final String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+	private static final String userName = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+	private static final String password = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+	private static final String url = String.format("jdbc:mysql://%s:%s/diabetesdashboard", host,port);
 	public static Connection conn;
 	static Statement statement = null;
 
 	public static void connectToDB() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(host, userName, password);
+			conn = DriverManager.getConnection(getUrl(), getUsername(), getPassword());
 			statement = conn.createStatement();
 		} catch (SQLException se) {
 			se.printStackTrace();
@@ -49,6 +51,18 @@ public class MySQLDAOFactory extends DAOFactory {
 	@Override
 	public A1cDAO getA1cDAO() {
 		return new MySQLA1cDAO();
+	}
+
+	public static String getUrl() {
+		return url;
+	}
+
+	public static String getUsername() {
+		return userName;
+	}
+
+	public static String getPassword() {
+		return password;
 	}
 
 }

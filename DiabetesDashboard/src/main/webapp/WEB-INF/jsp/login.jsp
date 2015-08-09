@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="google-site-verification" content="jnDgHzz81DshoFTijFstgLXrBSIsmQtpYMGGJW6iacE" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Diabetes Dashboard Login Page">
@@ -116,7 +117,7 @@
 			};
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4 && xhr.status==200){
-					post("http://localhost:8080/DiabetesDashboard/login","post");
+					post("http://diabetesdashboard-dteamdash.rhcloud.com/DiabetesDashboard-1.0-SNAPSHOT/login","post");
 				}
 			}
 			xhr.open('POST', 'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='+id_token);

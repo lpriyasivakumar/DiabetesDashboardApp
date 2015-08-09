@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.dteam.dao.A1cDAO;
 import org.dteam.dao.DAOFactory;
+import static org.dteam.dao.MySQLDAOFactory.*;
 import org.dteam.dao.ReadingDAO;
 import org.dteam.model.Reading;
 import org.dteam.utilities.CookieUtil;
@@ -31,7 +32,7 @@ public class DashboardController {
 	public String viewDashboard(Map<String, Object> model, HttpServletRequest request)
 			throws UnsupportedEncodingException {
 		HttpSession session = request.getSession();
-		String userID = CookieUtil.getCookieValue(request, "id");
+		String userID = CookieUtil.getCookieValue(request, "id");		
 		if (userID.equals(null) || userID.isEmpty()) {
 			return "login";
 		} else {
@@ -40,10 +41,10 @@ public class DashboardController {
 			if (dateRange == null || dateRange.isEmpty()) {
 				dateRange = "all";
 			}
-			A1cDAO a1cdao = getA1cDAO();
+			A1cDAO a1cDAO = getA1cDAO();
 			double labA1c = 0;
 			try {
-				labA1c = a1cdao.getLabValue(userID);
+				labA1c = a1cDAO.getLabValue(userID);
 			} catch (SQLException e) {
 				System.out.println("Error adding to database.");
 			}
@@ -55,12 +56,14 @@ public class DashboardController {
 			model.put("labA1c", labA1c);
 			model.put("userName", session.getAttribute("userName").toString());
 			model.put("url", session.getAttribute("image").toString());
+			model.put("dburl",getUrl());
+			model.put("userName",getUsername());
+			model.put("password",getPassword());
 			return "dashboard";
 		}
 	}
 
-	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
-	public String doDashboard(@ModelAttribute("readingForm") Reading reading, ModelMap model, String calcA1c,
+	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)	public String doDashboard(@ModelAttribute("readingForm") Reading reading, ModelMap model, String calcA1c,
 			HttpServletRequest request) throws ClassNotFoundException {
 
 		ReadingDAO readingDAO = getReadingDAO();

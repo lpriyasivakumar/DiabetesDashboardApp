@@ -102,8 +102,8 @@
 			</div>
 		</aside>
 		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
-			url="jdbc:mysql://localhost:3306/diabetic_dashboard_data" user="root"
-			password="password" />
+			url="${dburl}"user="${userName}"
+			password="${password}" />
 		<sql:query dataSource="${ds}" var="result">
 			SELECT * FROM timeofday;
 		</sql:query>
@@ -578,7 +578,7 @@
 					+ '=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 			document.cookie = "image"
 					+ '=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/DiabetesDashboard/login";
+			document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://diabetesdashboard-dteamdash.rhcloud.com/DiabetesDashboard-1.0-SNAPSHOT/login";
 		};
 	</script>
 
