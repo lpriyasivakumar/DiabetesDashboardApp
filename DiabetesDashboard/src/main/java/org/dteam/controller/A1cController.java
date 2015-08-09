@@ -50,8 +50,14 @@ public class A1cController {
 			return new ModelAndView("redirect:/login");
 		} else {
 			if (action.equals("saveLabValue")) {
-				double labA1c = Double.parseDouble(request.getParameter("labA1c"));
-				a1cdao.addLabValue(labA1c, userID);
+				try{
+					double labA1c = Double.parseDouble(request.getParameter("labA1c"));
+					a1cdao.addLabValue(labA1c, userID);
+					session.setAttribute("errMsg", null);
+				}catch(NumberFormatException nfe){
+					session.setAttribute("errMsg", "Invalid Number for Labvalue. Try Again");
+				}		
+				
 			}
 			return new ModelAndView("redirect:/dashboard");
 		}

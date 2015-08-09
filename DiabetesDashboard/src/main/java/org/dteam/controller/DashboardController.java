@@ -44,7 +44,6 @@ public class DashboardController {
 			A1cDAO a1cdao = getA1cDAO();
 			double labA1c = 0;
 			labA1c = a1cdao.getLabValue(userID);
-
 			ModelMap map = getChartData(request, dateRange);
 			model.put("dates", map.get("dates"));
 			model.put("bloodGlucose", map.get("bloodGlucose"));
@@ -71,6 +70,7 @@ public class DashboardController {
 			model.addAttribute("Msg", "Invalid entries. Cannot save reading");
 		}
 		model.addAttribute("calcA1c", calcA1c);
+		session.setAttribute("errMsg", null);
 		return "dashboard";
 	}
 

@@ -102,7 +102,7 @@
 			</div>
 		</aside>
 		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
-			url="jdbc:mysql://localhost:8889/diabetic_dashboard_data" user="root"
+			url="jdbc:mysql://localhost:3306/diabetic_dashboard_data" user="root"
 			password="password" />
 		<sql:query dataSource="${ds}" var="result">
 			SELECT * FROM timeofday;
@@ -139,7 +139,7 @@
 											<div class="row">
 												<div class="form-group pull-left">
 													<label for="bgreading">Blood Glucose Reading</label>
-													<form:input path="bloodGlucose" type="text"
+													<form:input path="bloodGlucose" type="number"
 														name="bgreading" id="bgreading"
 														placeholder="Please enter glucose reading"
 														class="form-control input-lg" />
@@ -147,7 +147,7 @@
 												<div class="form-group pull-right">
 													<!--  	<input type="hidden" name="action" value="add"> -->
 													<label for="insulinUnits">Insulin Units</label>
-													<form:input path="insulin" type="text" name="insulinUnits"
+													<form:input path="insulin" type="number" name="insulinUnits"
 														id="insulinUnits"
 														placeholder="Please enter amount of insulin in units"
 														class="form-control input-lg" />
@@ -235,6 +235,11 @@
 												<div class="form-group col-lg-offset-2 col-lg-9">
 													<button  type="submit" class="btn btn-info btn-block">Save Lab Value</button>
 												</div>
+												<c:if test="${errMsg != null}">
+												<p>
+													<i>${errMsg} </i>
+												</p>
+											</c:if>
 											</div>
 											</form>
 											<form method="get" action="A1c" role="entry"
