@@ -19,10 +19,9 @@ public class MySQLReadingDAO implements ReadingDAO {
 			return statement.executeUpdate(sql);
 
 		} finally {
-			closeDB();			
+			closeDB();
 		}
-		
-		
+
 	}
 
 	@Override
@@ -42,7 +41,7 @@ public class MySQLReadingDAO implements ReadingDAO {
 				ReadingList.add(reading);
 			}
 		} finally {
-			closeDB();			
+			closeDB();
 		}
 		return ReadingList;
 	}
@@ -57,7 +56,7 @@ public class MySQLReadingDAO implements ReadingDAO {
 				return rs.getInt("BG_AVG");
 			}
 		} finally {
-			closeDB();			
+			closeDB();
 		}
 		return 0;
 	}

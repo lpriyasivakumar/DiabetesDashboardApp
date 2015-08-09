@@ -14,7 +14,7 @@ public class UserDAOTest {
 	UserDAO userDAO = mysqlFactory.getUserDAO();
 
 	@Test
-	public void testAddUserWithValidUser() {
+	public void testAddUserWithValidUser() throws SQLException {
 		User user = new User();
 		user.setUserID("20");
 		user.setName("Jane Doe");
@@ -22,17 +22,17 @@ public class UserDAOTest {
 	}
 
 	@Test(expected = Exception.class)
-	public void testAddUserWithInvalidUser() {
+	public void testAddUserWithInvalidUser() throws SQLException {
 		userDAO.addUser(null);
 	}
 
 	@Test
-	public void testFindUserWithValidUserID() {
+	public void testFindUserWithValidUserID() throws SQLException {
 		assertEquals(true, userDAO.findUser("1"));
 	}
 
 	@Test
-	public void testFindUserWithInValidUserID() {
+	public void testFindUserWithInValidUserID() throws SQLException {
 		assertEquals(false, userDAO.findUser("One"));
 	}
 

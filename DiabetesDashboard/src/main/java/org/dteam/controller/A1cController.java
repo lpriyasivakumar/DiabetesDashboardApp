@@ -7,7 +7,9 @@ import java.text.DecimalFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,7 +41,7 @@ public class A1cController {
 	}
 
 	@RequestMapping(value = "/A1c", method = RequestMethod.POST)
-	public ModelAndView calculateA1c(HttpServletRequest request) throws IOException {
+	public ModelAndView calculateA1c(HttpServletRequest request) throws IOException, SQLException {
 		HttpSession session = request.getSession();
 		A1cDAO a1cdao = getA1cDAO();
 		String action = request.getParameter("action");
@@ -49,11 +51,7 @@ public class A1cController {
 		} else {
 			if (action.equals("saveLabValue")) {
 				double labA1c = Double.parseDouble(request.getParameter("labA1c"));
-				try {
-					a1cdao.addLabValue(labA1c, userID);
-				} catch (SQLException e) {
-					System.out.println("Sql Error: Cannot add to database.");
-				}
+				a1cdao.addLabValue(labA1c, userID);
 			}
 			return new ModelAndView("redirect:/dashboard");
 		}
@@ -61,6 +59,11 @@ public class A1cController {
 
 	public A1cDAO getA1cDAO() {
 		return DAOFactory.getDAOFactory(DAOFactory.MYSQL).getA1cDAO();
+	}
+	
+	@ExceptionHandler({SQLException.class, DataAccessException.class,NullPointerException.class})
+	public String databaseError() {
+		return "databaseError";
 	}
 
 }
