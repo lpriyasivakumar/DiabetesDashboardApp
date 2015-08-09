@@ -152,17 +152,16 @@
 													<form:select path="timeOfDay" class="selector form-control"
 														name="timeOfDay">
 														<option>Select Time of Day</option>														
-														<option value=1>Before Breakfast</option>
-														<option value=2>After Breakfast</option>
-														<option value=3>Before Lunch</option>
-														<option value=4>After Lunch</option>
-														<option value=5>Before Dinner</option>
-														<option value=6>After Dinner</option>
-														<option value=7>Bedtime</option>												
+														<option value="1">Before Breakfast</option>
+														<option value="2">After Breakfast</option>
+														<option value="3">Before Lunch</option>
+														<option value="4">After Lunch</option>
+														<option value="5">Before Dinner</option>
+														<option value="6">After Dinner</option>
+														<option value="7">Bedtime</option>												
 													</form:select>
 												</div>
-											</div>
-											<!-- END .rowfor select time of day -->
+											</div>											
 											<c:if test="${Msg != null}">
 												<p>
 													<i>${Msg} </i>
