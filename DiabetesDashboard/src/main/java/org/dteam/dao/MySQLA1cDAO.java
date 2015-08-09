@@ -25,16 +25,15 @@ public class MySQLA1cDAO implements A1cDAO {
 		try {
 			String sql = "SELECT LabValue FROM A1c WHERE userID = " + "'" + userID + "';";
 			ResultSet rs;
-			
-				rs = statement.executeQuery(sql);
-				if (rs.next()) {
-					LabValue = rs.getDouble("LabValue");
-			
-				} 
-			}finally {
-					closeDB();
-				}
-		return LabValue;	
+			rs = statement.executeQuery(sql);
+			if (rs.next()) {
+				LabValue = rs.getDouble("LabValue");
+
+			}
+		} finally {
+			closeDB();
+		}
+		return LabValue;
 
 	}
 }

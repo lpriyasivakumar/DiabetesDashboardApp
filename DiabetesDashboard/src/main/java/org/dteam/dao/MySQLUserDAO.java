@@ -10,7 +10,6 @@ public class MySQLUserDAO implements UserDAO {
 	public int addUser(User user) {
 		connectToDB();
 		try {
-
 			String sql = "Insert into userdb(UserID,UserName) values('" + user.getUserID() + "','" + user.getName()
 					+ "');";
 			return statement.executeUpdate(sql);
@@ -24,9 +23,9 @@ public class MySQLUserDAO implements UserDAO {
 	@Override
 	public boolean findUser(String userID) {
 		connectToDB();
+		String sql = "Select * from userdb where UserID =" + "'" + userID + "'";
 		try {
-			statement = conn.createStatement();
-			String sql = "Select * from userdb where UserID =" + "'" + userID + "'";
+			
 			ResultSet rs = statement.executeQuery(sql);
 			return rs.next();
 
