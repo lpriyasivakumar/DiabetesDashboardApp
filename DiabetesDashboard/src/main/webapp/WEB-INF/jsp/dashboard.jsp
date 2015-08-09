@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -101,13 +100,6 @@
 				<!--sidebar menu end -->
 			</div>
 		</aside>
-		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
-			url="${dburl}"user="${userName}"
-			password="${password}" />
-		<sql:query dataSource="${ds}" var="result">
-			SELECT * FROM timeofday;
-		</sql:query>
-
 		<section id="main-content">
 			<section class="wrapper">
 				<div class="main-content-container">
@@ -159,11 +151,14 @@
 													<label for="timeOfDay">Time of Day</label>
 													<form:select path="timeOfDay" class="selector form-control"
 														name="timeOfDay">
-														<option>Select Time of Day</option>
-														<c:forEach var="row" items="${result.rows}">
-															<option value=<c:out value="${row.TimeOfDayID}"/>>
-																<c:out value="${row.TimeOfDayString}" /></option>
-														</c:forEach>
+														<option>Select Time of Day</option>														
+														<option value=1>Before Breakfast</option>
+														<option value=2>After Breakfast</option>
+														<option value=3>Before Lunch</option>
+														<option value=4>After Lunch</option>
+														<option value=5>Before Dinner</option>
+														<option value=6>After Dinner</option>
+														<option value=7>Bedtime</option>												
 													</form:select>
 												</div>
 											</div>

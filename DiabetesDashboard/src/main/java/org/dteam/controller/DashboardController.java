@@ -57,8 +57,8 @@ public class DashboardController {
 			model.put("userName", session.getAttribute("userName").toString());
 			model.put("url", session.getAttribute("image").toString());
 			model.put("dburl",getUrl());
-			model.put("userName",getUsername());
-			model.put("password",getPassword());
+			model.put("dbuserName",getUsername());
+			model.put("dbpassword",getPassword());
 			return "dashboard";
 		}
 	}
