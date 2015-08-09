@@ -102,7 +102,7 @@
 			</div>
 		</aside>
 		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver"
-			url="jdbc:mysql://localhost:3306/diabetic_dashboard_data" user="root"
+			url="jdbc:mysql://localhost:8889/diabetic_dashboard_data" user="root"
 			password="password" />
 		<sql:query dataSource="${ds}" var="result">
 			SELECT * FROM timeofday;
