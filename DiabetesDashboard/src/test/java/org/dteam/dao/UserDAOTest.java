@@ -8,8 +8,8 @@ import org.dteam.model.User;
 import org.junit.After;
 import org.junit.Test;
 
-public class UserDAOTest {
-
+public class UserDAOTest {	
+	
 	DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 	UserDAO userDAO = mysqlFactory.getUserDAO();
 
@@ -28,7 +28,7 @@ public class UserDAOTest {
 
 	@Test
 	public void testFindUserWithValidUserID() throws SQLException {
-		assertEquals(true, userDAO.findUser("1"));
+		assertEquals(true, userDAO.findUser("104821667003922512716"));
 	}
 
 	@Test

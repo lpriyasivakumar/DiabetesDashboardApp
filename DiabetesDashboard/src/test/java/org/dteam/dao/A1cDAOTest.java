@@ -10,23 +10,17 @@ public class A1cDAOTest {
 
 	DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 	A1cDAO a1cDAO = mysqlFactory.getA1cDAO();
-
+	
 	@Test
-	public void testAddLabValueShouldReturn1() throws SQLException {
-		int labValue = a1cDAO.addLabValue(4.6, "1");
-		assertEquals(1, a1cDAO.addLabValue(labValue, "1"));
-	}
-
-	@Test
-	public void testGetLabValue() throws SQLException {
-		double expectedLabValue = 4.6;
-		assertEquals(expectedLabValue, a1cDAO.getLabValue("1"), 0);
-	}
+	public void testAddLabValueAndGetLabValue() throws SQLException {		
+		assertEquals(1, a1cDAO.addLabValue(4.6, "104821667003922512716"));
+		assertEquals(4.6, a1cDAO.getLabValue("104821667003922512716"),0);
+	}	
 
 	@After
 	public void tearDown() throws SQLException {
 		MySQLDAOFactory.connectToDB();
-		MySQLDAOFactory.statement.executeUpdate("Delete from a1c Where UserID = '1'");
+		MySQLDAOFactory.statement.executeUpdate("Update a1c Set LabValue='0' Where UserID = '104821667003922512716'");
 		MySQLDAOFactory.closeDB();
 
 	}

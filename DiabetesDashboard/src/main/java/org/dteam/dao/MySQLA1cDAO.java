@@ -11,11 +11,10 @@ public class MySQLA1cDAO implements A1cDAO {
 		connectToDB();
 		try {
 			String sql = "UPDATE a1c SET LabValue =" + "'" + labValue + "'" + " WHERE UserID = " + "'" + userID + "'";
-			statement.executeUpdate(sql);
+			return statement.executeUpdate(sql);
 		} finally {
 			closeDB();
-		}
-		return 0;
+		}		
 	}
 
 	@Override
@@ -28,7 +27,6 @@ public class MySQLA1cDAO implements A1cDAO {
 			rs = statement.executeQuery(sql);
 			if (rs.next()) {
 				LabValue = rs.getDouble("LabValue");
-
 			}
 		} finally {
 			closeDB();

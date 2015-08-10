@@ -39,7 +39,7 @@ public class DashboardController {
 			String dateRange = request.getParameter("dateRange");
 			Reading readingForm = new Reading();
 			if (dateRange == null || dateRange.isEmpty()) {
-				dateRange = "all";
+				dateRange = "";
 			}
 			A1cDAO a1cdao = getA1cDAO();
 			double labA1c = 0;
@@ -57,7 +57,7 @@ public class DashboardController {
 	}
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
-	public String doDashboard(@ModelAttribute("readingForm") Reading reading, ModelMap model, String calcA1c,
+	public String doDashboard(@ModelAttribute("readingForm") Reading reading, ModelMap model,
 			HttpServletRequest request) throws ClassNotFoundException, SQLException {
 
 		ReadingDAO readingDAO = getReadingDAO();
@@ -67,9 +67,8 @@ public class DashboardController {
 		if (result1 > 0) {
 			model.addAttribute("Msg", result1 + " reading added.");
 		} else {
-			model.addAttribute("Msg", "Invalid entries. Cannot save reading");
-		}
-		model.addAttribute("calcA1c", calcA1c);
+			model.addAttribute("Msg", "Reading cannot be saved");
+		}		
 		session.setAttribute("errMsg", null);
 		return "dashboard";
 	}

@@ -26,21 +26,18 @@ public class LoginControllerTest {
 		viewResolver.setSuffix(".jsp");
 		this.mockMvc = MockMvcBuilders.standaloneSetup(logincontroller).setViewResolvers(viewResolver).build();
 	}
-
-	// Test should return 404 error as the requestmapping is for /login
+	
 	@Test
 	public void testGetMethodWithWrongRequest() throws Exception {
 		this.mockMvc.perform(get("/test")).andDo(print()).andExpect(status().isNotFound());
 	}
 
-	// Test should return Http 200 as the requestmapping is for /login
 	@Test
 	public void testGetMethodWithCorrectRequest() throws Exception {
 
 		this.mockMvc.perform(get("/login")).andDo(print()).andExpect(status().isOk()).andExpect(view().name("login"));
 	}
 
-	// Test checks whether page gets redirected to "dashboard.jsp"
 	@Test
 	public void testPostMethodWithCorrectRequest() throws Exception {
 
