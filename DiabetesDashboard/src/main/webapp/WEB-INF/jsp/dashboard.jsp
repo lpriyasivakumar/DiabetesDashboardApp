@@ -60,9 +60,9 @@
 			<a href="#" class="logo">Diabetes <span class="lite">Dashboard</span></a>
 			<!--logo end-->
 			<div class="top-nav notification-row">
-				<!-- notificatoin dropdown start-->
+				<!-- notification drop down start-->
 				<ul class="nav pull-right top-menu">
-					<!-- user login dropdown start-->
+					<!-- user login drop down start-->
 					<li class="dropdown"><a data-toggle="dropdown"
 						class="dropdown-toggle" href="#"> <span class="profile-ava">
 								<img src="<c:url value="resources/img/user-icon.png" />" alt="Default User Image"/>
@@ -76,9 +76,9 @@
 							<li><a href="#" onclick="signOut()"><i
 									class="icon_key_alt"></i> Log Out</a></li>
 						</ul></li>
-					<!-- user login dropdown end -->
+					<!-- user login drop down end -->
 				</ul>
-				<!-- notificatoin dropdown end-->
+				<!-- notification drop down end-->
 			</div>
 		</header>
 		<!--header end-->
