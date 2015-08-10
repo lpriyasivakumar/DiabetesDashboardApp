@@ -12,52 +12,53 @@ public class MySQLReadingDAO implements ReadingDAO {
 	@Override
 	public int addReading(Reading reading, String userID) throws SQLException {
 		connectToDB();
-		try {
-			String sql = "Insert into reading(UserID, ReadingDate, TimeOfDayID, BloodGlucose,InsulinUnits) values ('"
-					+ userID + "','" + reading.getDate() + "','" + reading.getTimeOfDay() + "','"
-					+ reading.getBloodGlucose() + "','" + reading.getInsulin() + "');";
-			return statement.executeUpdate(sql);
-
-		} finally {
-			closeDB();
-		}
+		String sql = "Insert into reading(UserID, ReadingDate, TimeOfDayID, BloodGlucose,InsulinUnits) values ('"
+				+ userID
+				+ "','"
+				+ reading.getDate()
+				+ "','"
+				+ reading.getTimeOfDay()
+				+ "','"
+				+ reading.getBloodGlucose()
+				+ "','" + reading.getInsulin() + "');";
+		int result = statement.executeUpdate(sql);
+		closeDB();
+		return result;
 
 	}
 
 	@Override
-	public ArrayList<Reading> getReadings(String dateRange, String userID) throws SQLException {
+	public ArrayList<Reading> getReadings(String dateRange, String userID)
+			throws SQLException {
 		connectToDB();
 		ArrayList<Reading> ReadingList = new ArrayList<Reading>();
-		try {
-			String sql = "SELECT * FROM Reading WHERE ReadingDate BETWEEN DATE_SUB(CURDATE(), INTERVAL "
-					+ getDateRange(dateRange) + " DAY) and CURDATE() AND UserID=" + "'" + userID + "'";
-			ResultSet rs = statement.executeQuery(sql);
-			while (rs.next()) {
-				Reading reading = new Reading();
-				reading.setDate(rs.getDate("ReadingDate").toString());
-				reading.setInsulin(rs.getInt("InsulinUnits"));
-				reading.setBloodGlucose(rs.getInt("BloodGlucose"));
-				reading.setTimeOfDay(rs.getString("TimeOfDayID"));
-				ReadingList.add(reading);
-			}
-		} finally {
-			closeDB();
+		String sql = "SELECT * FROM Reading WHERE ReadingDate BETWEEN DATE_SUB(CURDATE(), INTERVAL "
+				+ getDateRange(dateRange)
+				+ " DAY) and CURDATE() AND UserID="
+				+ "'" + userID + "'";
+		ResultSet rs = statement.executeQuery(sql);
+		while (rs.next()) {
+			Reading reading = new Reading();
+			reading.setDate(rs.getDate("ReadingDate").toString());
+			reading.setInsulin(rs.getInt("InsulinUnits"));
+			reading.setBloodGlucose(rs.getInt("BloodGlucose"));
+			reading.setTimeOfDay(rs.getString("TimeOfDayID"));
+			ReadingList.add(reading);
 		}
+		closeDB();
 		return ReadingList;
 	}
 
 	public static int getAvgBG(String userID) throws SQLException {
 		connectToDB();
-		try {
-			String sql = "SELECT AVG(BloodGlucose) AS BG_AVG FROM Reading WHERE ReadingDate BETWEEN DATE_SUB(CURDATE(), INTERVAL 90 DAY) and CURDATE() AND userID = "
-					+ "'" + userID + "';";
-			ResultSet rs = statement.executeQuery(sql);
-			if (rs.next()) {
-				return rs.getInt("BG_AVG");
-			}
-		} finally {
-			closeDB();
+		int avgBg = 0;
+		String sql = "SELECT AVG(BloodGlucose) AS BG_AVG FROM Reading WHERE ReadingDate BETWEEN DATE_SUB(CURDATE(), INTERVAL 90 DAY) and CURDATE() AND userID = "
+				+ "'" + userID + "';";
+		ResultSet rs = statement.executeQuery(sql);
+		if (rs.next()) {
+			avgBg = rs.getInt("BG_AVG");
 		}
-		return 0;
+		closeDB();
+		return avgBg;
 	}
 }
