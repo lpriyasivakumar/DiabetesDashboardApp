@@ -28,14 +28,11 @@ public class DashboardControllerTest {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(dashboardcontroller).setViewResolvers(viewResolver).build();
 	}
 
-	// Test should return 404 error as the requestmapping is for /dashboard
 	@Test
 	public void testGetMethodWithWrongRequest() throws Exception {
 		this.mockMvc.perform(get("/test")).andDo(print()).andExpect(status().isNotFound());
 	}
-
-	// Test should return Http 200 as the requestmapping is for /dashboard
-	// redirects to login page as user is not logged in
+	
 	@Test
 	public void testGetMethodWithCorrectRequestButNoUserLogin() throws Exception {
 		this.mockMvc.perform(get("/dashboard")).andDo(print()).andExpect(status().isOk())
@@ -43,10 +40,9 @@ public class DashboardControllerTest {
 	}
 
 	@Test
-	public void testPostMethodWithCorrectRequest() throws Exception {
-
+	public void testPostMethodWithSqlError() throws Exception {		
 		this.mockMvc.perform(post("/dashboard")).andDo(print()).andExpect(status().isOk())
-				.andExpect(model().attributeExists("Msg")).andExpect(view().name("dashboard"));
+				.andExpect(view().name("databaseError"));
 	}
 
 }

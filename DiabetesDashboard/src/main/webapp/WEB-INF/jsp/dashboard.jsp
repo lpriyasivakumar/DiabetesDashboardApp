@@ -229,6 +229,11 @@
 												<div class="form-group col-lg-offset-2 col-lg-9">
 													<button  type="submit" class="btn btn-info btn-block">Save Lab Value</button>
 												</div>
+												<c:if test="${errMsg != null}">
+												<p>
+													<i>${errMsg} </i>
+												</p>
+											</c:if>
 											</div>
 											</form>
 											<form method="get" action="A1c" role="entry"
@@ -572,7 +577,7 @@
 					+ '=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 			document.cookie = "image"
 					+ '=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://diabetesdashboard-dteamdash.rhcloud.com/DiabetesDashboard-1.0-SNAPSHOT/login";
+			document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://localhost:8080/DiabetesDashboard/login";
 		};
 	</script>
 
