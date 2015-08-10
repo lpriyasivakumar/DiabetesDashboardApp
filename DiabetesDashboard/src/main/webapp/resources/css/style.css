@@ -263,7 +263,7 @@ table tr th { color: #688a7e;}
     position: fixed;
     background: rgba(4, 8, 19, 0.3);
     border-radius: 5px;
-    top:70px;
+    margin-top:180px;
     left:8px;
 }
 
@@ -465,6 +465,10 @@ ul.sidebar-menu li.active a i {
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
 }
+.login-btn{
+	margin:0 auto !important;
+	width:120px;
+}
 
 
 /*main content*/
@@ -472,7 +476,7 @@ ul.sidebar-menu li.active a i {
     background: #F2F2F2;
     padding:2%;
     position:relative;
-    margin:0 auto;
+    margin:15px auto;
     
 }
 .main-content-container::after{

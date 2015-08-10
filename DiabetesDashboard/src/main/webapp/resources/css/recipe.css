@@ -79,3 +79,16 @@ footer {
 .container{
 	margin-top:90px;
 }
+
+.img-container{  
+	display:block;
+}
+
+.img-container h2{
+	text-align:center;
+}
+
+.image{
+	background:#fff;
+	padding:5px;
+}

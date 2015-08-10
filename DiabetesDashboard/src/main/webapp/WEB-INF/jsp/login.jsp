@@ -12,7 +12,7 @@
 	content="Diabetes, Dashboard, Login, Glucose, Insulin">
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id"
-	content="1008285497817-qjhgv7deojafc7ibfm4pb9psncmh29m0.apps.googleusercontent.com">
+	content="402953970493-pdl3hmkuo2sm43413vgkc5be5oea7fuj.apps.googleusercontent.com">
 
 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -34,8 +34,7 @@
 <!-- Custom styles -->
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/style.css" />" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/style-responsive" />" />
+
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
 <!--[if lt IE 9]>
@@ -77,8 +76,9 @@
                 <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
             </label>  -->
 
+			<div class="login-btn">	
 				<div class="g-signin2" data-onsuccess="onSignIn"></div>
-					
+			</div>	
 			</div>
 		</form>
 	</div>
