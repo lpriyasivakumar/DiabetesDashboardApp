@@ -10,7 +10,7 @@ public class MySQLA1cDAO implements A1cDAO {
 	public int addLabValue(double labValue, String userID) throws SQLException {
 		connectToDB();
 		try {
-			String sql = "UPDATE a1c SET LabValue =" + "'" + labValue + "'" + " WHERE UserID = " + "'" + userID + "'";
+			String sql = "UPDATE A1c SET LabValue =" + "'" + labValue + "'" + " WHERE UserID = " + "'" + userID + "'";
 			statement.executeUpdate(sql);
 		} finally {
 			closeDB();

@@ -11,7 +11,7 @@ public class MySQLUserDAO implements UserDAO {
 		connectToDB();
 		try {
 
-			String sql = "Insert into userdb(UserID,UserName) values('" + user.getUserID() + "','" + user.getName()
+			String sql = "Insert into UserDB(UserID,UserName) values('" + user.getUserID() + "','" + user.getName()
 					+ "');";
 			return statement.executeUpdate(sql);
 
@@ -26,7 +26,7 @@ public class MySQLUserDAO implements UserDAO {
 		connectToDB();
 		try {
 			statement = conn.createStatement();
-			String sql = "Select * from userdb where UserID =" + "'" + userID + "'";
+			String sql = "Select * from UserDB where UserID =" + "'" + userID + "'";
 			ResultSet rs = statement.executeQuery(sql);
 			return rs.next();
 
