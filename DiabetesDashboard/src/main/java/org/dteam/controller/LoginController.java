@@ -64,7 +64,7 @@ public class LoginController {
 
 	}
 	
-	 @ExceptionHandler({SQLException.class,DataAccessException.class})
+	 @ExceptionHandler({SQLException.class,DataAccessException.class,NullPointerException.class})
 	  public String databaseError() {    
 	    return "databaseError";
 	  }  
