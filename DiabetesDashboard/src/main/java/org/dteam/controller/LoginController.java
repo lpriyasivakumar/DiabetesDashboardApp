@@ -48,7 +48,7 @@ public class LoginController {
 			user.setName(name);
 			userDAO.addUser(user);
 			A1cDAO a1cDAO = getA1cDAO();
-			a1cDAO.addLabValue(0, id);
+			a1cDAO.addLabValue(0.0, id);
 		}
 
 		return new ModelAndView("redirect:/dashboard");
@@ -64,7 +64,7 @@ public class LoginController {
 
 	}
 	
-	 @ExceptionHandler({SQLException.class,DataAccessException.class})
+	 @ExceptionHandler({SQLException.class,DataAccessException.class,NullPointerException.class})
 	  public String databaseError() {    
 	    return "databaseError";
 	  }  

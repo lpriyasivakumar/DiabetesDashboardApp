@@ -41,9 +41,8 @@ public class DashboardController {
 			if (dateRange == null || dateRange.isEmpty()) {
 				dateRange = "";
 			}
-			A1cDAO a1cdao = getA1cDAO();
-			double labA1c = 0;
-			labA1c = a1cdao.getLabValue(userID);
+			A1cDAO a1cdao = getA1cDAO();			
+			double labA1c  = a1cdao.getLabValue(userID);
 			ModelMap map = getChartData(request, dateRange);
 			model.put("dates", map.get("dates"));
 			model.put("bloodGlucose", map.get("bloodGlucose"));
@@ -104,7 +103,7 @@ public class DashboardController {
 		return DAOFactory.getDAOFactory(DAOFactory.MYSQL).getA1cDAO();
 	}
 
-	@ExceptionHandler({SQLException.class, DataAccessException.class})
+	@ExceptionHandler({SQLException.class, DataAccessException.class,NullPointerException.class})
 	public String databaseError() {
 		return "databaseError";
 	}
