@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,7 +30,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView doLogin(HttpServletRequest request, HttpServletResponse response)
-			throws UnsupportedEncodingException {
+			throws UnsupportedEncodingException, SQLException {
 		HttpSession session = request.getSession();
 		String id = CookieUtil.getCookieValue(request, "id");
 		String name = URLDecoder.decode(CookieUtil.getCookieValue(request, "user"),
@@ -47,13 +48,9 @@ public class LoginController {
 			user.setName(name);
 			userDAO.addUser(user);
 			A1cDAO a1cDAO = getA1cDAO();
-			try {
-				a1cDAO.addLabValue(0, id);
-			} catch (SQLException e) {
-				System.out.println("Sql Error: Cannot add to the database.");
-			}
-
+			a1cDAO.addLabValue(0, id);
 		}
+
 		return new ModelAndView("redirect:/dashboard");
 
 	}
@@ -66,5 +63,10 @@ public class LoginController {
 		return DAOFactory.getDAOFactory(DAOFactory.MYSQL).getA1cDAO();
 
 	}
-
+	
+	 @ExceptionHandler({SQLException.class,DataAccessException.class})
+	  public String databaseError() {    
+	    return "databaseError";
+	  }  
+	 
 }

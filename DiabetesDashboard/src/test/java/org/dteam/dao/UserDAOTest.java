@@ -8,13 +8,13 @@ import org.dteam.model.User;
 import org.junit.After;
 import org.junit.Test;
 
-public class UserDAOTest {
-
+public class UserDAOTest {	
+	
 	DAOFactory mysqlFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
 	UserDAO userDAO = mysqlFactory.getUserDAO();
 
 	@Test
-	public void testAddUserWithValidUser() {
+	public void testAddUserWithValidUser() throws SQLException {
 		User user = new User();
 		user.setUserID("20");
 		user.setName("Jane Doe");
@@ -22,17 +22,17 @@ public class UserDAOTest {
 	}
 
 	@Test(expected = Exception.class)
-	public void testAddUserWithInvalidUser() {
+	public void testAddUserWithInvalidUser() throws SQLException {
 		userDAO.addUser(null);
 	}
 
 	@Test
-	public void testFindUserWithValidUserID() {
-		assertEquals(true, userDAO.findUser("1"));
+	public void testFindUserWithValidUserID() throws SQLException {
+		assertEquals(true, userDAO.findUser("104821667003922512716"));
 	}
 
 	@Test
-	public void testFindUserWithInValidUserID() {
+	public void testFindUserWithInValidUserID() throws SQLException {
 		assertEquals(false, userDAO.findUser("One"));
 	}
 

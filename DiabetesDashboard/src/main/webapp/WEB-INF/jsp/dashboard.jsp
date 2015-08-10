@@ -131,7 +131,7 @@
 											<div class="row">
 												<div class="form-group pull-left">
 													<label for="bgreading">Blood Glucose Reading</label>
-													<form:input path="bloodGlucose" type="text"
+													<form:input path="bloodGlucose" type="number"
 														name="bgreading" id="bgreading"
 														placeholder="Please enter glucose reading"
 														class="form-control input-lg" />
@@ -139,7 +139,7 @@
 												<div class="form-group pull-right">
 													<!--  	<input type="hidden" name="action" value="add"> -->
 													<label for="insulinUnits">Insulin Units</label>
-													<form:input path="insulin" type="text" name="insulinUnits"
+													<form:input path="insulin" type="number" name="insulinUnits"
 														id="insulinUnits"
 														placeholder="Please enter amount of insulin in units"
 														class="form-control input-lg" />
