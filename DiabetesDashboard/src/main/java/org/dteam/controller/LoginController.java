@@ -2,13 +2,15 @@ package org.dteam.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
-
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,13 +25,12 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String viewLogin() {
-
 		return "login";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView doLogin(HttpServletRequest request, HttpServletResponse response)
-			throws UnsupportedEncodingException {
+			throws UnsupportedEncodingException, SQLException {
 		HttpSession session = request.getSession();
 		String id = CookieUtil.getCookieValue(request, "id");
 		String name = URLDecoder.decode(CookieUtil.getCookieValue(request, "user"),
@@ -39,7 +40,7 @@ public class LoginController {
 		session.setAttribute("userID", id);
 		session.setAttribute("userName", name);
 		session.setAttribute("image", image);
-		session.setAttribute("calcA1c","0");
+		session.setAttribute("calcA1c", "0");
 		UserDAO userDAO = getUserDAO();
 		if (!userDAO.findUser(id)) {
 			User user = new User();
@@ -48,11 +49,10 @@ public class LoginController {
 			userDAO.addUser(user);
 			A1cDAO a1cDAO = getA1cDAO();
 			a1cDAO.addLabValue(0, id);
-
 		}
+
 		return new ModelAndView("redirect:/dashboard");
-		
-		
+
 	}
 
 	public UserDAO getUserDAO() {
@@ -63,5 +63,10 @@ public class LoginController {
 		return DAOFactory.getDAOFactory(DAOFactory.MYSQL).getA1cDAO();
 
 	}
-
+	
+	 @ExceptionHandler({SQLException.class,DataAccessException.class})
+	  public String databaseError() {    
+	    return "databaseError";
+	  }  
+	 
 }

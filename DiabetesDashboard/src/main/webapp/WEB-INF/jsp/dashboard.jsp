@@ -60,9 +60,9 @@
 			<a href="#" class="logo">Diabetes <span class="lite">Dashboard</span></a>
 			<!--logo end-->
 			<div class="top-nav notification-row">
-				<!-- notificatoin dropdown start-->
+				<!-- notification drop down start-->
 				<ul class="nav pull-right top-menu">
-					<!-- user login dropdown start-->
+					<!-- user login drop down start-->
 					<li class="dropdown"><a data-toggle="dropdown"
 						class="dropdown-toggle" href="#"> <span class="profile-ava">
 								<img src="<c:url value="resources/img/user-icon.png" />" alt="Default User Image"/>
@@ -76,9 +76,9 @@
 							<li><a href="#" onclick="signOut()"><i
 									class="icon_key_alt"></i> Log Out</a></li>
 						</ul></li>
-					<!-- user login dropdown end -->
+					<!-- user login drop down end -->
 				</ul>
-				<!-- notificatoin dropdown end-->
+				<!-- notification drop down end-->
 			</div>
 		</header>
 		<!--header end-->
@@ -139,7 +139,7 @@
 											<div class="row">
 												<div class="form-group pull-left">
 													<label for="bgreading">Blood Glucose Reading</label>
-													<form:input path="bloodGlucose" type="text"
+													<form:input path="bloodGlucose" type="number"
 														name="bgreading" id="bgreading"
 														placeholder="Please enter glucose reading"
 														class="form-control input-md" />
@@ -147,7 +147,7 @@
 												<div class="form-group pull-right">
 													<!--  	<input type="hidden" name="action" value="add"> -->
 													<label for="insulinUnits">Insulin Units</label>
-													<form:input path="insulin" type="text" name="insulinUnits"
+													<form:input path="insulin" type="number" name="insulinUnits"
 														id="insulinUnits"
 														placeholder="Please enter amount of insulin in units"
 														class="form-control input-md" />
@@ -235,14 +235,18 @@
 												<div class="form-group col-lg-offset-2 col-lg-9">
 													<button  type="submit" class="btn btn-info btn-block">Save Lab Value</button>
 												</div>
+												<c:if test="${errMsg != null}">
+												<p>
+													<i>${errMsg} </i>
+												</p>
+											</c:if>
 											</div>
 											</form>
 											<form method="get" action="A1c" role="entry"
 											id="a1cEntryform">
 											<input type="hidden" name="action" value="CalcA1c">
 											<div class="form-group">												
-												<label for="estimatedA1c">Estimated A1c Value<span>*</span></label>
-												<label>${calcA1c}</label>
+												<label for="estimatedA1c">Estimated A1c Value<span>*: ${calcA1c}</span></label>												
 												<div class="form-group col-lg-offset-2 col-lg-9">
 													<button  type="submit" class="btn btn-info btn-block">Calculate Estimated A1c</button>												
 												</div>
