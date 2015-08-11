@@ -85,48 +85,68 @@
 				
 				<div class="row">
 					<div class="col-xs-6 col-lg-4 img-container">
-						<h2>Heading</h2>
 						<div class="image">
-							<img alt="" src="https://placeimg.com/250/200/any/grayscale">
+							<img alt="chicken barley wraps" src="<c:url value="resources/img/chicken_barley_wraps.jpg"/> " />
+							<h2>Healthy Grilled Chicken Barley Wraps</h2>
+							<span class="teaser">These quick and easy lettuce wraps</span><span class="complete"> have the veggie crunch 
+							of a salad, but with added grains and protein to keep you satisfied until dinner.</span>
+							<a href="#" class="more"> more...</a>
+						</div>
+						
+					</div>
+					
+					<!--/.col-xs-6.col-lg-4-->
+					<div class="col-xs-6 col-lg-4 img-container">
+						<div class="image">
+							<img alt="Tuscan Tuna with Tomato Salad" src="<c:url value="resources/img/tuscan-tuna-with-tomato-salad.jpg"/> " />
+							<h2>Tuscan Tuna with Tomato Salad</h2>
+							<span class="teaser">For a light 15-minute dinner, grill tuna</span><span class="complete"> steaks and 
+							serve on top of a fresh fennel and tomato salad.</span>
+							<a href="#" class="more"> more...</a>
 						</div>
 					</div>
 					
 					<!--/.col-xs-6.col-lg-4-->
 					<div class="col-xs-6 col-lg-4 img-container">
-						<h2>Heading</h2>
 						<div class="image">
-							<img alt="" src="https://placeimg.com/250/200/any/grayscale">
+							<img alt="Tuscan Tuna with Tomato Salad" src="<c:url value="resources/img/parmesan-crusted-fish.jpg"/> " />
+							<h2>Parmesan-Crusted Fish</h2>
+							<span class="teaser">A Parmesan cheese and bread crumb topping coats this baked 
+							fish main dish </span><span class="complete"> that's ready to serve in less than 30 minutes.  Add carrots and greens to round out the meal.</span>
+							<a href="#" class="more"> more...</a>
+						</div>
+					</div>
+					</div>
+					<div class="row row-2">
+					<!--/.col-xs-6.col-lg-4-->
+					<div class="col-xs-6 col-lg-4 img-container">
+						<div class="image">
+							<img alt="Roasted Vegetables with Fresh Mozzarella" src="<c:url value="resources/img/roasted-vegetables-with-fresh-mozzarella.jpg"/> " />
+							<h2>Roasted Vegetables with Fresh Mozzarella</h2>
+							<span class="teaser">Tent the roasted vegetables after cooking</span><span class="complete">  to allow the mozzarella to melt
+							 without any additional heat.</span>
+							<a href="#" class="more"> more...</a>
+						</div>
+					</div>
+					<!--/.col-xs-6.col-lg-4-->
+					<div class="col-xs-6 col-lg-4 img-container">
+						<div class="image">
+							<img alt="Mediterranean Breakfast Sandwiches" src="<c:url value="resources/img/mediterranean-breakfast-sandwiches.jpg"/> " />
+							<h2>Mediterranean Breakfast Sandwiches</h2>
+							<span class="teaser">Hallelujah, a breakfast sandwich with real, fresh vegetables!</span><span class="complete">  This egg dish takes less than 10 minutes 
+							(translation: quicker than a trip to the drive-thru).</span>
+							<a href="#" class="more"> more...</a>
 						</div>
 					</div>
 					
 					<!--/.col-xs-6.col-lg-4-->
 					<div class="col-xs-6 col-lg-4 img-container">
-						<h2>Heading</h2>
 						<div class="image">
-							<img alt="" src="https://placeimg.com/250/200/any/grayscale">
-						</div>
-					</div>
-					
-					<!--/.col-xs-6.col-lg-4-->
-					<div class="col-xs-6 col-lg-4 img-container">
-						<h2>Heading</h2>
-						<div class="image">
-							<img alt="" src="https://placeimg.com/250/200/any/grayscale">
-						</div>
-					</div>
-					<!--/.col-xs-6.col-lg-4-->
-					<div class="col-xs-6 col-lg-4 img-container">
-						<h2>Heading</h2>
-						<div class="image">
-							<img alt="" src="https://placeimg.com/250/200/any/grayscale">
-						</div>
-					</div>
-					
-					<!--/.col-xs-6.col-lg-4-->
-					<div class="col-xs-6 col-lg-4 img-container">
-						<h2>Heading</h2>
-						<div class="image">
-							<img alt="" src="https://placeimg.com/250/200/any/grayscale">
+							<img alt="Chipotle-&-Orange Grilled Chicken" src="<c:url value="resources/img/chipotle-orange-grilled-chicken.jpg"/> " />
+							<h2>Chipotle-&-Orange Grilled Chicken</h2>
+							<span class="teaser">Chipotle peppers in adobo sauce contribute</span><span class="complete"> a rich smokiness to this 
+							quick orange-infused barbecue sauce.</span>
+							<a href="#" class="more"> more...</a>
 						</div>
 					</div>
 					<!--/.col-xs-6.col-lg-4-->
@@ -154,69 +174,14 @@
 
 	<!-- Bootstrap core JavaScript-->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/jquery.1.7.0.js" />"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-
-	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/offcanvas.js" />"></script>
 
-	<script type="text/javascript">
-	function loadImages(url, container){
-		/*$.ajax({
-			  dataType: "json",
-			  url: 'https://api.edamam.com/search?q=chicken',
-			  success: function(data){
-				  var items = [];
-				  $.each( data['image'], function( key, image ) {
-				    var mylist = '<img src="' +image['url']+ '" alt="' + image['title']+ '">';
-				    $('.image').append(mylist);
-				  });
-			  }
-			});*/
-		 $.getJSON(url, function (data) {
-		        if (typeof data === 'object') {
-		        	$.each(data['image'], function (key, image) {
-		        	    $.each(image, function(i,val){
-		        	        var mylist = '<img src="' + image['url'] + '" alt="' + image['title'] + '">';
-		        	        $(container).append(mylist);
-		        	    })
-		        	});
-		        }
-		    });
-	};
-	
-	 $(function(){
-	     loadImages('https://api.edamam.com/search?q=chicken', '.image');
-	  });
-	</script>
-
-
-	<!--  
-	<script>
-	(function() {
-	  var edamamAPI = "https://api.edamam.com/search?q=chicken&app_id=$&app_key=$3a57699b3ae8620a12b8f41048d3e9b2";
-	  $.getJSON( edamamAPI, {
-	    tags: "chicken",
-	    app_id:2c83fd2e
-	    app_key:3a57699b3ae8620a12b8f41048d3e9b2
-	    tagmode: "any",
-	    format: "json"
-	  })
-	    .done(function( data ) {
-	      $.each( data.items, function( i, item ) {
-	        $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-	        if ( i === 3 ) {
-	          return false;
-	        }
-	      });
-	})();
-	</script>	
-	-->
 </body>
 </html>
 

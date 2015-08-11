@@ -85,10 +85,25 @@ footer {
 }
 
 .img-container h2{
-	text-align:center;
+	font-size:1.3em;
+	font-weight:bold;
 }
 
 .image{
 	background:#fff;
 	padding:5px;
+	overflow:hidden;
+}
+
+.complete{
+    display:none;
+}
+
+.row-2{
+	margin-top:20px;
+}
+
+.more{
+	font-weight:200;
+	color:orange;
 }
