@@ -91,11 +91,11 @@
 					<p>dashboard menu</p>
 				</div>
 				<ul class="sidebar-menu">
-					<li class="active"><a class="" href="index.html"> <i
+					<li class="active"><a class="" href="dashboard"> <i
 							class="icon_house_alt"></i> <span>Dashboard</span>
 					</a></li>
-					<li class="sub-menu"><a href="javascript:;" class=""> <i
-							class="icon_calculator_alt"></i> <span>A1c Calculator</span> <!--  <span class="menu-arrow arrow_carrot-right"></span> -->
+					<li class="sub-menu"><a href="recipe" class=""> <i
+							class="icon_book"></i> <span>Healthy Recipes</span> <!--  <span class="menu-arrow arrow_carrot-right"></span> -->
 					</a></li>
 				</ul>
 				<!--sidebar menu end -->
@@ -142,7 +142,7 @@
 													<form:input path="bloodGlucose" type="number"
 														name="bgreading" id="bgreading"
 														placeholder="Please enter glucose reading"
-														class="form-control input-lg" />
+														class="form-control input-md" />
 												</div>
 												<div class="form-group pull-right">
 													<!--  	<input type="hidden" name="action" value="add"> -->
@@ -150,7 +150,7 @@
 													<form:input path="insulin" type="number" name="insulinUnits"
 														id="insulinUnits"
 														placeholder="Please enter amount of insulin in units"
-														class="form-control input-lg" />
+														class="form-control input-md" />
 												</div>
 											</div>
 											<!-- END .row for glucose reading and insulin units text input -->

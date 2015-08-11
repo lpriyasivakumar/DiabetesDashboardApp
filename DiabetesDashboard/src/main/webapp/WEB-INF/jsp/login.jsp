@@ -34,8 +34,7 @@
 <!-- Custom styles -->
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/style.css" />" />
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/style-responsive" />" />
+
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
 <!--[if lt IE 9]>
@@ -64,7 +63,6 @@
 					<i class="icon_lock_alt"></i>
 				</p>
 				<p>Diabetes Dashboard</p>
-				<label>${error}</label>
 				<!-- <div class="input-group">
               <span class="input-group-addon"><i class="icon_profile"></i></span>
               <input type="text" class="form-control" placeholder="Username" autofocus>
@@ -78,8 +76,9 @@
                 <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
             </label>  -->
 
+			<div class="login-btn">	
 				<div class="g-signin2" data-onsuccess="onSignIn"></div>
-					
+			</div>	
 			</div>
 		</form>
 	</div>
@@ -142,4 +141,3 @@
 </body>
 
 </html>
-
