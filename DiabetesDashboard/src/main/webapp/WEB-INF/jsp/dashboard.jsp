@@ -90,7 +90,7 @@
 					<p>dashboard menu</p>
 				</div>
 				<ul class="sidebar-menu">
-					<li class="active"><a class="" href="index.html"> <i
+					<li class="active"><a class="" href="dashboard"> <i
 							class="icon_house_alt"></i> <span>Dashboard</span>
 					</a></li>
 					<li class="sub-menu"><a href="javascript:;" class=""> <i
@@ -109,7 +109,7 @@
 								<i class="fa fa-laptop"></i> Dashboard
 							</h3>
 							<ol class="breadcrumb">
-								<li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
+								<li><i class="fa fa-home"></i><a href="dashboard">Home</a></li>
 								<li><i class="fa fa-laptop"></i>Dashboard</li>
 							</ol>
 						</div>
