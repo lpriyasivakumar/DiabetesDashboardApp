@@ -24,4 +24,5 @@ public class A1cDAOTest {
 		MySQLDAOFactory.closeDB();
 
 	}
+
 }

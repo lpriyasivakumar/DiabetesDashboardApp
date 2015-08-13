@@ -40,7 +40,7 @@ public class A1cControllerTest {
 
 	@Test
 	public void testPostMethodWithCorrectRequest() throws Exception {
-		this.mockMvc.perform(post("/A1c")).andDo(print()).andExpect(status().isOk())
+		this.mockMvc.perform(post("/A1c").param("action", "saveLabValue")).andDo(print()).andExpect(status().isOk())
 				.andExpect(view().name("databaseError"));
 	}
 

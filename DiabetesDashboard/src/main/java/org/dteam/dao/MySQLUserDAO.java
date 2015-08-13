@@ -9,8 +9,10 @@ public class MySQLUserDAO implements UserDAO {
 	@Override
 	public int addUser(User user) throws SQLException {
 		connectToDB();
-		String sql = "Insert into userdb(UserID,UserName) values('"
-				+ user.getUserID() + "','" + user.getName() + "');";
+
+		String sql = "Insert into UserDB(UserID,UserName) values('"
+
+		+ user.getUserID() + "','" + user.getName() + "');";
 		int result = statement.executeUpdate(sql);
 		closeDB();
 		return result;
@@ -20,7 +22,7 @@ public class MySQLUserDAO implements UserDAO {
 	@Override
 	public boolean findUser(String userID) throws SQLException {
 		connectToDB();
-		String sql = "Select * from userdb where UserID =" + "'" + userID + "'";
+		String sql = "Select * from UserDB where UserID =" + "'" + userID + "'";
 		ResultSet rs = statement.executeQuery(sql);
 		boolean found = rs.next();
 		closeDB();

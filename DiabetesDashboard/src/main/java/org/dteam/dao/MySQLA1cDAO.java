@@ -23,8 +23,7 @@ public class MySQLA1cDAO implements A1cDAO {
 	public double getLabValue(String userID) throws SQLException {
 		connectToDB();
 		double LabValue = 0;
-		String sql = "SELECT LabValue FROM A1c WHERE userID = " + "'" + userID
-				+ "';";
+		String sql = "SELECT LabValue FROM A1c WHERE userID = " + "'" + userID + "';";
 		ResultSet rs;
 		rs = statement.executeQuery(sql);
 		if (rs.next()) {

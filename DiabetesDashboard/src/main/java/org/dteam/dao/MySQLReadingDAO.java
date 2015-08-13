@@ -12,7 +12,7 @@ public class MySQLReadingDAO implements ReadingDAO {
 	@Override
 	public int addReading(Reading reading, String userID) throws SQLException {
 		connectToDB();
-		String sql = "Insert into reading(UserID, ReadingDate, TimeOfDayID, BloodGlucose,InsulinUnits) values ('"
+		String sql = "Insert into Reading(UserID, ReadingDate, TimeOfDayID, BloodGlucose,InsulinUnits) values ('"
 				+ userID
 				+ "','"
 				+ reading.getDate()

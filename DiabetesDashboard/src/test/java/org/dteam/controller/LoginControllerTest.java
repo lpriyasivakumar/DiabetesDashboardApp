@@ -41,8 +41,8 @@ public class LoginControllerTest {
 	@Test
 	public void testPostMethodWithCorrectRequest() throws Exception {
 
-		this.mockMvc.perform(post("/login")).andDo(print()).andExpect(status().is3xxRedirection())
-				.andExpect(view().name("redirect:/dashboard"));
+		this.mockMvc.perform(post("/login")).andDo(print()).andExpect(status().isOk())
+				.andExpect(view().name("databaseError"));
 	}
 
 }
