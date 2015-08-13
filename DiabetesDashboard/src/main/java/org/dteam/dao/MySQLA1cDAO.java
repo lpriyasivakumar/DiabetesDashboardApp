@@ -9,12 +9,17 @@ public class MySQLA1cDAO implements A1cDAO {
 	@Override
 	public int addLabValue(double labValue, String userID) throws SQLException {
 		connectToDB();
+		int[] result;
 		try {
-			String sql = "UPDATE a1c SET LabValue =" + "'" + labValue + "'" + " WHERE UserID = " + "'" + userID + "'";
-			return statement.executeUpdate(sql);
+			String sql2 = "Delete from a1c WHERE UserID = " + "'" + userID + "'"+"And LabValue<>"+"'"+labValue+"'";			
+			String sql = "Insert into a1c (UserID,LabValue) values("+"'"+userID+"','"+labValue+ "')";
+			statement.addBatch(sql);
+			statement.addBatch(sql2);
+			result= statement.executeBatch();
 		} finally {
 			closeDB();
-		}		
+		}
+		return result[1];
 	}
 
 	@Override
