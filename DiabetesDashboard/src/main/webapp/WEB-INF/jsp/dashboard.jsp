@@ -93,8 +93,8 @@
 					<li class="active"><a class="" href="dashboard"> <i
 							class="icon_house_alt"></i> <span>Dashboard</span>
 					</a></li>
-					<li class="sub-menu"><a href="javascript:;" class=""> <i
-							class="icon_calculator_alt"></i> <span>A1c Calculator</span> <!--  <span class="menu-arrow arrow_carrot-right"></span> -->
+					<li class="sub-menu"><a href="recipe" class=""> <i
+							class="icon_book"></i> <span>Healthy Recipes</span> <!--  <span class="menu-arrow arrow_carrot-right"></span> -->
 					</a></li>
 				</ul>
 				<!--sidebar menu end -->
@@ -577,7 +577,7 @@
 					+ '=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 			document.cookie = "image"
 					+ '=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://http://diabetesdashboard-dteamdash.rhcloud.com/DiabetesDashboard-1.0-SNAPSHOT/login";
+			document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://diabetesdashboard-dteamdash.rhcloud.com/DiabetesDashboard-1.0-SNAPSHOT/login";
 		};
 	</script>
 

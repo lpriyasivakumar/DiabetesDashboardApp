@@ -48,7 +48,7 @@ public class LoginController {
 			user.setName(name);
 			userDAO.addUser(user);
 			A1cDAO a1cDAO = getA1cDAO();
-			a1cDAO.addLabValue(0.0, id);
+			a1cDAO.addLabValue(0, id);
 		}
 
 		return new ModelAndView("redirect:/dashboard");

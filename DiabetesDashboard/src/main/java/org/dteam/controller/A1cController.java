@@ -50,14 +50,14 @@ public class A1cController {
 			return new ModelAndView("redirect:/login");
 		} else {
 			if (action.equals("saveLabValue")) {
-				try {
+				try{
 					double labA1c = Double.parseDouble(request.getParameter("labA1c"));
 					a1cdao.addLabValue(labA1c, userID);
 					session.setAttribute("errMsg", null);
-				} catch (NumberFormatException nfe) {
+				}catch(NumberFormatException nfe){
 					session.setAttribute("errMsg", "Invalid Number for Labvalue. Try Again");
-				}
-
+				}		
+				
 			}
 			return new ModelAndView("redirect:/dashboard");
 		}
@@ -66,8 +66,8 @@ public class A1cController {
 	public A1cDAO getA1cDAO() {
 		return DAOFactory.getDAOFactory(DAOFactory.MYSQL).getA1cDAO();
 	}
-
-	@ExceptionHandler({ SQLException.class, DataAccessException.class, NullPointerException.class })
+	
+	@ExceptionHandler({SQLException.class, DataAccessException.class,NullPointerException.class})
 	public String databaseError() {
 		return "databaseError";
 	}
