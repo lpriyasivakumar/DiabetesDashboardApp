@@ -51,7 +51,7 @@ public class A1cController {
 		} else {
 			if (action.equals("saveLabValue")) {
 				try{
-					double labA1c = Double.parseDouble(request.getParameter("LabA1c"));
+					double labA1c = Double.parseDouble(request.getParameter("LabA1cValue"));
 					a1cdao.addLabValue(labA1c, userID);
 					session.setAttribute("errMsg", null);
 				}catch(NumberFormatException nfe){
