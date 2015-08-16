@@ -86,7 +86,7 @@
 				<div class="row">
 					<div class="col-xs-6 col-lg-4 img-container">
 						<div class="image">
-							<img alt="chicken barley wraps" src="<c:url value="resources/img/chicken_barley_wraps.jpg"/> " />
+							<img src="<c:url value="resources/img/chicken_barley_wraps.jpg"/> " alt="chicken barley wraps" />
 							<h2>Healthy Grilled Chicken Barley Wraps</h2>
 							<span class="teaser">These quick and easy lettuce wraps</span><span class="complete"> have the veggie crunch 
 							of a salad, but with added grains and protein to keep you satisfied until dinner.</span>
@@ -98,7 +98,7 @@
 					<!--/.col-xs-6.col-lg-4-->
 					<div class="col-xs-6 col-lg-4 img-container">
 						<div class="image">
-							<img alt="Tuscan Tuna with Tomato Salad" src="<c:url value="resources/img/tuscan-tuna-with-tomato-salad.jpg"/> " />
+							<img src="<c:url value="resources/img/tuscan-tuna-with-tomato-salad.jpg"/> " alt="Tuscan Tuna with Tomato Salad"/>
 							<h2>Tuscan Tuna with Tomato Salad</h2>
 							<span class="teaser">For a light 15-minute dinner, grill tuna</span><span class="complete"> steaks and 
 							serve on top of a fresh fennel and tomato salad.</span>
@@ -109,7 +109,7 @@
 					<!--/.col-xs-6.col-lg-4-->
 					<div class="col-xs-6 col-lg-4 img-container">
 						<div class="image">
-							<img alt="Tuscan Tuna with Tomato Salad" src="<c:url value="resources/img/parmesan-crusted-fish.jpg"/> " />
+							<img src="<c:url value="resources/img/parmesan-crusted-fish.jpg"/> " alt="Tuscan Tuna with Tomato Salad"/>
 							<h2>Parmesan-Crusted Fish</h2>
 							<span class="teaser">A Parmesan cheese and bread crumb topping coats this baked 
 							fish main dish </span><span class="complete"> that's ready to serve in less than 30 minutes.  Add carrots and greens to round out the meal.</span>
@@ -121,7 +121,7 @@
 					<!--/.col-xs-6.col-lg-4-->
 					<div class="col-xs-6 col-lg-4 img-container">
 						<div class="image">
-							<img alt="Roasted Vegetables with Fresh Mozzarella" src="<c:url value="resources/img/roasted-vegetables-with-fresh-mozzarella.jpg"/> " />
+							<img src="<c:url value="resources/img/roasted-vegetables-with-fresh-mozzarella.jpg"/> " alt="Roasted Vegetables with Fresh Mozzarella"/>
 							<h2>Roasted Vegetables with Fresh Mozzarella</h2>
 							<span class="teaser">Tent the roasted vegetables after cooking</span><span class="complete">  to allow the mozzarella to melt
 							 without any additional heat.</span>
@@ -131,7 +131,7 @@
 					<!--/.col-xs-6.col-lg-4-->
 					<div class="col-xs-6 col-lg-4 img-container">
 						<div class="image">
-							<img alt="Mediterranean Breakfast Sandwiches" src="<c:url value="resources/img/mediterranean-breakfast-sandwiches.jpg"/> " />
+							<img src="<c:url value="resources/img/mediterranean-breakfast-sandwiches.jpg"/> "  alt="Mediterranean Breakfast Sandwiches"/>
 							<h2>Mediterranean Breakfast Sandwiches</h2>
 							<span class="teaser">Hallelujah, a breakfast sandwich with real, fresh vegetables!</span><span class="complete">  This egg dish takes less than 10 minutes 
 							(translation: quicker than a trip to the drive-thru).</span>
@@ -142,7 +142,7 @@
 					<!--/.col-xs-6.col-lg-4-->
 					<div class="col-xs-6 col-lg-4 img-container">
 						<div class="image">
-							<img alt="Chipotle-&-Orange Grilled Chicken" src="<c:url value="resources/img/chipotle-orange-grilled-chicken.jpg"/> " />
+							<img src="<c:url value="resources/img/chipotle-orange-grilled-chicken.jpg"/> " alt="Chipotle-&-Orange Grilled Chicken"/>
 							<h2>Chipotle-&-Orange Grilled Chicken</h2>
 							<span class="teaser">Chipotle peppers in adobo sauce contribute</span><span class="complete"> a rich smokiness to this 
 							quick orange-infused barbecue sauce.</span>
@@ -181,6 +181,17 @@
 
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/offcanvas.js" />"></script>
-
+	<!-- Logout JavaScript-->
+	<script>
+		function signOut() {
+			document.cookie = "id"
+					+ '=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			document.cookie = "user"
+					+ '=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			document.cookie = "image"
+					+ '=; Path=/DiabetesDashboard; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://diabetesdashboard-dteamdash.rhcloud.com/DiabetesDashboard-1.0-SNAPSHOT/login";
+		};
+	</script>
 </body>
 </html>
