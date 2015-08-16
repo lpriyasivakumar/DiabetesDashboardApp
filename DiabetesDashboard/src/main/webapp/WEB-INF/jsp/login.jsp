@@ -117,7 +117,7 @@
 			};
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4 && xhr.status==200){
-					post("http://diabetesdashboard-dteamdash.rhcloud.com/DiabetesDashboard-1.0-SNAPSHOT/login","post");
+					post("http://diabetesdashboard-dteamdash.rhcloud.com/login","post");
 				}
 			}
 			xhr.open('POST', 'https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='+id_token);
