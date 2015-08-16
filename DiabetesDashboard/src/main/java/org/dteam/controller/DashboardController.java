@@ -1,7 +1,6 @@
 package org.dteam.controller;
 
 import java.io.UnsupportedEncodingException;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -18,6 +17,7 @@ import org.dteam.utilities.JsonArrayMaker;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,7 +56,7 @@ public class DashboardController {
 	}
 
 	@RequestMapping(value = "/dashboard", method = RequestMethod.POST)
-	public String doDashboard(@ModelAttribute("readingForm") Reading reading, ModelMap model,
+	public String doDashboard(@ModelAttribute("readingForm") Reading reading, BindingResult result, ModelMap model,
 			HttpServletRequest request) throws ClassNotFoundException, SQLException {
 
 		ReadingDAO readingDAO = getReadingDAO();
@@ -65,7 +65,7 @@ public class DashboardController {
 		result1 = readingDAO.addReading(reading, session.getAttribute("userID").toString());
 		if (result1 > 0) {
 			model.addAttribute("Msg", result1 + " reading added.");
-		} else {
+		} else if(result.hasErrors()) {
 			model.addAttribute("Msg", "Reading cannot be saved");
 		}		
 		session.setAttribute("errMsg", null);

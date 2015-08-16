@@ -6,4 +6,6 @@ public interface A1cDAO {
 	public int addLabValue(double labValue, String userID) throws SQLException;
 
 	public double getLabValue(String userID) throws SQLException;
+
+	public int updateLabValue(double labValue, String userID) throws SQLException;
 }

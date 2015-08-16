@@ -51,8 +51,8 @@ public class A1cController {
 		} else {
 			if (action.equals("saveLabValue")) {
 				try{
-					double labA1c = Double.parseDouble(request.getParameter("LabA1cValue"));
-					a1cdao.addLabValue(labA1c, userID);
+					double newLabA1c = Double.parseDouble(request.getParameter("newLabA1c"));
+					a1cdao.updateLabValue(newLabA1c, userID);
 					session.setAttribute("errMsg", null);
 				}catch(NumberFormatException nfe){
 					session.setAttribute("errMsg", "Invalid Number for Labvalue. Try Again");

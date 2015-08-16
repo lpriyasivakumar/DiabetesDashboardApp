@@ -224,7 +224,7 @@
 											<input type="hidden" name="action" value="saveLabValue">
 											<div class="form-group">
 												<label for="labA1c">Lab A1c Value: ${labA1c} </label> 
-												<input type="text" name="LabA1cValue" id="labA1c" class="form-control input"
+												<input type="text" name="newLabA1c" id="labA1c" class="form-control input"
 													maxlength="4" value="" />
 												<div class="form-group col-lg-offset-2 col-lg-9">
 													<button  type="submit" class="btn btn-info btn-block">Save Lab Value</button>
