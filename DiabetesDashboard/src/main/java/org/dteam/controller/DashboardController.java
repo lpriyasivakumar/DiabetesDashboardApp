@@ -61,12 +61,12 @@ public class DashboardController {
 
 		ReadingDAO readingDAO = getReadingDAO();
 		HttpSession session = request.getSession();
-		int result1 = 0;
-		result1 = readingDAO.addReading(reading, session.getAttribute("userID").toString());
-		if (result1 > 0) {
-			model.addAttribute("Msg", result1 + " reading added.");
-		} else if(result.hasErrors()) {
-			model.addAttribute("Msg", "Reading cannot be saved");
+		int result1 = 0;		
+		if (result.hasErrors()) {
+			model.addAttribute("Msg","Reading cannot be saved");
+		} else {
+			result1 = readingDAO.addReading(reading, session.getAttribute("userID").toString());
+			model.addAttribute("Msg",result1 +" reading added.");
 		}		
 		session.setAttribute("errMsg", null);
 		return "dashboard";
